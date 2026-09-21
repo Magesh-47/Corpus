@@ -1,6 +1,7 @@
 import {
   Cormorant_Garamond,
   DM_Sans,
+  Newsreader,
   Noto_Naskh_Arabic,
   Noto_Sans,
   Noto_Sans_Arabic,
@@ -9,9 +10,9 @@ import {
 } from "next/font/google";
 import type { ScriptGroup } from "./config";
 
-// The display pair. Cormorant Garamond carries the "atelier" voice and happens
-// to ship Cyrillic, so Latin and Russian share it.
-const cormorant = Cormorant_Garamond({ variable: "--font-serif", subsets: ["latin", "latin-ext"], weight: ["400", "500", "600"] });
+// The display pair. Newsreader carries the "atelier" voice for Latin. It
+// doesn't ship Cyrillic, so Russian keeps Cormorant Garamond instead.
+const newsreader = Newsreader({ variable: "--font-serif", subsets: ["latin", "latin-ext"], weight: ["400", "500", "600"] });
 const cormorantCyrillic = Cormorant_Garamond({ variable: "--font-serif", subsets: ["cyrillic", "latin"], weight: ["400", "500", "600"] });
 const dmSans = DM_Sans({ variable: "--font-sans", subsets: ["latin", "latin-ext"] });
 const notoSansCyrillic = Noto_Sans({ variable: "--font-sans", subsets: ["cyrillic", "latin"] });
@@ -23,7 +24,7 @@ const arabicSerif = Noto_Naskh_Arabic({ variable: "--font-serif", subsets: ["ara
 const arabicSans = Noto_Sans_Arabic({ variable: "--font-sans", subsets: ["arabic"] });
 
 const webFonts: Partial<Record<ScriptGroup, { serif: { variable: string }; sans: { variable: string } }>> = {
-  latin: { serif: cormorant, sans: dmSans },
+  latin: { serif: newsreader, sans: dmSans },
   cyrillic: { serif: cormorantCyrillic, sans: notoSansCyrillic },
   devanagari: { serif: devanagariSerif, sans: devanagariSans },
   arabic: { serif: arabicSerif, sans: arabicSans },
