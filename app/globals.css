@@ -23,7 +23,7 @@ body {
     radial-gradient(circle at 48% 22%, rgba(255, 255, 255, 0.96), transparent 34%),
     linear-gradient(135deg, #f7f1e8, #fdf9f2 48%, #f2e9dd);
   color: var(--ink);
-  font-family: var(--font-sans), sans-serif;
+  font-family: Calibri, var(--font-sans), sans-serif;
   font-size: 14px;
 }
 
