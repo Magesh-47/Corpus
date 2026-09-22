@@ -38,7 +38,7 @@ export const organStructures: OrganStructure[] = [
   {
     id: "heart",
     model: "/models/heart.glb",
-    icon: "♥",
+    icon: "◐",
     accent: "#ee7c6a",
     illustrated: true,
     scientificName: "Cor",
