@@ -72,6 +72,7 @@ export type UiDictionary = {
     feature1Title: string; feature1Body: string;
     feature2Title: string; feature2Body: string;
     feature3Title: string; feature3Body: string;
+    bandHeading: string; bandBody: string; bandCta: string;
     footerHeading: string;
   };
 };
