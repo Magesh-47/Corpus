@@ -37,7 +37,7 @@ type Modal = "lesson" | "quiz" | "animation" | "system" | null;
  * 3D model without the painted asset set. Keeps every image slot filled instead
  * of leaving a broken `<img>` behind.
  */
-function OrganArt({
+export function OrganArt({
   organ,
   asset,
   alt,
@@ -93,7 +93,7 @@ function Measure({ children }: { children: string }) {
  * click anywhere on the control opens the picker, while the visible row
  * underneath stays fully styleable.
  */
-function LanguageSwitcher({ locale, t }: { locale: LocaleConfig; t: UiDictionary }) {
+export function LanguageSwitcher({ locale, t }: { locale: LocaleConfig; t: UiDictionary }) {
   return (
     <div className="language-switcher" title={t.language.label}>
       <Globe size={16} aria-hidden />

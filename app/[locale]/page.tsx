@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { AnatomyApp } from "../components/AnatomyApp";
+import { LandingPage } from "../components/LandingPage";
 import { getDictionary } from "../i18n/dictionaries";
 import { getLocale, isLocale } from "../i18n/config";
 
@@ -7,5 +7,5 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dictionary = await getDictionary(locale);
-  return <AnatomyApp locale={getLocale(locale)} dictionary={dictionary} />;
+  return <LandingPage locale={getLocale(locale)} dictionary={dictionary} />;
 }
