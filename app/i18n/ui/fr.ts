@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Atelier — Apprendre l'anatomie comme un artiste",
+    title: "Corpus — Apprendre l'anatomie comme un artiste",
     description:
       "Explorez des organes en 3D d'une précision médicale — cœur, cerveau, poumons, foie, reins, œil, intestin, pancréas et peau — dans un atelier d'anatomie interactif.",
-    ogTitle: "Anatomy Atelier — Apprendre l'anatomie comme un artiste",
+    ogTitle: "Corpus — Apprendre l'anatomie comme un artiste",
     ogDescription: "Apprenez l'anatomie comme un artiste grâce à des spécimens 3D immersifs et médicalement détaillés.",
-    imageAlt: "Un cœur anatomique flottant au-dessus d'un socle, à côté du logotype Anatomy Atelier",
+    imageAlt: "Un cœur anatomique flottant au-dessus d'un socle, à côté du logotype Corpus",
   },
-  brand: { tagline: "Apprendre l'anatomie comme un artiste", home: "Accueil d'Anatomy Atelier" },
+  brand: { tagline: "Apprendre l'anatomie comme un artiste", home: "Accueil d'Corpus" },
   nav: { explore: "Explorer", systems: "Systèmes", lessons: "Leçons", library: "Bibliothèque", notes: "Notes" },
   search: { placeholder: "Rechercher un organe, un thème…" },
   profile: { open: "Ouvrir le profil de l'apprenant" },

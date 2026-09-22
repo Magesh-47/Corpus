@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Atelier — Learn anatomy like an artist",
+    title: "Corpus — Learn anatomy like an artist",
     description:
       "Explore medically detailed 3D organs — heart, brain, lungs, liver, kidneys, eye, intestine, pancreas, and skin — through an elegant, interactive anatomy atelier.",
-    ogTitle: "Anatomy Atelier — Learn anatomy like an artist",
+    ogTitle: "Corpus — Learn anatomy like an artist",
     ogDescription: "Learn anatomy like an artist through immersive, medically detailed 3D specimens.",
-    imageAlt: "An anatomical heart specimen floating above a plinth, beside the Anatomy Atelier wordmark",
+    imageAlt: "An anatomical heart specimen floating above a plinth, beside the Corpus wordmark",
   },
-  brand: { tagline: "Learn anatomy like an artist", home: "Anatomy Atelier home" },
+  brand: { tagline: "Learn anatomy like an artist", home: "Corpus home" },
   nav: { explore: "Explore", systems: "Systems", lessons: "Lessons", library: "Library", notes: "Notes" },
   search: { placeholder: "Search organs, topics…" },
   profile: { open: "Open learner profile" },

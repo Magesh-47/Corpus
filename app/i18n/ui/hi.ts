@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Atelier — शरीर रचना, एक कलाकार की तरह",
+    title: "Corpus — शरीर रचना, एक कलाकार की तरह",
     description:
       "हृदय, मस्तिष्क, फेफड़े, यकृत, गुर्दे, नेत्र, आंत, अग्न्याशय और त्वचा — चिकित्सकीय रूप से विस्तृत 3D अंगों को एक संवादात्मक शरीर-रचना कक्ष में देखें।",
-    ogTitle: "Anatomy Atelier — शरीर रचना, एक कलाकार की तरह",
+    ogTitle: "Corpus — शरीर रचना, एक कलाकार की तरह",
     ogDescription: "गहन, चिकित्सकीय रूप से विस्तृत 3D नमूनों के साथ शरीर रचना सीखें।",
-    imageAlt: "एक चौकी पर तैरता शारीरिक हृदय, Anatomy Atelier के नाम-चिह्न के साथ",
+    imageAlt: "एक चौकी पर तैरता शारीरिक हृदय, Corpus के नाम-चिह्न के साथ",
   },
-  brand: { tagline: "शरीर रचना, एक कलाकार की तरह", home: "Anatomy Atelier मुखपृष्ठ" },
+  brand: { tagline: "शरीर रचना, एक कलाकार की तरह", home: "Corpus मुखपृष्ठ" },
   nav: { explore: "अन्वेषण", systems: "तंत्र", lessons: "पाठ", library: "संग्रह", notes: "टिप्पणियाँ" },
   search: { placeholder: "अंग या विषय खोजें…" },
   profile: { open: "शिक्षार्थी प्रोफ़ाइल खोलें" },

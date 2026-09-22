@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Atelier — 像艺术家一样学解剖",
+    title: "Corpus — 像艺术家一样学解剖",
     description:
       "在互动解剖工作室中探索医学级细节的 3D 器官——心脏、大脑、肺、肝、肾、眼、肠、胰腺与皮肤。",
-    ogTitle: "Anatomy Atelier — 像艺术家一样学解剖",
+    ogTitle: "Corpus — 像艺术家一样学解剖",
     ogDescription: "通过沉浸式、医学级细节的 3D 标本学习解剖学。",
-    imageAlt: "一颗悬浮于基座之上的解剖学心脏标本，旁边是 Anatomy Atelier 字标",
+    imageAlt: "一颗悬浮于基座之上的解剖学心脏标本，旁边是 Corpus 字标",
   },
-  brand: { tagline: "像艺术家一样学解剖", home: "Anatomy Atelier 首页" },
+  brand: { tagline: "像艺术家一样学解剖", home: "Corpus 首页" },
   nav: { explore: "探索", systems: "系统", lessons: "课程", library: "资料库", notes: "笔记" },
   search: { placeholder: "搜索器官或主题…" },
   profile: { open: "打开学习者档案" },

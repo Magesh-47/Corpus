@@ -13,7 +13,7 @@ const FALLBACK_LANDING = {
   statLine: "{organs} specimens · {languages} languages",
   organsHeading: "Nine specimens, one atelier",
   organsSub: "Medically detailed 3D organs, each with guided lessons, quizzes, and cross-sections.",
-  featuresHeading: "Why Anatomy Atelier",
+  featuresHeading: "Why Corpus",
   feature1Title: "Medically detailed",
   feature1Body:
     "Every specimen is built from real anatomical structure, down to individually labelled hotspots using Terminologia Anatomica terms.",
@@ -37,7 +37,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
       <header className="landing-header">
         <div className="brand">
           <strong>
-            Anatomy Atelier<sup>✦</sup>
+            Corpus<sup>✦</sup>
           </strong>
           <em>{t.brand.tagline}</em>
         </div>
@@ -128,7 +128,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
 
       <footer className="landing-footer">
         <span>
-          Anatomy Atelier<sup>✦</sup>
+          Corpus<sup>✦</sup>
         </span>
         <span>{t.brand.tagline}</span>
       </footer>

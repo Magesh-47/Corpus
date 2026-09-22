@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Atelier — Anatomie lernen wie ein Künstler",
+    title: "Corpus — Anatomie lernen wie ein Künstler",
     description:
       "Erkunde medizinisch detaillierte 3D-Organe — Herz, Gehirn, Lunge, Leber, Nieren, Auge, Darm, Bauchspeicheldrüse und Haut — in einem interaktiven Anatomie-Atelier.",
-    ogTitle: "Anatomy Atelier — Anatomie lernen wie ein Künstler",
+    ogTitle: "Corpus — Anatomie lernen wie ein Künstler",
     ogDescription: "Lerne Anatomie wie ein Künstler – mit immersiven, medizinisch detaillierten 3D-Präparaten.",
-    imageAlt: "Ein anatomisches Herzpräparat über einem Sockel, daneben der Schriftzug Anatomy Atelier",
+    imageAlt: "Ein anatomisches Herzpräparat über einem Sockel, daneben der Schriftzug Corpus",
   },
-  brand: { tagline: "Anatomie lernen wie ein Künstler", home: "Startseite von Anatomy Atelier" },
+  brand: { tagline: "Anatomie lernen wie ein Künstler", home: "Startseite von Corpus" },
   nav: { explore: "Entdecken", systems: "Systeme", lessons: "Lektionen", library: "Bibliothek", notes: "Notizen" },
   search: { placeholder: "Organe, Themen suchen…" },
   profile: { open: "Lernprofil öffnen" },
