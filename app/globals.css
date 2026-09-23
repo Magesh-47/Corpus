@@ -915,7 +915,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   height: 300px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: color-mix(in srgb, var(--organ-accent), transparent 88%);
+  background: color-mix(in srgb, var(--coral), transparent 88%);
   filter: blur(60px);
   pointer-events: none;
 }

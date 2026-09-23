@@ -14,12 +14,6 @@ type ViewerCallbacks = {
   onAuthorPoint?: (point: { x: number; y: number; z: number }) => void;
 };
 
-type ViewerOptions = {
-  /** Off for embeds inside a scrolling page, where the wheel belongs to the
-   *  document rather than the camera. */
-  enableZoom?: boolean;
-};
-
 const DOT_PIXELS = 34;
 const CAMERA_FOV = 34;
 const DEPTH_PREPASS = "depth-prepass";
@@ -80,7 +74,7 @@ export class AnatomyViewer {
   private authoring = false;
   private authorRaycaster = new THREE.Raycaster();
 
-  constructor(container: HTMLElement, callbacks: ViewerCallbacks, options: ViewerOptions = {}) {
+  constructor(container: HTMLElement, callbacks: ViewerCallbacks) {
     this.container = container;
     this.callbacks = callbacks;
 
@@ -117,7 +111,6 @@ export class AnatomyViewer {
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.055;
     this.controls.enablePan = false;
-    this.controls.enableZoom = options.enableZoom ?? true;
     this.controls.minDistance = 4.8;
     this.controls.maxDistance = 12;
     this.controls.autoRotate = true;

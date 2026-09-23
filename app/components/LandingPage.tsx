@@ -42,8 +42,6 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
   const exploreHref = `/${locale.code}/explore`;
   const rootRef = useRef<HTMLDivElement>(null);
 
-  const heroOrgan = organs.find((organ) => organ.id === "heart") ?? organs[0];
-
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
@@ -114,7 +112,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
         <div className="landing-hero-visual" data-reveal-hero>
           <span className="landing-hero-glow landing-hero-glow-a" aria-hidden />
           <span className="landing-hero-glow landing-hero-glow-b" aria-hidden />
-          <HeroModel organ={heroOrgan} label={t.viewer.canvas} />
+          <HeroModel />
         </div>
       </section>
 
