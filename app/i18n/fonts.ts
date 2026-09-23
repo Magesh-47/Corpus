@@ -1,21 +1,18 @@
 import {
   Cormorant_Garamond,
-  DM_Sans,
-  Newsreader,
+  Inter,
   Noto_Naskh_Arabic,
-  Noto_Sans,
   Noto_Sans_Arabic,
   Noto_Sans_Devanagari,
   Noto_Serif_Devanagari,
 } from "next/font/google";
 import type { ScriptGroup } from "./config";
 
-// The display pair. Newsreader carries the "atelier" voice for Latin. It
-// doesn't ship Cyrillic, so Russian keeps Cormorant Garamond instead.
-const newsreader = Newsreader({ variable: "--font-serif", subsets: ["latin", "latin-ext"], weight: ["400", "500", "600"] });
-const cormorantCyrillic = Cormorant_Garamond({ variable: "--font-serif", subsets: ["cyrillic", "latin"], weight: ["400", "500", "600"] });
-const dmSans = DM_Sans({ variable: "--font-sans", subsets: ["latin", "latin-ext"] });
-const notoSansCyrillic = Noto_Sans({ variable: "--font-sans", subsets: ["cyrillic", "latin"] });
+// The display pair. Cormorant Garamond carries the "atelier" display voice,
+// Inter is the body/UI face. Both ship Cyrillic, so Russian shares the same
+// pairing as every other Latin-script locale.
+const cormorant = Cormorant_Garamond({ variable: "--font-serif", subsets: ["latin", "latin-ext", "cyrillic"], weight: ["400", "500", "600"] });
+const inter = Inter({ variable: "--font-sans", subsets: ["latin", "latin-ext", "cyrillic"] });
 
 const devanagariSerif = Noto_Serif_Devanagari({ variable: "--font-serif", subsets: ["devanagari", "latin"], weight: ["400", "500", "600"] });
 const devanagariSans = Noto_Sans_Devanagari({ variable: "--font-sans", subsets: ["devanagari", "latin"] });
@@ -24,8 +21,8 @@ const arabicSerif = Noto_Naskh_Arabic({ variable: "--font-serif", subsets: ["ara
 const arabicSans = Noto_Sans_Arabic({ variable: "--font-sans", subsets: ["arabic"] });
 
 const webFonts: Partial<Record<ScriptGroup, { serif: { variable: string }; sans: { variable: string } }>> = {
-  latin: { serif: newsreader, sans: dmSans },
-  cyrillic: { serif: cormorantCyrillic, sans: notoSansCyrillic },
+  latin: { serif: cormorant, sans: inter },
+  cyrillic: { serif: cormorant, sans: inter },
   devanagari: { serif: devanagariSerif, sans: devanagariSans },
   arabic: { serif: arabicSerif, sans: arabicSans },
 };
