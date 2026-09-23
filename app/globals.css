@@ -904,40 +904,25 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 }
 .landing-hero-glow-a { background: color-mix(in srgb, var(--coral), transparent 45%); top: 10%; left: 8%; }
 .landing-hero-glow-b { background: color-mix(in srgb, var(--lavender), transparent 55%); bottom: 6%; right: 4%; }
-.landing-hero-plinth {
-  position: relative;
-  z-index: 1;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background: radial-gradient(circle at 40% 32%, #fff, #f6e2d8);
-  box-shadow: 0 30px 60px rgba(120,70,50,.18), inset 0 0 0 6px rgba(255,255,255,.55);
-  animation: hero-float 6s ease-in-out infinite;
-}
-.landing-hero-plinth img { width: 78%; height: 78%; object-fit: contain; mix-blend-mode: multiply; }
-.landing-hero-chip {
+/* The live specimen. The canvas is transparent, so it sits straight on the
+   page gradient with the glows showing through behind it. */
+.hero-model { position: relative; z-index: 1; width: 100%; height: 100%; }
+.hero-model-glow {
   position: absolute;
-  z-index: 2;
-  width: 84px;
-  height: 84px;
+  left: 50%;
+  top: 52%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(circle at 35% 28%, #fff, color-mix(in srgb, var(--chip-accent), white 84%));
-  box-shadow: 0 14px 26px rgba(90,60,40,.16), inset 0 0 0 3px #fff;
-  animation: hero-float 5.5s ease-in-out infinite;
+  background: color-mix(in srgb, var(--organ-accent), transparent 88%);
+  filter: blur(60px);
+  pointer-events: none;
 }
-.landing-hero-chip img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
-.landing-hero-chip-a { top: 4%; left: -4%; animation-delay: .4s; }
-.landing-hero-chip-b { bottom: 8%; right: -6%; animation-delay: 1s; }
-@keyframes hero-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
+.hero-model-mount { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease; }
+.hero-model.is-ready .hero-model-mount { opacity: 1; }
+.hero-model-mount canvas { width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+.hero-model-mount canvas:active { cursor: grabbing; }
 
 .landing-quote { max-width: 680px; margin: 8px auto 0; padding: 40px 24px 8px; text-align: center; }
 .landing-quote-mark { display: block; margin-bottom: 12px; color: var(--coral); font-size: 26px; }
@@ -1043,9 +1028,8 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   .landing-hero { grid-template-columns: 1fr; text-align: center; padding-top: 56px; }
   .landing-hero-copy { align-items: center; }
   .landing-cta-row { justify-content: center; }
-  .landing-hero-visual { height: 320px; order: -1; }
-  .landing-hero-plinth { width: 220px; height: 220px; }
-  .landing-hero-chip { width: 66px; height: 66px; }
+  .landing-hero-visual { height: 340px; order: -1; }
+  .hero-model-glow { width: 220px; height: 220px; }
 }
 
 @media (max-width: 760px) {

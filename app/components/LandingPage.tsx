@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, BookOpen, Globe, Microscope } from "lucide-react";
 import { OrganArt, LanguageSwitcher } from "./AnatomyApp";
+import { HeroModel } from "./HeroModel";
 import { organStructures } from "../lib/anatomy-data";
 import { locales, type LocaleConfig } from "../i18n/config";
 import { buildOrgans } from "../i18n/merge";
@@ -42,8 +43,6 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
   const rootRef = useRef<HTMLDivElement>(null);
 
   const heroOrgan = organs.find((organ) => organ.id === "heart") ?? organs[0];
-  const chipA = organs.find((organ) => organ.id === "brain") ?? organs[1];
-  const chipB = organs.find((organ) => organ.id === "lungs") ?? organs[2];
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -115,21 +114,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
         <div className="landing-hero-visual" data-reveal-hero>
           <span className="landing-hero-glow landing-hero-glow-a" aria-hidden />
           <span className="landing-hero-glow landing-hero-glow-b" aria-hidden />
-          <span className="landing-hero-plinth">
-            <OrganArt organ={heroOrgan} asset="organ" alt="" size={220} />
-          </span>
-          <span
-            className="landing-hero-chip landing-hero-chip-a"
-            style={{ "--chip-accent": chipA.accent } as React.CSSProperties}
-          >
-            <OrganArt organ={chipA} asset="thumb" alt="" size={84} />
-          </span>
-          <span
-            className="landing-hero-chip landing-hero-chip-b"
-            style={{ "--chip-accent": chipB.accent } as React.CSSProperties}
-          >
-            <OrganArt organ={chipB} asset="thumb" alt="" size={84} />
-          </span>
+          <HeroModel organ={heroOrgan} label={t.viewer.canvas} />
         </div>
       </section>
 
