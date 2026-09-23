@@ -24,6 +24,7 @@ body {
     linear-gradient(135deg, #f7f1e8, #fdf9f2 48%, #f2e9dd);
   color: var(--ink);
   font-family: Calibri, var(--font-sans), sans-serif;
+  font-weight: 450;
   font-size: 14px;
 }
 
@@ -62,7 +63,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 }
 
 .brand strong {
-  font: 500 clamp(28px, 2.2vw, 42px)/1 var(--font-serif), serif;
+  font: 600 clamp(28px, 2.2vw, 42px)/1 var(--font-serif), serif;
   letter-spacing: -0.04em;
   white-space: nowrap;
 }
@@ -188,7 +189,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   box-shadow: inset 0 0 0 1px rgba(121,86,67,.07);
 }
 .organ-glyph img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; transform: scale(1.14); }
-.organ-item b { display: block; font: 500 17px/1.1 var(--font-serif), serif; }
+.organ-item b { display: block; font: 600 17px/1.1 var(--font-serif), serif; }
 .organ-item small { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; }
 .organ-item .favorite { color: #ef8d7d; }
 /* `:not(.organ-card-image)` keeps the clickable artwork out of the footer
@@ -203,7 +204,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   justify-content: space-between;
   padding: 0 13px;
   cursor: pointer;
-  font: 500 12px var(--font-serif), serif;
+  font: 600 12px var(--font-serif), serif;
 }
 .organ-library .view-all { margin-top: 9px; }
 .organ-library blockquote { display: none; }
@@ -244,7 +245,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   backdrop-filter: blur(18px);
   box-shadow: 0 12px 30px rgba(75,54,40,.08);
 }
-.tool-button { height: 60px; border: 0; border-radius: 12px; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; font: 500 9px/1 var(--font-serif), serif; }
+.tool-button { height: 60px; border: 0; border-radius: 12px; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; font: 600 9px/1 var(--font-serif), serif; }
 .tool-button.active { color: var(--coral); background: rgba(238,124,106,.08); }
 .tool-button:nth-last-child(1) { border-top: 1px solid var(--line); border-radius: 0 0 12px 12px; }
 
@@ -262,7 +263,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   color: #534a43;
 }
 .tip-note span { display: flex; align-items: center; gap: 4px; color: var(--lavender); font: italic 12px "Comic Sans MS", cursive; }
-.tip-note p { margin: 8px 0 0; font: 500 14px/1.55 var(--font-serif), serif; }
+.tip-note p { margin: 8px 0 0; font: 600 14px/1.55 var(--font-serif), serif; }
 
 /* Anchor point only — the viewer writes the transform each frame so tracking a
    spinning model costs no React renders. The dots themselves live in the canvas. */
@@ -302,7 +303,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 }
 .hotspot-callout[data-side="right"] .callout-body:before { right: 100%; }
 .hotspot-callout[data-side="left"] .callout-body:before { left: 100%; }
-.callout-body b { display: block; padding-inline-start: 13px; font: 500 13px var(--font-serif), serif; }
+.callout-body b { display: block; padding-inline-start: 13px; font: 600 13px var(--font-serif), serif; }
 .callout-body b:before { content: ""; position: absolute; left: 12px; top: 15px; width: 7px; height: 7px; border-radius: 50%; background: var(--hotspot-color); }
 .callout-body small { display: block; margin-top: 3px; padding-inline-start: 13px; color: var(--muted); font-size: 10px; line-height: 1.35; }
 .callout-close { position: absolute; top: 6px; inset-inline-end: 6px; width: 20px; height: 20px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
@@ -325,17 +326,17 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   background: rgba(255,252,247,.88);
   box-shadow: 0 5px 14px rgba(65,45,32,.08);
   cursor: pointer;
-  font: 500 10px var(--font-serif), serif;
+  font: 600 10px var(--font-serif), serif;
 }
 .switch { width: 29px; height: 17px; padding: 2px; border-radius: 99px; background: #c8c2bb; }
 .switch i { display: block; width: 13px; height: 13px; border-radius: 50%; background: white; box-shadow: 0 1px 4px rgba(0,0,0,.17); }
 .switch.on { background: #70a9cb; }
 .switch.on i { margin-inline-start: 12px; }
 .view-caption { position: absolute; inset-inline-start: 98px; bottom: 17px; display: flex; flex-direction: column; gap: 2px; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
-.view-caption strong { color: var(--ink); font: 500 13px var(--font-serif), serif; text-transform: none; letter-spacing: 0; }
+.view-caption strong { color: var(--ink); font: 600 13px var(--font-serif), serif; text-transform: none; letter-spacing: 0; }
 
 .model-loader { position: absolute; inset: 0; z-index: 6; display: grid; place-content: center; justify-items: center; gap: 8px; background: rgba(251,246,238,.45); backdrop-filter: blur(4px); }
-.model-loader strong { font: 500 18px var(--font-serif), serif; }
+.model-loader strong { font: 600 18px var(--font-serif), serif; }
 .model-loader span { color: var(--muted); font-size: 10px; }
 .loader-orbit { width: 48px; height: 48px; border: 1px dashed var(--coral); border-radius: 50%; display: grid; place-items: center; color: var(--coral); animation: orbit 2.4s linear infinite; }
 @keyframes orbit { to { transform: rotate(360deg); } }
@@ -344,22 +345,22 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 .info-kicker { display: flex; align-items: center; gap: 7px; color: #795c55; }
 .info-kicker svg { color: #ee8a7a; }
 .info-title-row { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 15px; }
-.info-title-row h1 { margin: 0; font: 500 44px/.95 var(--font-serif), serif; letter-spacing: -.02em; }
+.info-title-row h1 { margin: 0; font: 600 44px/.95 var(--font-serif), serif; letter-spacing: -.02em; }
 .info-title-row em { display: block; margin-top: 8px; font-size: 13px; }
 .specimen-stamp { width: 86px; height: 86px; display: grid; place-items: center; border-radius: 50%; overflow: hidden; background: radial-gradient(circle, #fff 25%, rgba(237,142,120,.12)); }
 .specimen-stamp img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; animation: card-art-in .45s cubic-bezier(.2,.8,.3,1); }
-.description { margin: 22px 0 16px; font: 500 15px/1.42 var(--font-serif), serif; }
+.description { margin: 22px 0 16px; font: 600 15px/1.42 var(--font-serif), serif; }
 .rule { height: 1px; background: var(--line); }
 .info-panel h2 { margin: 17px 0 10px; font-style: italic; font-weight: 500; }
 .key-facts { margin: 0; display: flex; flex-direction: column; gap: 11px; }
 .key-facts > div { display: grid; grid-template-columns: 105px 1fr; gap: 8px; align-items: baseline; }
-.key-facts dt { display: flex; gap: 8px; font: 500 13px var(--font-serif), serif; }
+.key-facts dt { display: flex; gap: 8px; font: 600 13px var(--font-serif), serif; }
 .key-facts dt span { color: var(--coral); width: 16px; }
-.key-facts dd { margin: 0; color: var(--muted); font: 500 12px/1.35 var(--font-serif), serif; }
+.key-facts dd { margin: 0; color: var(--muted); font: 600 12px/1.35 var(--font-serif), serif; }
 .medical-note, .fun-note { margin-top: 15px; display: flex; gap: 9px; padding: 10px; border-radius: 12px; }
 .medical-note { background: rgba(142,109,197,.065); color: #6d568f; }
 .fun-note { background: rgba(198,154,94,.09); color: #86663c; }
-.medical-note p, .fun-note p { margin: 0; font: 500 11px/1.35 var(--font-serif), serif; }
+.medical-note p, .fun-note p { margin: 0; font: 600 11px/1.35 var(--font-serif), serif; }
 .medical-note b, .fun-note b { display: block; margin-bottom: 2px; color: var(--ink); }
 .medical-note svg, .fun-note svg { flex: none; }
 .lesson-button { width: 100%; min-height: 42px; margin-top: 14px; padding: 0 16px; display: flex; justify-content: space-between; align-items: center; border: 0; border-radius: 10px; background: linear-gradient(110deg, #ed8a72, #e87868); color: white; cursor: pointer; box-shadow: 0 9px 20px rgba(208,90,70,.16); font-size: 11px; }
@@ -387,11 +388,11 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 .learning-cards article { min-height: 212px; min-width: 0; border: 1px solid var(--line); border-radius: 23px; background: rgba(255,251,244,.68); box-shadow: var(--shadow); padding: 13px 14px 12px; display: flex; flex-direction: column; overflow: hidden; }
 .learning-cards article > header { display: flex; align-items: flex-start; justify-content: space-between; min-height: 38px; flex: none; }
 .learning-cards em { display: block; text-transform: uppercase; font-size: 10px; }
-.learning-cards h3 { margin: 3px 0 0; font: 500 13px/1.2 var(--font-serif), serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.learning-cards h3 { margin: 3px 0 0; font: 600 13px/1.2 var(--font-serif), serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .learning-cards article > button:not(.organ-card-image) { margin-top: auto; width: 100%; min-height: 30px; }
 .curiosity-card { justify-content: center; padding-inline-start: 28px !important; background: linear-gradient(145deg, rgba(255,247,234,.7), rgba(247,231,210,.86)) !important; }
 .curiosity-card span { color: #c8a0b8; font-size: 28px; }
-.curiosity-card p { margin: 5px 0 10px; font: 500 16px/1.4 var(--font-serif), serif; }
+.curiosity-card p { margin: 5px 0 10px; font: 600 16px/1.4 var(--font-serif), serif; }
 .curiosity-card em { text-transform: none; font-size: 13px; }
 /* The artwork is square, so a square box spanning the full card width shows it
    whole and as large as the column allows — never cropped, never stretched.
@@ -438,7 +439,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 @keyframes organ-pulse { 0% { opacity: .7; transform: scale(.62); } 80%,100% { opacity: 0; transform: scale(1.35); } }
 .play-badge { position: absolute; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; background: rgba(255,255,255,.7); color: #b4a99f; display: grid; place-items: center; box-shadow: 0 3px 12px rgba(0,0,0,.1); pointer-events: none; }
 /* Same top and bottom gap as an artwork card, so the footer buttons line up. */
-.learning-cards ul { list-style: none; padding: 0; margin: var(--card-gap-top) 0 var(--card-gap-bottom); flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 9px; font: 500 11px var(--font-serif), serif; }
+.learning-cards ul { list-style: none; padding: 0; margin: var(--card-gap-top) 0 var(--card-gap-bottom); flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 9px; font: 600 11px var(--font-serif), serif; }
 .learning-cards li:before { content: "♥"; color: #e9968b; margin-inline-end: 7px; }
 /* Sits directly under the header like every other card, rather than being
    pushed down by an auto top margin. */
@@ -449,12 +450,12 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 .compare-strip .compare-organ { position: relative; padding-inline-start: 45px; min-height: 38px; justify-content: center; }
 .compare-organ > img { position: absolute; inset-inline-start: 0; top: 50%; width: 38px; height: 38px; border-radius: 50%; object-fit: cover; transform: translateY(-50%); mix-blend-mode: multiply; }
 .compare-strip span { color: var(--lavender); font-size: 9px; text-transform: uppercase; letter-spacing: .12em; }
-.compare-strip strong { font: 500 20px var(--font-serif), serif; }
+.compare-strip strong { font: 600 20px var(--font-serif), serif; }
 .compare-strip small { color: var(--muted); font-size: 9px; }
 .compare-strip dl { margin: 0; display: flex; gap: 16px; }
 .compare-strip dl div { max-width: 130px; }
 .compare-strip dt { color: var(--muted); font-size: 8px; text-transform: uppercase; }
-.compare-strip dd { margin: 3px 0 0; font: 500 10px/1.2 var(--font-serif), serif; }
+.compare-strip dd { margin: 3px 0 0; font: 600 10px/1.2 var(--font-serif), serif; }
 .compare-strip > button { border: 0; background: transparent; cursor: pointer; }
 
 .modal-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; background: rgba(52,39,30,.24); backdrop-filter: blur(8px); }
@@ -462,9 +463,9 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 .learning-modal.wide { width: min(540px, 100%); }
 @keyframes modal-in { from { opacity: 0; transform: translateY(14px) scale(.98); } }
 .modal-close { position: absolute; top: 13px; inset-inline-end: 13px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; }
-.modal-icon { width: 56px; height: 56px; display: grid; place-items: center; margin: 0 auto 12px; border-radius: 50%; background: rgba(237,126,105,.1); color: var(--coral); font: 500 26px var(--font-serif), serif; }
-.learning-modal h2 { margin: 6px 0 12px; font: 500 34px var(--font-serif), serif; }
-.learning-modal > p, .quiz-options p { color: #6e655f; font: 500 15px/1.5 var(--font-serif), serif; }
+.modal-icon { width: 56px; height: 56px; display: grid; place-items: center; margin: 0 auto 12px; border-radius: 50%; background: rgba(237,126,105,.1); color: var(--coral); font: 600 26px var(--font-serif), serif; }
+.learning-modal h2 { margin: 6px 0 12px; font: 600 34px var(--font-serif), serif; }
+.learning-modal > p, .quiz-options p { color: #6e655f; font: 600 15px/1.5 var(--font-serif), serif; }
 .modal-demo { width: 135px; height: 135px; margin: 18px auto 8px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; background: radial-gradient(circle, #fff, #f5ded6); }
 .modal-demo img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
 .modal-demo.moving img { animation: heartbeat 1.1s ease-in-out infinite; }
@@ -476,7 +477,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 .modal-figure .art-fallback { font-size: 64px; }
 .modal-facts { margin: 14px 0 4px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: start; }
 .modal-facts dt { color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
-.modal-facts dd { margin: 4px 0 0; font: 500 12px/1.3 var(--font-serif), serif; }
+.modal-facts dd { margin: 4px 0 0; font: 600 12px/1.3 var(--font-serif), serif; }
 .learning-modal.wide .lesson-button { margin-top: 16px; }
 
 .quiz-options { display: flex; flex-direction: column; gap: 8px; text-align: start; }
@@ -578,7 +579,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 }
 .language-current {
   color: var(--ink);
-  font: 500 12px var(--font-serif), serif;
+  font: 600 12px var(--font-serif), serif;
   max-width: 96px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -690,7 +691,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 }
 /* The structure being asked for is the one thing that must be unmissable. */
 .quiz-prompt strong {
-  font: 500 22px/1.15 var(--font-serif), serif;
+  font: 600 22px/1.15 var(--font-serif), serif;
   color: var(--coral);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -750,7 +751,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 /* Scoped to the text column. A bare `.quiz-answer span` also matched the icon
    badge and, being more specific than `.quiz-answer-icon`, replaced its grid
    centring with `display: block` — which pushed the glyph off centre. */
-.quiz-answer > div strong { display: block; font: 500 19px/1.2 var(--font-serif), serif; }
+.quiz-answer > div strong { display: block; font: 600 19px/1.2 var(--font-serif), serif; }
 .quiz-answer > div span { display: block; font-size: 13px; line-height: 1.4; }
 .quiz-answer .quiz-answer-hint { margin-top: 2px; font-weight: 600; }
 
@@ -773,8 +774,8 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   box-shadow: 0 26px 70px rgba(63,42,28,.22);
   animation: modal-in .32s cubic-bezier(.2,.85,.3,1);
 }
-.quiz-summary h2 { margin: 4px 0 6px; font: 500 28px var(--font-serif), serif; }
-.quiz-summary p { margin: 0; color: #6e655f; font: 500 15px var(--font-serif), serif; }
+.quiz-summary h2 { margin: 4px 0 6px; font: 600 28px var(--font-serif), serif; }
+.quiz-summary p { margin: 0; color: #6e655f; font: 600 15px var(--font-serif), serif; }
 .quiz-summary-actions { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
 .quiz-summary-actions > button:last-child {
   min-height: 34px;
@@ -782,7 +783,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   border-radius: 10px;
   background: transparent;
   cursor: pointer;
-  font: 500 11px var(--font-serif), serif;
+  font: 600 11px var(--font-serif), serif;
 }
 
 /* Coordinate probe for placing hotspots. Opt-in via ?authoring=1. */
@@ -836,7 +837,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   border-radius: 999px;
   background: linear-gradient(110deg, #ed8a72, #e87868);
   color: #fff;
-  font: 500 13px var(--font-serif), serif;
+  font: 600 13px var(--font-serif), serif;
   box-shadow: 0 9px 20px rgba(208,90,70,.16);
   text-decoration: none;
   white-space: nowrap;
@@ -869,7 +870,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 }
 .landing-title {
   margin: 0;
-  font: 500 clamp(40px, 5.4vw, 68px)/1.05 var(--font-serif), serif;
+  font: 600 clamp(40px, 5.4vw, 68px)/1.05 var(--font-serif), serif;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
@@ -940,12 +941,12 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 
 .landing-quote { max-width: 680px; margin: 8px auto 0; padding: 40px 24px 8px; text-align: center; }
 .landing-quote-mark { display: block; margin-bottom: 12px; color: var(--coral); font-size: 26px; }
-.landing-quote p { margin: 0; font: italic 500 clamp(22px, 3vw, 30px)/1.42 var(--font-serif), serif; color: var(--ink); }
+.landing-quote p { margin: 0; font: italic 600 clamp(22px, 3vw, 30px)/1.42 var(--font-serif), serif; color: var(--ink); }
 .landing-quote span { display: block; margin-top: 16px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .13em; }
 
 .landing-section { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
 .landing-section-heading { text-align: center; max-width: 560px; margin: 0 auto 34px; display: flex; flex-direction: column; gap: 10px; }
-.landing-section-heading h2 { margin: 0; font: 500 32px var(--font-serif), serif; letter-spacing: -0.02em; }
+.landing-section-heading h2 { margin: 0; font: 600 32px var(--font-serif), serif; letter-spacing: -0.02em; }
 .landing-section-heading p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 
 .landing-organ-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
@@ -970,7 +971,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   box-shadow: 0 20px 36px rgba(120,70,50,.14), inset 0 1px 0 rgba(255,255,255,.75);
 }
 .landing-organ-card .organ-glyph { width: 68px; height: 68px; }
-.landing-organ-card b { font: 500 16px var(--font-serif), serif; }
+.landing-organ-card b { font: 600 16px var(--font-serif), serif; }
 .landing-organ-card span { color: var(--muted); font-size: 12px; font-style: italic; }
 
 .landing-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -995,7 +996,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   background: rgba(238,124,106,.1);
   color: var(--coral);
 }
-.landing-feature-card h3 { margin: 0; font: 500 17px var(--font-serif), serif; }
+.landing-feature-card h3 { margin: 0; font: 600 17px var(--font-serif), serif; }
 .landing-feature-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
 .landing-cta-band {
@@ -1010,7 +1011,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   justify-content: space-between;
   gap: 28px;
 }
-.landing-cta-band-copy h2 { margin: 0 0 8px; font: 500 26px var(--font-serif), serif; letter-spacing: -0.01em; }
+.landing-cta-band-copy h2 { margin: 0 0 8px; font: 600 26px var(--font-serif), serif; letter-spacing: -0.01em; }
 .landing-cta-band-copy p { margin: 0; max-width: 440px; color: var(--ink); opacity: .75; font-size: 14px; line-height: 1.5; }
 .landing-cta-band .landing-cta-primary { flex: none; }
 
@@ -1024,7 +1025,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   align-items: center;
   gap: 20px;
 }
-.landing-footer-cta h2 { margin: 0; font: 500 clamp(28px, 4vw, 40px) var(--font-serif), serif; }
+.landing-footer-cta h2 { margin: 0; font: 600 clamp(28px, 4vw, 40px) var(--font-serif), serif; }
 
 .landing-footer {
   max-width: 1200px;
