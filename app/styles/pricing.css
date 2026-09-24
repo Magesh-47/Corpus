@@ -148,7 +148,7 @@
   letter-spacing: var(--track-caps);
   text-transform: uppercase;
 }
-.pricing-plan__list { display: grid; margin: 0; padding: 0; list-style: none; }
+.pricing-plan__list { display: grid; align-content: start; margin: 0; padding: 0; list-style: none; }
 .pricing-plan__list li {
   position: relative;
   padding-block: 12px;
@@ -177,13 +177,19 @@
 }
 
 .pricing-plan__foot { margin-block-start: auto; padding-block-start: 36px; }
-.pricing-plan__unavailable {
-  display: flex;
-  align-items: center;
-  min-height: 48px;
-  margin: 0;
-  color: var(--ink-3);
-  font: italic 500 1.125rem/1.2 var(--font-serif), serif;
+.pricing-plan__foot:empty { display: none; }
+
+/* Where subgrid is supported, every column shares the same rows, so names,
+   price lines and lists align across plans however the copy wraps. */
+@supports (grid-template-rows: subgrid) {
+  .pricing-plan {
+    display: grid;
+    grid-row: span 8;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .pricing-plan__foot { align-self: end; }
+  .pricing-plan__foot:empty { display: block; padding: 0; }
 }
 
 .pricing-ledger__note {
@@ -247,6 +253,9 @@
   height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
+  /* Let the painted ground dissolve into the paper instead of reading as a tile. */
+  -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent);
+  mask-image: radial-gradient(closest-side, #000 72%, transparent);
   transition: transform 0.9s var(--ease-editorial);
 }
 .pricing-plate__link:hover .pricing-plate__art img { transform: translate3d(0, -4px, 0); }
@@ -313,6 +322,9 @@
   width: 100%;
   height: auto;
   mix-blend-mode: multiply;
+  /* Crop to the painted slide itself: a circle set straight onto the paper. */
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 82.5%, transparent 83.5%);
+  mask-image: radial-gradient(circle closest-side, #000 82.5%, transparent 83.5%);
 }
 .pricing-closing__caption { margin: 0; text-align: center; }
 .pricing-closing__text {

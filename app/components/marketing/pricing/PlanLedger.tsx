@@ -72,20 +72,17 @@ export function PlanLedger({
                 </ul>
 
                 <div className="pricing-plan__foot">
-                  {available ? (
+                  {available && (
                     <ButtonLink href={localeHref(locale, "explore")} arrow>
                       {actions.exploreBody}
                     </ButtonLink>
-                  ) : (
-                    <p className="pricing-plan__unavailable">{plans.unavailable}</p>
                   )}
                 </div>
               </article>
             );
           })}
+          <p className="pricing-ledger__note ui-caption">{plans.plannedNote}</p>
         </div>
-
-        <p className="pricing-ledger__note ui-caption">{plans.plannedNote}</p>
       </Container>
     </section>
   );

@@ -19,9 +19,11 @@ type FieldProps = {
   className?: string;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "id" | "className" | "aria-invalid" | "aria-describedby">;
 
+// While a field is invalid its error replaces the hint (the error restates the
+// rule), so each field is described by one message at a time.
 function describedBy(id: string, hint?: string, error?: string) {
-  const ids = [error && `${id}-error`, hint && `${id}-hint`].filter(Boolean);
-  return ids.length ? ids.join(" ") : undefined;
+  if (error) return `${id}-error`;
+  return hint ? `${id}-hint` : undefined;
 }
 
 function FieldFrame({
@@ -38,7 +40,7 @@ function FieldFrame({
         {label}
       </label>
       {children}
-      {hint && (
+      {hint && !error && (
         <p className="auth-field__hint" id={`${id}-hint`}>
           {hint}
         </p>

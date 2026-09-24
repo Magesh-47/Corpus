@@ -28,7 +28,7 @@ const INDEX_EXCERPT = [
   ["lungs", "bronchus"],
   ["kidneys", "cortex"],
   ["eyeball", "optic"],
-  ["pancreas", "head"],
+  ["pancreas", "duct"],
 ] as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -54,7 +54,6 @@ export default async function AboutPage({ params }: Props) {
   const heartNames = await Promise.all(
     locales.map(async (entry) => ({
       code: entry.code,
-      dir: entry.dir,
       nativeName: entry.nativeName,
       name: (await getDictionary(entry.code)).organs.heart.name,
     })),

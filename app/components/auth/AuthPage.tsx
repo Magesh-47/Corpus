@@ -59,12 +59,9 @@ export async function AuthPage({
 
           <aside className="auth-notice ui-rise" aria-labelledby="auth-notice-title" style={{ "--rise-delay": "90ms" } as React.CSSProperties}>
             <StatusTag tone="soon">{common.status.comingSoon}</StatusTag>
-            <div className="auth-notice__text">
-              <p className="auth-notice__title" id="auth-notice-title">
-                {auth.notice.title}
-              </p>
-              <p className="auth-notice__body">{auth.notice.body}</p>
-            </div>
+            <p className="auth-notice__text">
+              <strong id="auth-notice-title">{auth.notice.title}</strong> {auth.notice.body}
+            </p>
             <Link className="ui-button ui-button--text auth-notice__link" href={localeHref(locale, "explore")}>
               {auth.notice.action}
               <ArrowRight className="ui-arrow" size={16} strokeWidth={1.75} aria-hidden />
@@ -99,7 +96,8 @@ export async function AuthPage({
             {structure.scientificName}
           </span>
           <span className="auth-plate__meta">
-            {plateCopy.view} · {auth.plates.note}
+            <span>{plateCopy.view}</span>
+            <span>{auth.plates.note}</span>
           </span>
         </figcaption>
       </figure>

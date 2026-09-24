@@ -63,7 +63,6 @@ export const pricing = {
       },
     },
     plannedNote: "These are directions, not commitments. Details, timing and prices have not been decided.",
-    unavailable: "Not available yet",
   },
 
   collection: {

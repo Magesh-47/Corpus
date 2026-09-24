@@ -2,7 +2,7 @@ import type { SiteDictionary } from "../../../i18n/site";
 
 type Copy = SiteDictionary["about"]["chapters"]["multilingual"]["names"];
 
-export type LanguageName = { code: string; dir: "ltr" | "rtl"; nativeName: string; name: string };
+export type LanguageName = { code: string; nativeName: string; name: string };
 
 /**
  * The same structure named in every language Explore ships, read from each
@@ -26,10 +26,10 @@ export function LanguageNames({ copy, names, latin }: { copy: Copy; names: Langu
               data-reveal
               style={{ "--reveal-delay": `${(index % 4) * 70}ms` } as React.CSSProperties}
             >
-              <span className="about-names__word" lang={entry.code} dir={entry.dir}>
+              <span className="about-names__word" lang={entry.code}>
                 {entry.name}
               </span>
-              <span className="about-names__language" lang={entry.code} dir={entry.dir}>
+              <span className="about-names__language" lang={entry.code}>
                 {entry.nativeName}
               </span>
             </li>

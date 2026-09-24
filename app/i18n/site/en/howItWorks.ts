@@ -52,7 +52,7 @@ export const howItWorks = {
           rotate: "Auto-rotate, which turns the specimen slowly while you read",
         },
         figureCaption: "The organ library. Choose a specimen to open it in Explore.",
-        openOrgan: "Open the {organ} in Explore",
+        openOrgan: "{organ}: open in Explore",
       },
       understand: {
         title: "Understand",
@@ -64,7 +64,7 @@ export const howItWorks = {
           cards: "Learning cards: microscopic view, organ comparison, function animation, clinical notes, and where it works in the body",
           lessons: "Short guided lessons that open over the model",
         },
-        figureCaption: "From the {organ} entry in Explore",
+        figureCaption: "{organ} — the information panel in Explore",
         tissueCaption: "{tissue}, microscopic view",
         organAlt: "Watercolour study of the lungs, with the trachea dividing into the bronchi",
         tissueAlt: "Circular microscope view of alveoli, the tiny air sacs of the lungs",
@@ -105,7 +105,7 @@ export const howItWorks = {
         quizFind: "Find the",
         quizProgress: "{current} of {total}",
         quizHint: "Select the matching dot on the model",
-        figureCaption: "The labelling quiz, shown on the {organ}",
+        figureCaption: "{organ} — the labelling quiz",
         organAlt: "Watercolour study of the kidneys and ureters, with the renal vessels between them",
       },
       remember: {
@@ -144,7 +144,7 @@ export const howItWorks = {
         body: "Learning cards show where each organ works, so the specimen in your hands never floats free of the body it belongs to.",
       },
     },
-    figureCaption: "Where the {organ} works in the body",
+    figureCaption: "{organ} — where it works in the body",
     figureAlt: "Watercolour figure of the human body with the heart and major vessels drawn in red and blue",
     note:
       "The models and illustrations in Corpus are simplified educational representations. They are made to make structure clear, not to replace dissection or clinical imaging.",

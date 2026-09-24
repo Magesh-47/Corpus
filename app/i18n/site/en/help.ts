@@ -31,7 +31,6 @@ export const help = {
   },
 
   index: {
-    label: "Help topics",
     heading: "Contents",
   },
 
