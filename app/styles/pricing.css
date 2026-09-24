@@ -1,0 +1,393 @@
+/*
+ * Pricing — /pricing. A presentation page, set like a catalogue: an index of
+ * plans, a ledger with hairline columns, a plate of the free collection.
+ * Builds on site.css tokens only; every direction is logical, so Arabic
+ * mirrors without overrides.
+ */
+
+/* ------------------------------------------------------------------ hero */
+
+.pricing-hero {
+  padding-block: clamp(56px, 9vw, 144px) clamp(56px, 7vw, 112px);
+  border-bottom: 1px solid var(--rule);
+}
+.pricing-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(48px, 7vw, 128px);
+  align-items: end;
+}
+.pricing-hero__text {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+.pricing-hero__title { max-width: 10.5em; }
+
+.pricing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-block-start: 8px;
+}
+
+/* The index: a table of contents for the plans, like the front of an atlas. */
+.pricing-index { border-top: 2px solid var(--ink); }
+.pricing-index__label {
+  margin: 0;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-3);
+  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.pricing-index__list { margin: 0; padding: 0; list-style: none; }
+.pricing-index__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+.pricing-index__link {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+.pricing-index__number,
+.pricing-plan__number,
+.pricing-plate__number {
+  color: var(--ink-3);
+  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.pricing-index__names { display: grid; gap: 4px; min-width: 0; }
+.pricing-index__name {
+  font: 500 var(--display-sm)/1.1 var(--font-serif), serif;
+  letter-spacing: var(--track-display);
+  text-decoration: underline 1px transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.3s var(--ease-editorial);
+}
+.pricing-index__link:hover .pricing-index__name { text-decoration-color: currentColor; }
+.pricing-index__tagline { color: var(--ink-2); font-size: var(--text-sm); line-height: 1.45; }
+.pricing-index__caption { margin: 18px 0 0; max-width: 30em; }
+
+/* ---------------------------------------------------------------- ledger */
+
+.pricing-ledger {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+.pricing-plan {
+  display: flex;
+  flex-direction: column;
+  padding-block: 28px 44px;
+  padding-inline: clamp(24px, 3vw, 44px);
+  scroll-margin-block-start: 96px;
+}
+/* The one plan that exists sits on a sheet of paper, ruled in ink. */
+.pricing-plan--available {
+  border-top: 2px solid var(--ink);
+  background: var(--paper-solid);
+}
+/* Plans still to come are drawn with a dashed rule, like a figure in draft. */
+.pricing-plan--planned { border-top: 1px dashed var(--rule-strong); }
+.pricing-plan--planned + .pricing-plan--planned { border-inline-start: 1px solid var(--rule); }
+.pricing-plan:last-of-type { padding-inline-end: 0; }
+
+.pricing-plan__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block-end: clamp(36px, 4vw, 56px);
+}
+.pricing-plan__name {
+  margin: 0;
+  color: var(--ink);
+  font: 500 clamp(2.25rem, 1.8rem + 1.6vw, 3.5rem)/1 var(--font-serif), serif;
+  letter-spacing: var(--track-display);
+}
+.pricing-plan__tagline {
+  margin: 14px 0 0;
+  color: var(--ink-2);
+  font: italic 500 clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem)/1.3 var(--font-serif), serif;
+  text-wrap: balance;
+}
+.pricing-plan__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+  margin: 32px 0 0;
+  padding-block: 16px;
+  border-block: 1px solid var(--rule);
+}
+.pricing-plan__price-value {
+  color: var(--ink);
+  font: 500 1.5rem/1.1 var(--font-serif), serif;
+}
+.pricing-plan__price-note { color: var(--ink-3); font-size: var(--text-sm); }
+.pricing-plan__description { margin: 24px 0 0; font-size: var(--text-base); }
+
+.pricing-plan__list-heading {
+  margin: 32px 0 6px;
+  color: var(--ink-3);
+  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.pricing-plan__list { display: grid; margin: 0; padding: 0; list-style: none; }
+.pricing-plan__list li {
+  position: relative;
+  padding-block: 12px;
+  padding-inline-start: 22px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+.pricing-plan__list li:last-child { border-bottom: 0; }
+/* Filled marker for what exists, an open ring for what is planned. The list
+   heading says which is which, so the marker is never the only signal. */
+.pricing-plan__list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 1px;
+  top: calc(12px + 0.5lh - 3.5px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sage);
+}
+.pricing-plan--planned .pricing-plan__list li::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--ink-3);
+}
+
+.pricing-plan__foot { margin-block-start: auto; padding-block-start: 36px; }
+.pricing-plan__unavailable {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  margin: 0;
+  color: var(--ink-3);
+  font: italic 500 1.125rem/1.2 var(--font-serif), serif;
+}
+
+.pricing-ledger__note {
+  grid-column: 2 / -1;
+  margin: 0;
+  padding-block-start: 18px;
+  padding-inline-start: clamp(24px, 3vw, 44px);
+  border-top: 1px solid var(--rule);
+}
+
+/* ------------------------------------------------------------ collection */
+
+.pricing-collection { border-top: 1px solid var(--rule); }
+.pricing-collection__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(40px, 6vw, 104px);
+  align-items: start;
+}
+.pricing-collection__intro {
+  position: sticky;
+  top: 120px;
+}
+.pricing-collection__intro .ui-section-header { margin-block-end: 28px; }
+.pricing-collection__footnote {
+  margin: 0;
+  max-width: 26em;
+  padding-block-start: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.pricing-plates {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule-strong);
+}
+.pricing-plate {
+  border-bottom: 1px solid var(--rule);
+}
+.pricing-plate:not(:nth-child(3n + 1)) { border-inline-start: 1px solid var(--rule); }
+.pricing-plate__link {
+  display: grid;
+  height: 100%;
+  padding: 16px clamp(14px, 1.6vw, 22px) 22px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.45s var(--ease-editorial);
+}
+.pricing-plate__link:hover { background: color-mix(in srgb, var(--paper-solid) 80%, transparent); }
+.pricing-plate__art {
+  display: block;
+  aspect-ratio: 1;
+  margin-block: 8px 12px;
+}
+.pricing-plate__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 0.9s var(--ease-editorial);
+}
+.pricing-plate__link:hover .pricing-plate__art img { transform: translate3d(0, -4px, 0); }
+.pricing-plate__caption { display: grid; gap: 2px; }
+.pricing-plate__name {
+  color: var(--ink);
+  font: 500 clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem)/1.15 var(--font-serif), serif;
+}
+.pricing-plate__link:hover .pricing-plate__name {
+  text-decoration: underline 1px;
+  text-underline-offset: 0.2em;
+}
+.pricing-plate__latin { color: var(--ink-2); font-size: var(--text-base); }
+.pricing-plate__count { margin-block-start: 8px; color: var(--ink-3); font-size: var(--text-xs); }
+
+/* ------------------------------------------------------------------- FAQ */
+
+.pricing-faq { border-top: 1px solid var(--rule); }
+.pricing-faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(40px, 6vw, 104px);
+  align-items: start;
+}
+.pricing-faq__header { margin-block-end: 0; }
+.pricing-faq__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(32px, 4vw, 64px);
+}
+.pricing-faq__item {
+  padding-block: 22px 36px;
+  border-top: 1px solid var(--rule);
+}
+.pricing-faq__question {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font: 500 clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem)/1.2 var(--font-serif), serif;
+  text-wrap: balance;
+}
+.pricing-faq__answer { margin: 0; }
+
+/* --------------------------------------------------------------- closing */
+
+.pricing-closing {
+  border-top: 1px solid var(--rule);
+  background: var(--paper-solid);
+}
+.pricing-closing__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(48px, 7vw, 120px);
+  align-items: center;
+}
+.pricing-closing__figure {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  margin: 0;
+}
+.pricing-closing__art { display: block; width: min(100%, 440px); }
+.pricing-closing__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+.pricing-closing__caption { margin: 0; text-align: center; }
+.pricing-closing__text {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+.pricing-closing__text .ui-h2 { max-width: 13em; }
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1080px) {
+  /* Free across the full width; the two future plans side by side below. */
+  .pricing-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pricing-plan--available { grid-column: 1 / -1; }
+  .pricing-plan--available .pricing-plan__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+  }
+  .pricing-plan--available .pricing-plan__list li:nth-last-child(2) { border-bottom: 0; }
+  .pricing-plan--planned:nth-of-type(2) { padding-inline-start: 0; }
+  .pricing-ledger__note { grid-column: 1 / -1; padding-inline-start: 0; }
+
+  .pricing-collection__grid,
+  .pricing-faq__grid { grid-template-columns: minmax(0, 1fr); }
+  .pricing-collection__intro { position: static; }
+  .pricing-collection__intro .ui-section-header,
+  .pricing-collection__footnote { max-width: 40rem; }
+}
+
+@media (max-width: 860px) {
+  .pricing-hero__grid { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .pricing-closing__grid { grid-template-columns: minmax(0, 1fr); }
+  .pricing-closing__art { width: min(72%, 380px); }
+}
+
+@media (max-width: 680px) {
+  /* A vertical story: each plan a full chapter, one after the other. */
+  .pricing-ledger { grid-template-columns: minmax(0, 1fr); }
+  .pricing-plan { padding-block: 24px 40px; }
+  .pricing-plan--available {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+  .pricing-plan--available .pricing-plan__list { grid-template-columns: minmax(0, 1fr); }
+  .pricing-plan--available .pricing-plan__list li:nth-last-child(2) { border-bottom: 1px solid var(--rule); }
+  .pricing-plan--planned { padding-inline: 0; margin-block-start: 16px; }
+  .pricing-plan--planned + .pricing-plan--planned { border-inline-start: 0; }
+  .pricing-plan__foot { padding-block-start: 28px; }
+  .pricing-plan__foot .ui-button { width: 100%; }
+
+  /* The plate becomes a catalogue list: thumbnail beside its caption. */
+  .pricing-plates { grid-template-columns: minmax(0, 1fr); }
+  .pricing-plate:not(:nth-child(3n + 1)) { border-inline-start: 0; }
+  .pricing-plate__link {
+    grid-template-columns: 88px minmax(0, 1fr);
+    grid-template-areas: "art number" "art caption";
+    align-content: center;
+    column-gap: 18px;
+    padding: 14px 0;
+  }
+  .pricing-plate__number { grid-area: number; align-self: end; }
+  .pricing-plate__art { grid-area: art; margin: 0; }
+  .pricing-plate__caption { grid-area: caption; align-self: start; }
+  .pricing-plate__count { margin-block-start: 4px; }
+
+  .pricing-faq__list { grid-template-columns: minmax(0, 1fr); }
+  .pricing-faq__item { padding-block: 20px 28px; }
+
+  .pricing-closing__grid { gap: 40px; }
+  .pricing-closing .pricing-actions { display: grid; width: 100%; }
+  .pricing-closing .pricing-actions .ui-button { width: 100%; }
+}
+
+@media (max-width: 400px) {
+  .pricing-index__item { flex-wrap: wrap; }
+  .pricing-index__item .ui-tag { margin-inline-start: 36px; }
+}
