@@ -1,18 +1,12 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getLocale, isLocale, localeCodes, locales } from "../i18n/config";
-import { fontClassName } from "../i18n/fonts";
 import { getDictionary } from "../i18n/dictionaries";
-import "../globals.css";
 
 export function generateStaticParams() {
   return localeCodes.map((locale) => ({ locale }));
 }
 
-/**
- * Absolute URLs for og:image and friends, resolved per host so a preview
- * deployment never advertises another origin's assets.
- */
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -37,7 +31,6 @@ export async function generateMetadata({
     applicationName: "Corpus",
     alternates: {
       canonical: `/${locale}`,
-      // Lets search engines serve the right language and offer the rest.
       languages: {
         ...Object.fromEntries(locales.map((entry) => [entry.code, `/${entry.code}`])),
         "x-default": "/en",
@@ -70,8 +63,6 @@ export async function generateMetadata({
   };
 }
 
-export const viewport: Viewport = { themeColor: "#f7f0e7" };
-
 export default async function LocaleLayout({
   children,
   params,
@@ -80,9 +71,5 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
   const config = getLocale(locale);
 
-  return (
-    <html lang={config.code} dir={config.dir}>
-      <body className={fontClassName(config.script)}>{children}</body>
-    </html>
-  );
+  return <div lang={config.code} dir={config.dir}>{children}</div>;
 }

@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, BookOpen, Globe, Microscope } from "lucide-react";
 import { OrganArt, LanguageSwitcher } from "./AnatomyApp";
-import { HeroModel } from "./HeroModel";
+import { HeroFigure } from "./HeroFigure";
 import { organStructures } from "../lib/anatomy-data";
 import { locales, type LocaleConfig } from "../i18n/config";
 import { buildOrgans } from "../i18n/merge";
@@ -35,11 +35,19 @@ const FALLBACK_LANDING = {
   footerHeading: "Ready to begin?",
 };
 
-export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dictionary: Dictionary }) {
+export function LandingPage({
+  locale,
+  dictionary,
+  exploreHref,
+}: {
+  locale: LocaleConfig;
+  dictionary: Dictionary;
+  exploreHref?: string;
+}) {
   const t = dictionary.ui;
   const l = t.landing ?? FALLBACK_LANDING;
   const organs = buildOrgans(dictionary.organs);
-  const exploreHref = `/${locale.code}/explore`;
+  const resolvedExploreHref = exploreHref ?? `/${locale.code}/explore`;
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -79,7 +87,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
         </div>
         <div className="landing-header-actions">
           <LanguageSwitcher locale={locale} t={t} />
-          <Link className="landing-explore-link" href={exploreHref}>
+          <Link className="landing-explore-link" href={resolvedExploreHref}>
             {t.nav.explore}
             <ArrowRight size={15} aria-hidden />
           </Link>
@@ -98,7 +106,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
             {t.meta.description}
           </p>
           <div className="landing-cta-row" data-reveal-hero>
-            <Link className="landing-cta-primary" href={exploreHref}>
+            <Link className="landing-cta-primary" href={resolvedExploreHref}>
               {l.ctaPrimary}
               <ArrowRight size={16} aria-hidden />
             </Link>
@@ -112,7 +120,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
         <div className="landing-hero-visual" data-reveal-hero>
           <span className="landing-hero-glow landing-hero-glow-a" aria-hidden />
           <span className="landing-hero-glow landing-hero-glow-b" aria-hidden />
-          <HeroModel />
+          <HeroFigure />
         </div>
       </section>
 
@@ -135,7 +143,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
           {organs.map((organ) => (
             <Link
               key={organ.id}
-              href={exploreHref}
+              href={resolvedExploreHref}
               className="landing-organ-card"
               data-reveal
               style={{ "--item-accent": organ.accent } as React.CSSProperties}
@@ -184,7 +192,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
           <h2>{l.bandHeading}</h2>
           <p>{l.bandBody}</p>
         </div>
-        <Link className="landing-cta-primary" href={exploreHref} data-reveal>
+        <Link className="landing-cta-primary" href={resolvedExploreHref} data-reveal>
           {l.bandCta}
           <ArrowRight size={16} aria-hidden />
         </Link>
@@ -192,7 +200,7 @@ export function LandingPage({ locale, dictionary }: { locale: LocaleConfig; dict
 
       <section className="landing-footer-cta" data-reveal-group>
         <h2 data-reveal>{l.footerHeading}</h2>
-        <Link className="landing-cta-primary" href={exploreHref} data-reveal>
+        <Link className="landing-cta-primary" href={resolvedExploreHref} data-reveal>
           {l.ctaPrimary}
           <ArrowRight size={16} aria-hidden />
         </Link>
