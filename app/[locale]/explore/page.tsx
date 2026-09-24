@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { AnatomyApp } from "../../components/AnatomyApp";
+import { AnatomyApp } from "../../components/anatomy/AnatomyApp";
 import { getDictionary } from "../../i18n/dictionaries";
 import { getLocale, isLocale } from "../../i18n/config";
 

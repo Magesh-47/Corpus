@@ -1,13 +1,19 @@
 import type { NextConfig } from "next";
 import { defaultLocale } from "./app/i18n/config";
+import { routes } from "./app/lib/routes";
 
 const nextConfig: NextConfig = {
   // Every route lives under /[locale], so `app/[locale]/layout.tsx` is the root
-  // layout and there is no page at `/`. Send bare visits to the default
-  // language. (Accept-Language negotiation would need middleware, which the
-  // Cloudflare/vinext target does not run — the in-app switcher covers it.)
+  // layout and nothing is served unprefixed. Bare paths — `/`, `/about`,
+  // `/explore`, `/auth/signin` — go to the default language. (Accept-Language
+  // negotiation would need middleware, which the Cloudflare/vinext target does
+  // not run — the language links cover it.)
   async redirects() {
-    return [{ source: "/", destination: `/${defaultLocale}`, permanent: false }];
+    return Object.values(routes).map((path) => ({
+      source: path || "/",
+      destination: `/${defaultLocale}${path}`,
+      permanent: false,
+    }));
   },
 };
 

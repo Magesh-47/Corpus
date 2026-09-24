@@ -62,19 +62,6 @@ export type UiDictionary = {
     quizPrompt: string; quizA: string; quizB: string; quizC: string;
     lessonBody: string; systemIntro: string; system: string; primaryRole: string; bloodSupply: string;
   };
-  /** Marketing copy for the `/[locale]` landing page. Optional so existing
-   *  locale files stay valid while translations are added incrementally —
-   *  `LandingPage` falls back to English when a locale has none yet. */
-  landing?: {
-    kicker: string; ctaPrimary: string; statLine: string;
-    organsHeading: string; organsSub: string;
-    featuresHeading: string;
-    feature1Title: string; feature1Body: string;
-    feature2Title: string; feature2Body: string;
-    feature3Title: string; feature3Body: string;
-    bandHeading: string; bandBody: string; bandCta: string;
-    footerHeading: string;
-  };
 };
 
 export type Dictionary = { ui: UiDictionary; organs: OrganContentDictionary };
