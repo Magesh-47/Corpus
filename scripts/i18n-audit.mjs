@@ -10,6 +10,10 @@
  *      translation renders a literal, broken sentence;
  *   3. strings left identical to English after a copy-paste.
  *
+ * The same placeholder and identical-string checks run over the site copy
+ * (app/i18n/site/<locale>), which also reports a locale that has no site
+ * translation yet and so falls back to English.
+ *
  * (1) and (2) are errors. (3) is reported for review, because plenty of
  * anatomical terms are legitimately identical across languages.
  *
@@ -36,9 +40,18 @@ function* strings(node, path = []) {
   }
 }
 
+const loadSite = async (locale) => {
+  try {
+    return (await import(`../app/i18n/site/${locale}/index.ts`)).site;
+  } catch {
+    return null;
+  }
+};
+
 const load = async (locale) => ({
   ui: (await import(`../app/i18n/ui/${locale}.ts`)).ui,
   organs: (await import(`../app/i18n/organs/${locale}.ts`)).organs,
+  site: await loadSite(locale),
 });
 
 const base = await load("en");
@@ -82,6 +95,27 @@ for (const { code } of locales) {
     if (code !== "en" && translated === english) identical += 1;
   }
 
+  // site copy: missing locale, missing keys, placeholder drift, identical strings
+  if (!dict.site || (code !== "en" && dict.site === base.site)) {
+    issues.push(yellow("no site translation — public pages fall back to English"));
+    warnings += 1;
+  } else {
+    for (const [path, english] of strings(base.site)) {
+      const translated = path.split(".").reduce((node, key) => node?.[key], dict.site);
+      total += 1;
+      if (typeof translated !== "string") {
+        issues.push(red(`missing site.${path}`));
+        errors += 1;
+        continue;
+      }
+      if (placeholders(english) !== placeholders(translated)) {
+        issues.push(red(`placeholder drift site.${path}  ${dim(`en:[${placeholders(english) || "—"}] ${code}:[${placeholders(translated) || "—"}]`)}`));
+        errors += 1;
+      }
+      if (code !== "en" && translated === english && /[a-z]{4,}/i.test(english)) identical += 1;
+    }
+  }
+
   // untranslated prose in the organ dictionary (hotspot labels excluded — those
   // are frequently identical by design, e.g. "Aorta")
   for (const organ of organStructures) {
@@ -100,7 +134,8 @@ for (const { code } of locales) {
 console.log(`\n  locale   strings   same-as-en   status`);
 console.log(`  ${"-".repeat(46)}`);
 for (const row of rows) {
-  const status = row.issues.length ? red(`${row.issues.length} error(s)`) : green("ok");
+  const failing = row.issues.filter((issue) => issue.startsWith("[31m")).length;
+  const status = failing ? red(`${failing} error(s)`) : row.issues.length ? yellow("fallback") : green("ok");
   const same = row.code === "en" ? dim("—") : row.identical ? yellow(String(row.identical)) : green("0");
   console.log(`  ${row.code.padEnd(8)} ${String(row.total).padEnd(9)} ${same.padEnd(21)} ${status}`);
   for (const issue of row.issues) console.log(`      ${issue}`);
