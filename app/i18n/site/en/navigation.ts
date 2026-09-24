@@ -17,6 +17,7 @@ export const navigation = {
     open: "Menu",
     close: "Close",
     label: "Site menu",
+    languages: "Language",
   },
   footer: {
     siteLabel: "Site",

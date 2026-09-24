@@ -14,6 +14,10 @@ import type { ScriptGroup } from "./config";
 const cormorant = Cormorant_Garamond({ variable: "--font-serif", subsets: ["latin", "latin-ext", "cyrillic"], weight: ["400", "500", "600"] });
 const inter = Inter({ variable: "--font-sans", subsets: ["latin", "latin-ext", "cyrillic"] });
 
+// The wordmark is Latin in every locale. Scripts whose own serif is not
+// Cormorant get this one small face (Latin, one weight) just for the lockup.
+const wordmark = Cormorant_Garamond({ variable: "--font-serif-latin", subsets: ["latin"], weight: ["600"] });
+
 const devanagariSerif = Noto_Serif_Devanagari({ variable: "--font-serif", subsets: ["devanagari", "latin"], weight: ["400", "500", "600"] });
 const devanagariSans = Noto_Sans_Devanagari({ variable: "--font-sans", subsets: ["devanagari", "latin"] });
 
@@ -47,7 +51,8 @@ const systemFontClass: Partial<Record<ScriptGroup, string>> = {
 /** Font classes for a script — only this script's faces are requested. */
 export function fontClassName(script: ScriptGroup) {
   const system = systemFontClass[script];
-  if (system) return system;
+  if (system) return `${system} ${wordmark.variable}`;
   const pair = webFonts[script] ?? webFonts.latin!;
-  return `${pair.serif.variable} ${pair.sans.variable}`;
+  const latinDisplay = pair.serif === cormorant ? "" : ` ${wordmark.variable}`;
+  return `${pair.serif.variable} ${pair.sans.variable}${latinDisplay}`;
 }

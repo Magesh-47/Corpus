@@ -19,7 +19,7 @@ export default async function MarketingLayout({
       <a href="#main" className="ui-skip">
         {site.navigation.skipToContent}
       </a>
-      <SiteHeader locale={code} nav={site.navigation} brand={site.common.brand} />
+      <SiteHeader locale={code} nav={site.navigation} />
       <main id="main" className="site-main" tabIndex={-1}>
         {children}
       </main>

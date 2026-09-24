@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { SiteDictionary } from "../../i18n/site";
 import { localeHref } from "../../lib/routes";
+import { Wordmark } from "../ui/Wordmark";
 import { LanguageLinks } from "./LanguageLinks";
 
 const SITE = ["explore", "howItWorks", "about", "pricing", "help"] as const;
@@ -16,10 +17,11 @@ export function SiteFooter({ locale, site }: { locale: string; site: Pick<SiteDi
       <div className="ui-container site-footer__inner">
         <div className="site-footer__brand">
           <p className="site-footer__wordmark">
-            {common.brand.name}
-            <sup aria-hidden>✦</sup>
+            <Wordmark size="lg" />
+            <span className="ui-sr">
+              {common.brand.name} — {common.brand.descriptor}
+            </span>
           </p>
-          <p className="site-footer__descriptor">{common.brand.descriptor}</p>
           <p className="site-footer__tagline">{common.brand.tagline}</p>
         </div>
 
