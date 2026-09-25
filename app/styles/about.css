@@ -648,15 +648,31 @@
   .about-verbs__item { row-gap: 4px; }
   .about-names__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  /* The table turns portrait: sheet above, specimen below. */
-  .about-studio { aspect-ratio: 4 / 5; background-size: 24px 24px; }
-  .about-studio__sheet { top: 8%; right: 7%; width: 42%; }
-  .about-studio__specimen { top: 30%; left: 12%; width: 72%; }
-  .about-studio__tag { left: 7%; bottom: 5%; }
-  .about-studio__slider { bottom: 6%; width: 32%; }
+  /* The plate narrows so its leader-line labels stay on the page. */
+  .about-hero__stage { width: 76%; }
+  .about-hero .ui-note__line,
+  .about-studio .ui-note__line { width: 16px; }
+  .about-hero .ui-note__label,
+  .about-studio .ui-note__label { padding-inline: 6px; }
+
+  /* The table turns portrait: the pinned sheet and the tissue field above,
+     the specimen below. */
+  .about-studio { aspect-ratio: 8 / 11; background-size: 24px 24px; }
+  .about-studio__sheet { top: 8%; right: auto; left: 7%; width: 40%; rotate: -3deg; }
+  .about-studio__slide { top: 14%; right: 9%; width: 24%; padding: 3px; }
+  .about-studio__specimen { top: 40%; left: 18%; width: 64%; }
+  .about-studio__tag { left: 7%; bottom: 4%; }
+  .about-studio__slider { bottom: 5%; width: 30%; }
 }
 
 @media (max-width: 420px) {
-  .about-studio .ui-note__line { width: 14px; }
+  .about-hero .about-note__latin,
   .about-studio .about-note__latin { display: none; }
+  .about-hero .about-note__name,
+  .about-studio .about-note__name { font-size: 11px; }
+}
+
+@media (max-width: 380px) {
+  /* No room beside the specimen for a second label. */
+  .about-studio .ui-note--left { display: none; }
 }

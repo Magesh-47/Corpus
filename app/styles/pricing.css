@@ -67,6 +67,12 @@
   -webkit-mask-image: radial-gradient(closest-side, #000 78%, transparent);
   mask-image: radial-gradient(closest-side, #000 78%, transparent);
 }
+/* The leader lines are physical like the image, but flex follows the writing
+   direction, so in Arabic the dot, line and label would swap sides. Lay each
+   note out left to right and let only its label read in the page's direction. */
+[dir="rtl"] .pricing-hero .ui-note { direction: ltr; }
+[dir="rtl"] .pricing-hero .ui-note__label { direction: rtl; }
+
 .pricing-hero__caption {
   margin: 0;
   padding-block-start: 12px;

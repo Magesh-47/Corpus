@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, type CSSProperties } from "react";
 
 /** Two-digit plate and chapter numbers ("01"), kept in Western digits to match Explore. */
 export function plateNumber(value: number) {
@@ -70,10 +70,21 @@ export const stills = {
 } satisfies Record<string, Still & { points?: Record<string, readonly [number, number] | number[]> }>;
 
 /** A lazily loaded still with its intrinsic size, so it never shifts the layout. */
-export function StillImage({ still, alt, className }: { still: Still; alt: string; className?: string }) {
+export function StillImage({
+  still,
+  alt,
+  className,
+  style,
+}: {
+  still: Still;
+  alt: string;
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
     <img
       className={className}
+      style={style}
       src={still.src}
       alt={alt}
       width={still.width}

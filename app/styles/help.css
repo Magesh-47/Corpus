@@ -483,7 +483,7 @@
   font: 500 1.125rem/1.25 var(--font-serif), serif;
 }
 .help-tools__icon {
-  grid-row: span 2;
+  grid-row: 1;
   display: inline-grid;
   place-items: center;
   width: 30px;
@@ -492,10 +492,10 @@
   border-radius: var(--radius-sm);
   color: var(--ink-2);
 }
-.help-tools__name { align-self: center; }
+.help-tools__name { line-height: 30px; }
 .help-tools__item dd {
   grid-column: 2;
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: var(--ink-2);
   font-size: var(--text-sm);
   line-height: 1.55;
@@ -568,8 +568,13 @@
 [dir="rtl"] .help-catalogue__name { background-position: 100% 100%; }
 .help-catalogue__link:hover .help-catalogue__name { color: var(--accent-ink); background-size: 100% 1px; }
 .help-catalogue__latin { color: var(--ink-3); font-size: 0.9375rem; }
-@media (min-width: 560px) {
+@media (min-width: 360px) {
   .help-catalogue { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 559px) {
+  .help-catalogue__link { grid-template-columns: 44px minmax(0, 1fr); gap: 10px; }
+  .help-catalogue__name { font-size: 1.0625rem; }
+  .help-catalogue__latin { font-size: 0.875rem; }
 }
 @media (min-width: 1180px) {
   .help-catalogue { grid-template-columns: repeat(3, minmax(0, 1fr)); }

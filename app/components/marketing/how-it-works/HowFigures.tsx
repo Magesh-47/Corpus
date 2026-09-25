@@ -50,7 +50,7 @@ const CONTROL_ICONS: Record<keyof Steps["explore"]["controls"], LucideIcon> = {
  * Where the right atrium's dot sits on the viewer still, as a share of the
  * image. Physical, not logical: the render never mirrors, so neither does this.
  */
-const VIEWER_CALLOUT = { id: "right-atrium", x: 27.9, y: 40 };
+const VIEWER_CALLOUT = { id: "right-atrium", x: 36.8, y: 39.5 };
 
 /**
  * A real still from the Explore viewer (rendered from the heart model, chrome
@@ -62,7 +62,7 @@ export function ExploreFigure({ organ, copy }: { organ: Organ; copy: Steps["expl
     {
       ...VIEWER_CALLOUT,
       side: "left",
-      length: 36,
+      length: 24,
       label: (
         <span className="how-viewer__callout">
           <b>{structure.label}</b>
@@ -83,7 +83,7 @@ export function ExploreFigure({ organ, copy }: { organ: Organ; copy: Steps["expl
         </div>
         <div className="how-viewer__body">
           <div className="how-viewer__stage">
-            <img src="/marketing/how-viewer-heart.webp" alt={copy.alt} width={1100} height={1100} loading="lazy" decoding="async" />
+            <img src="/marketing/how-viewer-heart.webp" alt={copy.alt} width={1120} height={1032} loading="lazy" decoding="async" />
             <Annotations notes={callout} className="how-viewer__notes" />
           </div>
           <ul className="how-viewer__controls" aria-label={copy.controlsLabel}>
@@ -179,7 +179,7 @@ export function UnderstandFigure({ organ, copy }: { organ: Organ; copy: Steps["u
 const QUIZ_MARKERS: Omit<Note, "label">[] = [
   { id: "frontal", x: 22, y: 34, side: "left", length: 28 },
   { id: "parietal", x: 58, y: 21, side: "right", length: 40 },
-  { id: "temporal", x: 43, y: 52, side: "left", length: 56 },
+  { id: "temporal", x: 40, y: 56, side: "left", length: 44 },
   { id: "cerebellum", x: 72, y: 63, side: "right", length: 32 },
 ];
 const QUIZ_TARGET = "temporal";

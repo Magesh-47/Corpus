@@ -13,7 +13,7 @@ type Copy = SiteDictionary["about"];
  * pole to the left), as a percentage of the square image.
  */
 const BRAIN_NOTES = [
-  { id: "frontal", x: 17, y: 33, side: "left", length: 48 },
+  { id: "frontal", x: 21, y: 31, side: "left", length: 52 },
   { id: "cerebellum", x: 74, y: 64, side: "right", length: 44 },
 ] as const;
 

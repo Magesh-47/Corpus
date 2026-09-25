@@ -79,6 +79,7 @@ export const marketing = {
         alt: "Watercolour illustration of the lungs and trachea, with four structures marked by numbers.",
         caption: "A static labelling sheet. In Explore, you find each named structure on the 3D model.",
         blank: "Name this structure",
+        answers: "Answers",
       },
     },
   },
