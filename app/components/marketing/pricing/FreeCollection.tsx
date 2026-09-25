@@ -15,6 +15,7 @@ import { planNumber } from "./plans";
  */
 export function FreeCollection({ locale, site, organs }: { locale: string; site: SiteDictionary; organs: Organ[] }) {
   const { collection } = site.pricing;
+  const number = new Intl.NumberFormat(locale);
 
   return (
     <section className="pricing-collection ui-section" aria-labelledby="pricing-collection-title">
@@ -54,7 +55,7 @@ export function FreeCollection({ locale, site, organs }: { locale: string; site:
                     {organ.scientificName}
                   </span>
                   <span className="pricing-plate__count">
-                    {format(collection.structures, { count: String(organ.hotspots.length) })}
+                    {format(collection.structures, { count: number.format(organ.hotspots.length) })}
                   </span>
                 </span>
               </Link>

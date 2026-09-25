@@ -1,37 +1,37 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { siteConfig } from "../../../lib/site-config";
-import { HelpSection, type HelpContext } from "./shared";
+import { CONTACT_ID, type HelpContext } from "./shared";
 
+/**
+ * The one real support channel: the project's public GitHub issue tracker.
+ * No form and no address — nothing here pretends to send a message.
+ */
 export function HelpContact({ ctx }: { ctx: HelpContext }) {
   const copy = ctx.help.contact;
   return (
-    <HelpSection ctx={ctx} sectionKey="contact" className="help-section--contact">
-      <div className="help-contact">
-        <div className="help-contact__lead" data-reveal>
-          <p className="ui-lede">{copy.intro}</p>
+    <section id={CONTACT_ID} aria-labelledby={`${CONTACT_ID}-title`} className="help-contact ui-tone-ink">
+      <div className="ui-container help-contact__inner">
+        <h2 id={`${CONTACT_ID}-title`} className="ui-h2 help-contact__title" data-reveal>
+          {copy.title}
+        </h2>
+        <div className="help-contact__body" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
+          <p className="ui-statement help-contact__lede">{copy.body}</p>
           <a
             href={siteConfig.issuesUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="ui-button ui-button--primary help-contact__cta"
+            aria-describedby="help-contact-description"
           >
             {copy.cta}
-            <span className="help-visually-hidden"> {copy.newTab}</span>
-            <ArrowUpRight className="help-contact__icon" size={16} strokeWidth={1.75} aria-hidden />
+            <ArrowRight className="ui-arrow" size={16} strokeWidth={1.75} aria-hidden />
           </a>
-          <p className="ui-caption">{copy.public}</p>
-        </div>
-
-        <div className="help-contact__aside" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-          <h3 className="help-pair__title">{copy.includeTitle}</h3>
-          <ul className="help-checklist">
-            {Object.entries(copy.include).map(([key, item]) => (
-              <li key={key}>{item}</li>
-            ))}
-          </ul>
-          <p className="help-contact__medical ui-body">{copy.medical}</p>
+          <p id="help-contact-description" className="help-contact__description">
+            {copy.ctaDescription}
+          </p>
+          <p className="help-contact__note">{copy.note}</p>
         </div>
       </div>
-    </HelpSection>
+    </section>
   );
 }

@@ -2,12 +2,12 @@ import Link from "next/link";
 import { OrganArt } from "../../anatomy/OrganArt";
 import { format } from "../../../i18n/types";
 import { localeHref } from "../../../lib/routes";
-import { HelpSection, type HelpContext } from "./shared";
+import { GuideSection, type HelpContext } from "./shared";
 
 export function ExploringGuide({ ctx }: { ctx: HelpContext }) {
   const copy = ctx.help.exploring;
   return (
-    <HelpSection ctx={ctx} sectionKey="exploring">
+    <GuideSection ctx={ctx} guide="exploring" title={copy.title}>
       <p className="ui-lede help-intro" data-reveal>
         {format(copy.intro, { count: ctx.num(ctx.organs.length) })}
       </p>
@@ -22,30 +22,25 @@ export function ExploringGuide({ ctx }: { ctx: HelpContext }) {
       </dl>
 
       <div className="help-sub" data-reveal>
-        <h3 className="ui-h3 help-sub__title">{copy.catalogueTitle}</h3>
-        <p className="ui-body help-sub__intro">{copy.catalogueIntro}</p>
+        <h3 className="help-sub__title">{copy.catalogueTitle}</h3>
         {/* Derived from anatomy-data and the organ dictionary, so the list is
             always exactly what Explore offers, in the reader's language. */}
         <ul className="help-catalogue">
-          {ctx.organs.map((organ, index) => (
-            <li key={organ.id} className="help-catalogue__item">
+          {ctx.organs.map((organ) => (
+            <li key={organ.id}>
               <Link
                 href={localeHref(ctx.locale.code, "explore", { organ: organ.id })}
                 className="help-catalogue__link"
                 aria-label={format(copy.catalogueLink, { organ: organ.name })}
               >
-                <span className="help-catalogue__art" style={{ "--organ-accent": organ.accent } as React.CSSProperties}>
-                  <OrganArt organ={organ} asset="thumb" alt="" size={180} loading="lazy" />
+                <span className="help-catalogue__art" style={{ "--art-accent": organ.accent } as React.CSSProperties}>
+                  <OrganArt organ={organ} asset="thumb" alt="" size={120} loading="lazy" />
                 </span>
                 <span className="help-catalogue__text">
-                  <span className="help-catalogue__number" aria-hidden>
-                    {ctx.num(index + 1, 2)}
-                  </span>
                   <span className="help-catalogue__name">{organ.name}</span>
                   <span className="ui-latin help-catalogue__latin" lang="la">
                     {organ.scientificName}
                   </span>
-                  <span className="help-catalogue__system">{organ.system}</span>
                 </span>
               </Link>
             </li>
@@ -53,12 +48,9 @@ export function ExploringGuide({ ctx }: { ctx: HelpContext }) {
         </ul>
       </div>
 
-      <aside className="help-note" aria-labelledby="help-clinical-title" data-reveal>
-        <h3 id="help-clinical-title" className="help-note__title">
-          {copy.clinical.title}
-        </h3>
-        <p className="ui-body">{copy.clinical.body}</p>
-      </aside>
-    </HelpSection>
+      <p className="help-footnote" data-reveal>
+        {copy.clinical}
+      </p>
+    </GuideSection>
   );
 }

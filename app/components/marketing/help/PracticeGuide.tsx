@@ -1,7 +1,7 @@
 import { OrganArt } from "../../anatomy/OrganArt";
 import { StatusTag } from "../../ui/StatusTag";
 import { format } from "../../../i18n/types";
-import { HelpSection, type HelpContext } from "./shared";
+import { GuideSection, type HelpContext } from "./shared";
 
 /** Which structure the static example asks for, and where it sits in the round. */
 const EXAMPLE = { organ: "heart", hotspot: "left-ventricle", step: 2 } as const;
@@ -10,26 +10,29 @@ export function PracticeGuide({ ctx }: { ctx: HelpContext }) {
   const copy = ctx.help.practice;
   const { quiz } = ctx.ui;
   const organ = ctx.organs.find((item) => item.id === EXAMPLE.organ)!;
-  const target = organ.hotspots.find((hotspot) => hotspot.id === EXAMPLE.hotspot)!;
+  const target = organ.hotspots.find((hotspot) => hotspot.id === EXAMPLE.hotspot) ?? organ.hotspots[0];
   const total = organ.hotspots.length;
 
   return (
-    <HelpSection ctx={ctx} sectionKey="practice">
+    <GuideSection ctx={ctx} guide="practice" title={copy.title}>
       <p className="ui-lede help-intro" data-reveal>
         {copy.intro}
       </p>
 
       <div className="help-practice">
-        <ol className="help-sequence" data-reveal>
-          {Object.entries(copy.steps).map(([key, step], index) => (
-            <li key={key} className="help-sequence__item">
-              <span className="help-sequence__number" aria-hidden>
-                {ctx.num(index + 1)}
-              </span>
-              <p className="ui-body">{format(step, { quiz: ctx.ui.info.quiz })}</p>
-            </li>
-          ))}
-        </ol>
+        <div data-reveal>
+          <ol className="help-sequence">
+            {Object.entries(copy.steps).map(([key, step], index) => (
+              <li key={key} className="help-sequence__item">
+                <span className="help-sequence__number" aria-hidden>
+                  {ctx.num(index + 1)}
+                </span>
+                <p className="ui-body">{format(step, { quiz: ctx.ui.info.quiz })}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="help-footnote">{copy.note}</p>
+        </div>
 
         {/* A static picture of the real quiz prompt, built from the same labels
             the quiz uses — marked as an example, because nothing here is live. */}
@@ -59,10 +62,6 @@ export function PracticeGuide({ ctx }: { ctx: HelpContext }) {
           <figcaption className="ui-caption help-example__caption">{copy.exampleCaption}</figcaption>
         </figure>
       </div>
-
-      <p className="help-footnote" data-reveal>
-        {copy.note}
-      </p>
-    </HelpSection>
+    </GuideSection>
   );
 }

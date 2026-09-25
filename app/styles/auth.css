@@ -1,32 +1,49 @@
 /*
  * Corpus auth — sign in, sign up, password reset.
  * Builds on site.css tokens and primitives; every class here is auth-*.
- * Layout: the form column leads (and comes first on small screens); from
- * 1024px an illustrated plate from the anatomy library sits at the inline end.
- * Logical properties throughout, so Arabic mirrors without overrides.
+ *
+ * Layout: from 1024px a split screen — the anatomical plate fills the
+ * inline-start half (left in English, right in Arabic, because grid areas
+ * follow the writing direction) and the form column holds the wordmark, the
+ * page and a one-line footer. Below 1024px everything stacks: wordmark, a slim
+ * plate band, then the heading and form. Logical properties throughout.
  */
 
 .auth {
-  --auth-header-h: 64px;
   --auth-field-h: 52px;
-  --auth-measure: 420px;
+  --auth-measure: 448px;
+  /* Centres the measure in its column while never going under the gutter. */
+  --auth-inset: max(var(--gutter), calc((100% - var(--auth-measure)) / 2));
 }
 
-/* ----------------------------------------------------------------- shell */
+/* ----------------------------------------------------------------- frame */
+
+.auth-frame {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas: "head" "plate" "main" "foot";
+  min-height: 100vh;
+  min-height: 100dvh;
+}
 
 .auth-header {
-  border-bottom: 1px solid var(--rule);
-  background: var(--site-bg);
-}
-.auth-header__inner,
-.auth-footer__inner {
+  grid-area: head;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px 24px;
-  padding-inline: var(--gutter);
+  gap: 16px;
+  min-height: 72px;
+  padding-inline: var(--auth-inset);
+  padding-block: 12px;
 }
-.auth-header__inner { min-height: var(--auth-header-h); }
+.auth-brand {
+  display: inline-flex;
+  padding-block: 8px;
+  color: var(--ink);
+  text-decoration: none;
+}
 
 .auth-back {
   display: inline-flex;
@@ -36,6 +53,7 @@
   color: var(--ink-2);
   font: 500 var(--text-sm)/1.2 var(--font-sans), sans-serif;
   text-decoration: none;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 .auth-back:hover { color: var(--ink); }
@@ -45,22 +63,31 @@
 [dir="rtl"] .auth-back:hover .auth-back__icon { transform: scaleX(-1) translateX(-3px); }
 
 .auth-main {
-  flex: 1;
+  grid-area: main;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding-inline: var(--auth-inset);
+  padding-block: clamp(32px, 6vw, 56px) clamp(48px, 8vw, 72px);
 }
 .auth-main:focus { outline: none; }
+.auth-content { width: 100%; }
 
-.auth-footer { border-top: 1px solid var(--rule); }
-.auth-footer__inner {
+.auth-footer {
+  grid-area: foot;
+  display: flex;
   flex-wrap: wrap;
-  padding-block: 20px 24px;
+  justify-content: space-between;
+  gap: 6px 24px;
+  margin-inline: var(--auth-inset);
+  padding-block: 16px 20px;
+  border-top: 1px solid var(--rule);
   color: var(--ink-3);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   line-height: 1.5;
 }
 .auth-footer p { margin: 0; }
-.auth-footer__disclaimer { max-width: 44em; }
+.auth-footer .auth-link { font-size: inherit; }
 
 /* Links inside running text: a hairline underline that firms up on hover. */
 .auth-link {
@@ -77,27 +104,11 @@
 
 /* ------------------------------------------------------------------ page */
 
-.auth-page {
-  flex: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.auth-column {
-  display: flex;
-  justify-content: center;
-  padding: clamp(40px, 8vw, 72px) var(--gutter) clamp(56px, 9vw, 88px);
-}
-.auth-column__inner {
-  width: 100%;
-  max-width: var(--auth-measure);
-}
-
 .auth-intro { display: grid; gap: 14px; }
 .auth-title {
   margin: 0;
   color: var(--ink);
-  font: 500 clamp(2.375rem, 1.9rem + 1.8vw, 3.375rem) / calc(var(--leading-display) + 0.04) var(--font-serif), serif;
+  font: 500 clamp(2.5rem, 1.9rem + 1.9vw, 3.5rem) / calc(var(--leading-display) + 0.04) var(--font-serif), serif;
   letter-spacing: var(--track-display);
   text-wrap: balance;
 }
@@ -114,7 +125,7 @@
   display: grid;
   justify-items: start;
   gap: 10px;
-  margin-block: 28px 32px;
+  margin-block: 26px 30px;
   padding-block: 16px;
   border-block: 1px solid var(--rule);
 }
@@ -131,8 +142,7 @@
 /* ------------------------------------------------------------------ form */
 
 .auth-form { display: grid; gap: 22px; }
-.auth-summary-slot:empty,
-.auth-status-slot:empty { display: none; }
+.auth-summary-slot:empty { display: none; }
 
 .auth-summary {
   margin: 0;
@@ -159,7 +169,8 @@
   border-radius: var(--radius-sm);
   background: var(--paper-solid);
   color: var(--ink);
-  font: 400 var(--text-base)/1.4 var(--font-sans), sans-serif;
+  /* Never under 16px, so iOS does not zoom into the field. */
+  font: 400 max(16px, var(--text-base))/1.4 var(--font-sans), sans-serif;
   transition: border-color 0.2s ease, background-color 0.2s ease;
   appearance: none;
 }
@@ -184,14 +195,13 @@
   padding-inline: 12px;
   border: 0;
   border-inline-start: 1px solid var(--rule);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: 0;
   background: transparent;
   color: var(--ink-2);
   font: 500 var(--text-sm)/1 var(--font-sans), sans-serif;
   cursor: pointer;
   transition: color 0.2s ease;
 }
-[dir="rtl"] .auth-field__toggle { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
 .auth-field__toggle:hover { color: var(--ink); }
 .auth-field__toggle:disabled { opacity: 0.5; cursor: not-allowed; }
 
@@ -233,7 +243,9 @@
 }
 @keyframes auth-spin { to { transform: rotate(360deg); } }
 
-/* The outcome of an attempt — always the truth, never a fake success. */
+/* The outcome of an attempt — always the truth, never a fake success. The
+   live region stays in the accessibility tree (never display: none), so the
+   message is announced the moment it arrives. */
 .auth-status {
   display: grid;
   justify-items: start;
@@ -245,6 +257,8 @@
   border-radius: var(--radius-sm);
   background: var(--paper-solid);
 }
+.auth-status:focus { outline: none; }
+.auth-status:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .auth-status__title {
   margin: 0;
   color: var(--ink);
@@ -254,46 +268,56 @@
 .auth-status__link { margin-block-start: 6px; font-size: var(--text-sm); }
 
 .auth-switch {
-  margin: 40px 0 0;
-  padding-block-start: 24px;
-  border-top: 1px solid var(--rule);
+  margin: 32px 0 0;
   color: var(--ink-2);
   font-size: var(--text-sm);
 }
 
 /* ----------------------------------------------------------------- plate */
 
-/* Narrow screens: the plate follows the form as a catalogue entry. */
+/* Narrow screens: a slim catalogue band under the wordmark — a small image,
+   the plate number and the organ's name, never tall enough to bury the form. */
 .auth-plate {
+  grid-area: plate;
+  border-block: 1px solid var(--rule);
+  background: var(--paper-deep);
+}
+.auth-plate__figure {
   display: grid;
-  grid-template-columns: clamp(104px, 30vw, 200px) minmax(0, 1fr);
+  grid-template-columns: 76px minmax(0, 1fr);
   grid-template-areas:
-    "rail rail"
+    "art rail"
     "art caption";
   align-items: center;
-  gap: 18px 20px;
+  column-gap: 16px;
+  row-gap: 6px;
   margin: 0;
-  /* Aligned to the form's measure above it, so the page reads as one column. */
-  padding-block: 28px 36px;
-  padding-inline: max(var(--gutter), calc((100% - var(--auth-measure)) / 2));
-  border-top: 1px solid var(--rule);
-  background: var(--paper-deep);
+  padding-block: 10px;
+  padding-inline: var(--auth-inset);
 }
 .auth-plate__rail {
   grid-area: rail;
+  align-self: end;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  min-width: 0;
   color: var(--ink-3);
-  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
+  font: 600 10.5px/1.3 var(--font-sans), sans-serif;
   letter-spacing: var(--track-caps);
   text-transform: uppercase;
 }
-.auth-plate__rule { flex: 1; height: 1px; background: var(--rule-strong); }
-.auth-plate__art {
+.auth-plate__rail > span:not(.auth-plate__rule) { flex: none; }
+.auth-plate__rule { flex: 1; min-width: 12px; height: 1px; background: var(--rule-strong); }
+
+.auth-plate__stage {
   grid-area: art;
   display: grid;
   place-items: center;
+}
+.auth-plate__art {
+  position: relative;
+  width: 100%;
 }
 .auth-plate__art img {
   display: block;
@@ -303,56 +327,91 @@
   /* Dissolve the painting's square paper into ours. */
   mix-blend-mode: multiply;
   -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
-    linear-gradient(to bottom, transparent, #000 16%, #000 86%, transparent);
+    linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+    linear-gradient(to bottom, transparent, #000 14%, #000 88%, transparent);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
-    linear-gradient(to bottom, transparent, #000 16%, #000 86%, transparent);
+    linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+    linear-gradient(to bottom, transparent, #000 14%, #000 88%, transparent);
   mask-composite: intersect;
 }
+/* The leader line needs room to read; below the split it is left out and the
+   caption names the structure instead. */
+.auth-plate__notes { display: none; }
+/* Images never mirror, so the leader line keeps its physical direction in RTL. */
+.auth-plate .ui-notes { direction: ltr; }
+.auth-plate .ui-note__label { unicode-bidi: plaintext; }
+.auth-plate__ta { margin-inline-start: 0.5em; color: var(--ink-2); }
+
 .auth-plate__caption {
   grid-area: caption;
-  display: grid;
-  gap: 4px;
-  align-content: center;
+  align-self: start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  min-width: 0;
 }
 .auth-plate__name {
   color: var(--ink);
-  font: 500 var(--display-sm)/1.1 var(--font-serif), serif;
+  font: 500 1.625rem/1.05 var(--font-serif), serif;
   letter-spacing: var(--track-display);
 }
-.auth-plate__latin { color: var(--ink-2); font-size: var(--text-lg); }
-.auth-plate__meta {
-  display: grid;
-  gap: 2px;
-  margin-block-start: 10px;
-  color: var(--ink-3);
-  font-size: var(--text-sm);
-  line-height: 1.45;
+.auth-plate__latin { color: var(--ink-2); font-size: var(--text-base); }
+.auth-plate__meta { display: none; }
+
+@media (min-width: 640px) {
+  .auth-plate__figure {
+    grid-template-columns: 112px minmax(0, 1fr);
+    column-gap: 24px;
+    padding-block: 14px;
+  }
+  .auth-plate__name { font-size: var(--display-sm); }
 }
 
-/* Wide screens: form and plate side by side, the plate as a full-height panel. */
+/* Wide screens: the split. The plate is a full-height panel that stays put
+   while a longer form scrolls beside it. */
 @media (min-width: 1024px) {
-  .auth-page { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .auth-column {
-    align-items: center;
-    padding-block: clamp(56px, 7vh, 96px);
+  .auth-frame {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "plate head"
+      "plate main"
+      "plate foot";
   }
+  .auth-header { min-height: 84px; padding-block: 14px; }
+  .auth-main { padding-block: 16px 40px; }
 
   .auth-plate {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    height: 100dvh;
+    border-block: 0;
+    border-inline-end: 1px solid var(--rule);
+  }
+  .auth-plate__figure {
+    height: 100%;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-areas: "rail" "art" "caption";
     align-items: stretch;
-    gap: 24px;
-    padding-block: clamp(28px, 3vw, 44px) clamp(32px, 3.4vw, 52px);
-    padding-inline: clamp(32px, 4vw, 64px);
-    border-top: 0;
-    border-inline-start: 1px solid var(--rule);
+    gap: 20px;
+    padding-block: clamp(28px, 4.4vh, 48px) clamp(28px, 4.4vh, 52px);
+    padding-inline: clamp(32px, 4vw, 72px);
   }
-  .auth-plate__art img { width: min(100%, 64vh, 600px); }
+  .auth-plate__rail { align-self: auto; font-size: var(--text-xs); }
+  .auth-plate__stage { min-height: 0; }
+  .auth-plate__art {
+    /* Sized so the square painting always fits the panel's free height. */
+    width: min(100%, calc(100dvh - 300px), 640px);
+  }
+  .auth-plate__notes { display: block; }
+
   .auth-plate__caption {
+    display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
     gap: 6px 32px;
@@ -360,23 +419,36 @@
     border-top: 1px solid var(--rule-strong);
   }
   .auth-plate__name { font-size: var(--display-md); line-height: 1; }
-  .auth-plate__latin { grid-column: 1; }
+  .auth-plate__latin { grid-column: 1; font-size: var(--text-lg); }
   .auth-plate__meta {
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: end;
+    display: grid;
     justify-items: end;
-    margin: 0;
+    gap: 2px;
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+    line-height: 1.45;
     text-align: end;
   }
+  .auth-plate__marked { color: var(--ink-2); }
 }
 
 @media (min-width: 1280px) {
-  .auth-page { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+  .auth-frame { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+}
+
+/* Short, wide windows: drop the caption's notes before the painting shrinks. */
+@media (min-width: 1024px) and (max-height: 720px) {
+  .auth-plate__note { display: none; }
+  .auth-plate__art { width: min(100%, calc(100dvh - 260px), 640px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .auth-submit__spinner { animation: none; border-block-start-color: currentColor; opacity: 0.6; }
   .auth-back__icon,
-  .auth-back:hover .auth-back__icon { transition: none; }
+  .auth-back:hover .auth-back__icon { transition: none; transform: none; }
+  [dir="rtl"] .auth-back__icon,
+  [dir="rtl"] .auth-back:hover .auth-back__icon { transform: scaleX(-1); }
 }

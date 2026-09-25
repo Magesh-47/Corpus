@@ -18,22 +18,23 @@ export type HelpContext = {
   num: (value: number, pad?: number) => string;
 };
 
-/** The order of the page, and the anchor each section is reached by. */
-export const HELP_SECTIONS = [
+export type GuideKey = keyof HelpCopy["categories"]["items"];
+
+/** The six guides, in page order, with the anchor each one is reached by. */
+export const GUIDES = [
   { key: "gettingStarted", id: "getting-started" },
   { key: "viewer", id: "viewer" },
   { key: "exploring", id: "exploring" },
   { key: "practice", id: "practice" },
   { key: "languages", id: "languages" },
   { key: "account", id: "account" },
-  { key: "questions", id: "questions" },
-  { key: "contact", id: "contact" },
-] as const satisfies ReadonlyArray<{ key: keyof HelpCopy["sections"]; id: string }>;
+] as const satisfies ReadonlyArray<{ key: GuideKey; id: string }>;
 
-export type HelpSectionKey = (typeof HELP_SECTIONS)[number]["key"];
+export const FAQ_ID = "questions";
+export const CONTACT_ID = "contact";
 
-export function sectionId(key: HelpSectionKey) {
-  return HELP_SECTIONS.find((section) => section.key === key)!.id;
+export function guideId(key: GuideKey) {
+  return GUIDES.find((guide) => guide.key === key)!.id;
 }
 
 export function numberFormatter(code: string) {
@@ -44,34 +45,50 @@ export function numberFormatter(code: string) {
   };
 }
 
+/** A language's name in the reader's own language, e.g. "Spanish" or "الإسبانية". */
+export function languageNames(code: string) {
+  let names: Intl.DisplayNames | null = null;
+  try {
+    names = new Intl.DisplayNames([code], { type: "language" });
+  } catch {
+    names = null;
+  }
+  return (target: string, fallback: string) => names?.of(target) ?? fallback;
+}
+
 /**
- * One numbered chapter of the help centre: a labelled region with a folio
- * number above its heading, like a chapter opening in a printed guide.
+ * One guide: its number, topic and title in a narrow column that stays in
+ * view while the reader moves through the content beside it.
  */
-export function HelpSection({
+export function GuideSection({
   ctx,
-  sectionKey,
-  className,
+  guide,
+  title,
   children,
 }: {
   ctx: HelpContext;
-  sectionKey: HelpSectionKey;
-  className?: string;
+  guide: GuideKey;
+  title: string;
   children: ReactNode;
 }) {
-  const id = sectionId(sectionKey);
-  const index = HELP_SECTIONS.findIndex((section) => section.key === sectionKey);
+  const id = guideId(guide);
+  const index = GUIDES.findIndex((item) => item.key === guide);
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={["help-section", className].filter(Boolean).join(" ")}>
-      <header className="help-section__header" data-reveal>
-        <span className="help-section__number" aria-hidden>
-          {ctx.num(index + 1, 2)}
-        </span>
-        <h2 id={`${id}-title`} className="ui-h2 help-section__title">
-          {ctx.help.sections[sectionKey]}
-        </h2>
-      </header>
-      {children}
+    <section id={id} aria-labelledby={`${id}-title`} className="help-guide">
+      <div className="ui-container help-guide__inner">
+        <header className="help-guide__header" data-reveal>
+          <p className="help-guide__kicker">
+            <span className="help-guide__number" aria-hidden>
+              {ctx.num(index + 1, 2)}
+            </span>
+            <span>{ctx.help.categories.items[guide].label}</span>
+          </p>
+          <h2 id={`${id}-title`} className="ui-h2 help-guide__title">
+            {title}
+          </h2>
+        </header>
+        <div className="help-guide__body">{children}</div>
+      </div>
     </section>
   );
 }

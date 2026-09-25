@@ -1,41 +1,48 @@
-import type { SiteDictionary } from "../../../i18n/site";
+import type { CSSProperties } from "react";
 
-type Copy = SiteDictionary["about"]["chapters"]["multilingual"]["names"];
-
-export type LanguageName = { code: string; nativeName: string; name: string };
+export type LanguageName = { code: string; nativeName: string; name: string; dir: "ltr" | "rtl" };
 
 /**
- * The same structure named in every language Explore ships, read from each
- * locale's own organ dictionary, with the one Latin term that anchors them all.
+ * One structure named in every language Explore ships, read from each locale's
+ * own organ dictionary, hanging from the single Latin term that anchors them.
  */
-export function LanguageNames({ copy, names, latin }: { copy: Copy; names: LanguageName[]; latin: string }) {
+export function LanguageNames({
+  title,
+  caption,
+  names,
+  latin,
+}: {
+  title: string;
+  caption: string;
+  names: LanguageName[];
+  latin: string;
+}) {
   return (
     <figure className="about-names">
-      <figcaption className="about-names__head" data-reveal>
-        <span className="about-names__title">{copy.title}</span>
-        <span className="ui-caption">{copy.caption}</span>
-      </figcaption>
-      <div className="about-names__body">
-        <p className="about-names__latin ui-latin" lang="la" data-reveal>
+      <div className="about-names__root" data-reveal>
+        <span className="ui-label">{title}</span>
+        <span className="ui-latin about-names__latin" lang="la">
           {latin}
-        </p>
-        <ul className="about-names__list">
-          {names.map((entry, index) => (
-            <li
-              key={entry.code}
-              data-reveal
-              style={{ "--reveal-delay": `${(index % 4) * 70}ms` } as React.CSSProperties}
-            >
-              <span className="about-names__word" lang={entry.code}>
-                {entry.name}
-              </span>
-              <span className="about-names__language" lang={entry.code}>
-                {entry.nativeName}
-              </span>
-            </li>
-          ))}
-        </ul>
+        </span>
       </div>
+      <ul className="about-names__list">
+        {names.map((entry, index) => (
+          <li
+            key={entry.code}
+            className="about-names__item"
+            data-reveal
+            style={{ "--reveal-delay": `${(index % 3) * 70}ms` } as CSSProperties}
+          >
+            <span className="about-names__word" lang={entry.code} dir={entry.dir}>
+              {entry.name}
+            </span>
+            <span className="about-names__language" lang={entry.code} dir={entry.dir}>
+              {entry.nativeName}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <figcaption className="ui-caption about-names__caption">{caption}</figcaption>
     </figure>
   );
 }

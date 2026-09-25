@@ -1,28 +1,34 @@
 /*
- * Pricing — /pricing. A presentation page, set like a catalogue: an index of
- * plans, a ledger with hairline columns, a plate of the free collection.
- * Builds on site.css tokens only; every direction is logical, so Arabic
- * mirrors without overrides.
+ * Pricing — /pricing. A presentation page, set like a catalogue: a plate of
+ * skin cut in depth, a ledger of three plans with hairline columns, a ruled
+ * comparison table, the free collection and a closing plate. Builds on
+ * site.css tokens only; every direction is logical, so Arabic mirrors without
+ * overrides (images and their annotations stay physical).
  */
 
 /* ------------------------------------------------------------------ hero */
 
 .pricing-hero {
-  padding-block: clamp(56px, 9vw, 144px) clamp(56px, 7vw, 112px);
-  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(48px, 7vw, 112px) clamp(64px, 8vw, 128px);
 }
 .pricing-hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(48px, 7vw, 128px);
-  align-items: end;
+  gap: clamp(40px, 6vw, 112px);
+  align-items: center;
 }
 .pricing-hero__text {
   display: grid;
   gap: 28px;
   justify-items: start;
 }
-.pricing-hero__title { max-width: 10.5em; }
+.pricing-hero__title { max-width: 11em; }
+.pricing-hero__lead,
+.pricing-hero__rest { display: block; }
+.pricing-hero__rest {
+  color: var(--ink-2);
+  font-style: italic;
+}
 
 .pricing-actions {
   display: flex;
@@ -32,67 +38,76 @@
   margin-block-start: 8px;
 }
 
-/* The index: a table of contents for the plans, like the front of an atlas. */
-.pricing-index { border-top: 2px solid var(--ink); }
-.pricing-index__label {
+/* The plate: skin in section, the page's image of "depth". */
+.pricing-hero__plate {
+  display: grid;
+  gap: 14px;
   margin: 0;
-  padding-block: 14px;
-  border-bottom: 1px solid var(--rule);
-  color: var(--ink-3);
-  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
-  letter-spacing: var(--track-caps);
-  text-transform: uppercase;
 }
-.pricing-index__list { margin: 0; padding: 0; list-style: none; }
-.pricing-index__item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 20px;
-  padding-block: 20px;
+.pricing-hero__plate-head {
+  margin: 0;
+  padding-block-end: 12px;
   border-bottom: 1px solid var(--rule);
 }
-.pricing-index__link {
-  display: flex;
-  align-items: baseline;
-  gap: 18px;
-  min-width: 0;
-  color: inherit;
-  text-decoration: none;
+/* The image box leaves a physical margin on its left for the leader-line
+   labels; it never mirrors, because the illustration does not. */
+.pricing-hero__stage {
+  position: relative;
+  width: 78%;
+  margin-left: auto;
+  margin-right: 0;
+  aspect-ratio: 1;
 }
-.pricing-index__number,
-.pricing-plan__number,
-.pricing-plate__number {
-  color: var(--ink-3);
-  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: var(--track-caps);
-  text-transform: uppercase;
+.pricing-hero__stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(closest-side, #000 78%, transparent);
+  mask-image: radial-gradient(closest-side, #000 78%, transparent);
 }
-.pricing-index__names { display: grid; gap: 4px; min-width: 0; }
-.pricing-index__name {
-  font: 500 var(--display-sm)/1.1 var(--font-serif), serif;
-  letter-spacing: var(--track-display);
-  text-decoration: underline 1px transparent;
-  text-underline-offset: 0.2em;
-  transition: text-decoration-color 0.3s var(--ease-editorial);
+.pricing-hero__caption {
+  margin: 0;
+  max-width: 30em;
+  padding-block-start: 12px;
+  border-top: 1px solid var(--rule);
 }
-.pricing-index__link:hover .pricing-index__name { text-decoration-color: currentColor; }
-.pricing-index__tagline { color: var(--ink-2); font-size: var(--text-sm); line-height: 1.45; }
-.pricing-index__caption { margin: 18px 0 0; max-width: 30em; }
 
 /* ---------------------------------------------------------------- ledger */
 
+.pricing-plans { padding-block-end: var(--section-space-tight); }
+.pricing-plans__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding-block: 0 16px;
+}
+.pricing-plans__title {
+  margin: 0;
+  color: var(--accent-ink);
+  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.pricing-plans__summary {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+}
+
 .pricing-ledger {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
 }
 .pricing-plan {
   display: flex;
   flex-direction: column;
-  padding-block: 28px 44px;
-  padding-inline: clamp(24px, 3vw, 44px);
-  scroll-margin-block-start: 96px;
+  padding-block: 24px clamp(36px, 4vw, 56px);
+  padding-inline: clamp(24px, 3vw, 48px);
+  scroll-margin-block-start: 104px;
 }
 /* The one plan that exists sits on a sheet of paper, ruled in ink. */
 .pricing-plan--available {
@@ -102,7 +117,7 @@
 /* Plans still to come are drawn with a dashed rule, like a figure in draft. */
 .pricing-plan--planned { border-top: 1px dashed var(--rule-strong); }
 .pricing-plan--planned + .pricing-plan--planned { border-inline-start: 1px solid var(--rule); }
-.pricing-plan:last-of-type { padding-inline-end: 0; }
+.pricing-plan:last-child { padding-inline-end: 0; }
 
 .pricing-plan__meta {
   display: flex;
@@ -110,18 +125,27 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-block-end: clamp(36px, 4vw, 56px);
+  margin-block-end: clamp(48px, 6vw, 88px);
+}
+.pricing-plan__number,
+.pricing-plate__number {
+  color: var(--ink-3);
+  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
 }
 .pricing-plan__name {
   margin: 0;
   color: var(--ink);
-  font: 500 clamp(2.25rem, 1.8rem + 1.6vw, 3.5rem)/1 var(--font-serif), serif;
+  font: 500 clamp(2.5rem, 1.8rem + 2.2vw, 4.25rem)/var(--leading-display) var(--font-serif), serif;
   letter-spacing: var(--track-display);
 }
 .pricing-plan__tagline {
-  margin: 14px 0 0;
+  margin: 16px 0 0;
+  max-width: 17em;
   color: var(--ink-2);
-  font: italic 500 clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem)/1.3 var(--font-serif), serif;
+  font: italic 400 clamp(1.25rem, 1.1rem + 0.5vw, 1.625rem)/1.3 var(--font-serif), serif;
   text-wrap: balance;
 }
 .pricing-plan__price {
@@ -130,7 +154,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 6px 16px;
-  margin: 32px 0 0;
+  margin: 36px 0 0;
   padding-block: 16px;
   border-block: 1px solid var(--rule);
 }
@@ -138,11 +162,13 @@
   color: var(--ink);
   font: 500 1.5rem/1.1 var(--font-serif), serif;
 }
+.pricing-plan--planned .pricing-plan__price-value { color: var(--ink-2); font-style: italic; }
 .pricing-plan__price-note { color: var(--ink-3); font-size: var(--text-sm); }
-.pricing-plan__description { margin: 24px 0 0; font-size: var(--text-base); }
+.pricing-plan__description { margin: 24px 0 0; max-width: 32em; font-size: var(--text-base); }
 
+.pricing-plan__list-block { margin-block-start: 32px; }
 .pricing-plan__list-heading {
-  margin: 32px 0 6px;
+  margin: 0 0 6px;
   color: var(--ink-3);
   font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
   letter-spacing: var(--track-caps);
@@ -165,7 +191,7 @@
   content: "";
   position: absolute;
   inset-inline-start: 1px;
-  top: calc(12px + 0.5lh - 3.5px);
+  top: calc(12px + 0.75em - 3.5px);
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -176,28 +202,120 @@
   box-shadow: inset 0 0 0 1px var(--ink-3);
 }
 
-.pricing-plan__foot { margin-block-start: auto; padding-block-start: 36px; }
-.pricing-plan__foot:empty { display: none; }
+.pricing-plan__foot { margin-block-start: auto; padding-block-start: 32px; }
 
 /* Where subgrid is supported, every column shares the same rows, so names,
    price lines and lists align across plans however the copy wraps. */
 @supports (grid-template-rows: subgrid) {
   .pricing-plan {
     display: grid;
-    grid-row: span 8;
+    grid-row: span 7;
     grid-template-rows: subgrid;
     row-gap: 0;
   }
   .pricing-plan__foot { align-self: end; }
-  .pricing-plan__foot:empty { display: block; padding: 0; }
 }
 
 .pricing-ledger__note {
-  grid-column: 2 / -1;
+  max-width: 44em;
   margin: 0;
+  margin-inline-start: auto;
   padding-block-start: 18px;
-  padding-inline-start: clamp(24px, 3vw, 44px);
-  border-top: 1px solid var(--rule);
+}
+
+/* ------------------------------------------------------------ comparison */
+
+.pricing-compare { border-top: 1px solid var(--rule); scroll-margin-block-start: 40px; }
+.pricing-compare__intro .ui-section-header { margin-block-end: clamp(40px, 5vw, 72px); }
+
+.pricing-table-wrap { max-width: 100%; }
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.pricing-table__caption {
+  padding-block-end: 16px;
+  color: var(--ink-3);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  text-align: start;
+  caption-side: top;
+}
+.pricing-table th,
+.pricing-table td {
+  padding-block: 20px;
+  padding-inline: clamp(16px, 2vw, 28px);
+  border-bottom: 1px solid var(--rule);
+  text-align: start;
+  vertical-align: top;
+}
+.pricing-table thead th {
+  padding-block: 18px;
+  border-bottom: 1px solid var(--rule-strong);
+  color: var(--ink);
+  font: 500 var(--display-sm)/1.1 var(--font-serif), serif;
+  letter-spacing: var(--track-display);
+  vertical-align: bottom;
+}
+.pricing-table__corner { width: 28%; padding-inline-start: 0 !important; }
+.pricing-table thead .pricing-table__corner {
+  color: var(--ink-3);
+  font: 600 var(--text-xs)/1.3 var(--font-sans), sans-serif;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+/* The Free column is the paper sheet again, ruled in ink at the top. */
+.pricing-table__plan--free { border-top: 2px solid var(--ink); }
+.pricing-table__plan--free,
+.pricing-cell--plan-free { background: var(--paper-solid); }
+.pricing-table__plan--plus,
+.pricing-table__plan--education { border-top: 1px dashed var(--rule-strong); color: var(--ink-2) !important; }
+
+.pricing-table__feature {
+  padding-inline-start: 0 !important;
+  color: var(--ink);
+  font: 500 clamp(1.1875rem, 1.1rem + 0.35vw, 1.4375rem)/1.25 var(--font-serif), serif;
+}
+
+.pricing-cell__plan { display: none; }
+.pricing-cell__status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink);
+  font: 600 11px/1.3 var(--font-sans), sans-serif;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+/* A small marker beside the words — decoration; the words carry the meaning. */
+.pricing-cell__status::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.pricing-cell--available .pricing-cell__status::before { background: var(--sage); }
+.pricing-cell--planned .pricing-cell__status::before { box-shadow: inset 0 0 0 1px var(--ink-3); }
+.pricing-cell--undecided .pricing-cell__status::before { border: 1px dashed var(--ink-3); }
+.pricing-cell--unavailable .pricing-cell__status::before,
+.pricing-cell--otherPlan .pricing-cell__status::before {
+  height: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--ink-3);
+}
+.pricing-cell--planned .pricing-cell__status,
+.pricing-cell--undecided .pricing-cell__status,
+.pricing-cell--unavailable .pricing-cell__status,
+.pricing-cell--otherPlan .pricing-cell__status { color: var(--ink-3); }
+.pricing-cell__detail {
+  display: block;
+  margin-block-start: 8px;
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  text-wrap: pretty;
 }
 
 /* ------------------------------------------------------------ collection */
@@ -306,17 +424,28 @@
 }
 .pricing-closing__grid {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: clamp(48px, 7vw, 120px);
   align-items: center;
 }
+.pricing-closing__text {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+.pricing-closing__title { max-width: 12em; }
+.pricing-closing__lead,
+.pricing-closing__rest { display: block; }
+.pricing-closing__rest { color: var(--ink-2); font-style: italic; }
+.pricing-closing__text .ui-button { margin-block-start: 8px; }
+
 .pricing-closing__figure {
   display: grid;
   justify-items: center;
   gap: 16px;
   margin: 0;
 }
-.pricing-closing__art { display: block; width: min(100%, 440px); }
+.pricing-closing__art { display: block; width: min(100%, 400px); }
 .pricing-closing__art img {
   display: block;
   width: 100%;
@@ -326,27 +455,23 @@
   -webkit-mask-image: radial-gradient(circle closest-side, #000 82.5%, transparent 83.5%);
   mask-image: radial-gradient(circle closest-side, #000 82.5%, transparent 83.5%);
 }
-.pricing-closing__caption { margin: 0; text-align: center; }
-.pricing-closing__text {
-  display: grid;
-  gap: 24px;
-  justify-items: start;
-}
-.pricing-closing__text .ui-h2 { max-width: 13em; }
+.pricing-closing__caption { margin: 0; max-width: 24em; text-align: center; }
 
 /* ------------------------------------------------------------ responsive */
 
 @media (max-width: 1080px) {
   /* Free across the full width; the two future plans side by side below. */
   .pricing-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .pricing-plan--available { grid-column: 1 / -1; }
+  .pricing-plan--available { grid-column: 1 / -1; padding-inline-end: clamp(24px, 3vw, 48px); }
   .pricing-plan--available .pricing-plan__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 32px;
   }
   .pricing-plan--available .pricing-plan__list li:nth-last-child(2) { border-bottom: 0; }
-  .pricing-plan--planned:nth-of-type(2) { padding-inline-start: 0; }
-  .pricing-ledger__note { grid-column: 1 / -1; padding-inline-start: 0; }
+  .pricing-plan--planned:nth-child(2) { padding-inline-start: 0; }
+  @supports (grid-template-rows: subgrid) {
+    .pricing-plan--available { display: flex; grid-row: auto; }
+  }
 
   .pricing-collection__grid,
   .pricing-faq__grid { grid-template-columns: minmax(0, 1fr); }
@@ -356,25 +481,78 @@
 }
 
 @media (max-width: 860px) {
-  .pricing-hero__grid { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .pricing-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 56px; }
+  .pricing-hero__plate { max-width: 560px; }
   .pricing-closing__grid { grid-template-columns: minmax(0, 1fr); }
-  .pricing-closing__art { width: min(72%, 380px); }
+  .pricing-closing__art { width: min(72%, 360px); }
+}
+
+@media (max-width: 760px) {
+  /* The table restacks: each feature becomes a short block with one line per
+     plan. Roles set in the markup keep it a table for assistive technology. */
+  .pricing-table,
+  .pricing-table tbody,
+  .pricing-table tr,
+  .pricing-table th,
+  .pricing-table td,
+  .pricing-table caption { display: block; width: auto; }
+  .pricing-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .pricing-table caption { padding-block-end: 20px; border-bottom: 1px solid var(--rule-strong); }
+  .pricing-table tbody tr {
+    padding-block: 20px 22px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pricing-table th,
+  .pricing-table td { padding: 0; border: 0; }
+  .pricing-table__feature { margin-block-end: 12px; }
+  .pricing-cell {
+    display: grid;
+    grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
+    grid-template-areas: "plan status" "plan detail";
+    column-gap: 16px;
+    padding-block: 10px !important;
+    border-top: 1px solid var(--rule) !important;
+  }
+  .pricing-cell--plan-free {
+    margin-inline: -12px;
+    padding-inline: 12px !important;
+  }
+  .pricing-cell__plan {
+    display: block;
+    grid-area: plan;
+    color: var(--ink);
+    font: 500 1.0625rem/1.3 var(--font-serif), serif;
+  }
+  .pricing-cell--plan-plus .pricing-cell__plan,
+  .pricing-cell--plan-education .pricing-cell__plan { color: var(--ink-2); }
+  .pricing-cell__status { grid-area: status; min-height: 1.4em; }
+  .pricing-cell__detail { grid-area: detail; margin-block-start: 4px; }
 }
 
 @media (max-width: 680px) {
   /* A vertical story: each plan a full chapter, one after the other. */
   .pricing-ledger { grid-template-columns: minmax(0, 1fr); }
   .pricing-plan { padding-block: 24px 40px; }
+  .pricing-plan__meta { margin-block-end: 36px; }
   .pricing-plan--available {
     margin-inline: calc(var(--gutter) * -1);
-    padding-inline: var(--gutter);
+    padding-inline: var(--gutter) !important;
   }
   .pricing-plan--available .pricing-plan__list { grid-template-columns: minmax(0, 1fr); }
   .pricing-plan--available .pricing-plan__list li:nth-last-child(2) { border-bottom: 1px solid var(--rule); }
   .pricing-plan--planned { padding-inline: 0; margin-block-start: 16px; }
   .pricing-plan--planned + .pricing-plan--planned { border-inline-start: 0; }
   .pricing-plan__foot { padding-block-start: 28px; }
-  .pricing-plan__foot .ui-button { width: 100%; }
+  .pricing-plan--available .pricing-plan__foot .ui-button { width: 100%; }
+  .pricing-plans__head { display: grid; }
+  .pricing-ledger__note { margin-inline-start: 0; }
 
   /* The plate becomes a catalogue list: thumbnail beside its caption. */
   .pricing-plates { grid-template-columns: minmax(0, 1fr); }
@@ -394,12 +572,16 @@
   .pricing-faq__list { grid-template-columns: minmax(0, 1fr); }
   .pricing-faq__item { padding-block: 20px 28px; }
 
+  .pricing-hero .pricing-actions,
+  .pricing-closing__text { width: 100%; }
+  .pricing-hero .pricing-actions .ui-button--primary,
+  .pricing-closing__text .ui-button { width: 100%; }
   .pricing-closing__grid { gap: 40px; }
-  .pricing-closing .pricing-actions { display: grid; width: 100%; }
-  .pricing-closing .pricing-actions .ui-button { width: 100%; }
 }
 
-@media (max-width: 400px) {
-  .pricing-index__item { flex-wrap: wrap; }
-  .pricing-index__item .ui-tag { margin-inline-start: 36px; }
+@media (max-width: 420px) {
+  .pricing-hero__stage { width: 74%; }
+  .pricing-hero .ui-note__line { width: 22px; }
+  .pricing-hero .ui-note__label { padding-inline: 6px; font-size: 11px; }
+  .pricing-cell { grid-template-columns: minmax(0, 6rem) minmax(0, 1fr); column-gap: 12px; }
 }

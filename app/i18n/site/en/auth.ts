@@ -1,12 +1,20 @@
 /**
  * Copy for the authentication pages. Corpus has no account system yet, so
  * every page says so plainly and nothing here implies a sign-in succeeded.
+ * Organ names, Latin and structure labels on the plates come from the organ
+ * dictionary, so they are not repeated here.
  */
 export const auth = {
   meta: {
-    signIn: { title: "Sign in", description: "Sign in to Corpus." },
-    signUp: { title: "Create an account", description: "Create a Corpus account." },
-    forgotPassword: { title: "Reset your password", description: "Reset your Corpus password." },
+    signIn: { title: "Sign in", description: "Sign in to Corpus. Accounts are coming soon; Explore works without one." },
+    signUp: {
+      title: "Create an account",
+      description: "Create a Corpus account. Accounts are coming soon; Explore works without one.",
+    },
+    forgotPassword: {
+      title: "Reset your password",
+      description: "Reset your Corpus password. Accounts are coming soon; Explore works without one.",
+    },
   },
 
   shell: {
@@ -64,8 +72,8 @@ export const auth = {
 
   signUp: {
     eyebrow: "Create an account",
-    title: "Begin your atlas.",
-    lede: "Study the body the way artists do: by looking closely, one structure at a time.",
+    title: "Start exploring.",
+    lede: "Create your Corpus account and build your anatomy practice.",
     submit: "Create account",
     busy: "Creating account…",
     switchPrompt: "Already have an account?",
@@ -77,9 +85,9 @@ export const auth = {
   },
 
   forgotPassword: {
-    eyebrow: "Reset your password",
-    title: "Forgotten your password?",
-    lede: "Enter the email address for your account and we’ll send you a link to choose a new password.",
+    eyebrow: "Forgot password",
+    title: "Reset your password.",
+    lede: "Enter your email and we’ll help you get back into Corpus.",
     submit: "Send reset link",
     busy: "Sending…",
     switchPrompt: "Remembered it?",
@@ -95,6 +103,9 @@ export const auth = {
   },
 
   plates: {
+    label: "Anatomical plate",
+    marked: "Marked: {structure}",
+    note: "A simplified educational illustration.",
     signIn: {
       number: "Plate I",
       view: "External view",
@@ -102,14 +113,13 @@ export const auth = {
     },
     signUp: {
       number: "Plate II",
-      view: "Microscopic view",
-      alt: "Watercolour study of brain tissue under the microscope: branching nerve cells threaded with small blood vessels",
+      view: "Lateral view",
+      alt: "Watercolour study of the human brain seen from the side, with the cerebellum and brainstem beneath it",
     },
     forgotPassword: {
       number: "Plate III",
-      view: "External view",
+      view: "Anterior view",
       alt: "Watercolour study of the lungs, with the trachea dividing into branching airways",
     },
-    note: "A simplified educational illustration.",
   },
 };

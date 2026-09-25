@@ -1,58 +1,54 @@
 import { ButtonLink } from "../../ui/Button";
 import { Container } from "../../ui/Container";
-import { SectionHeader } from "../../ui/SectionHeader";
 import { StatusTag } from "../../ui/StatusTag";
 import { format } from "../../../i18n/types";
 import { localeHref } from "../../../lib/routes";
 import type { SiteDictionary } from "../../../i18n/site";
-import { planAnchor, planNumber, planOrder } from "./plans";
+import { learnMoreAnchor, planAnchor, planNumber, planOrder } from "./plans";
+
+export type PricingCounts = { organCount: string; structureCount: string; languageCount: string };
 
 /**
  * The three plans set side by side like columns in a ledger — hairline rules,
  * not glossy cards. Free lists what Explore does today; the two future plans
- * are drawn with a dashed rule and describe directions, never promises.
+ * are drawn with a dashed rule, describe directions rather than promises, and
+ * offer nothing to buy: their only link goes to more information on this page.
  */
-export function PlanLedger({
-  locale,
-  site,
-  organCount,
-  languageCount,
-}: {
-  locale: string;
-  site: SiteDictionary;
-  organCount: number;
-  languageCount: number;
-}) {
+export function PlanLedger({ locale, site, counts }: { locale: string; site: SiteDictionary; counts: PricingCounts }) {
   const { plans } = site.pricing;
-  const { status, actions } = site.common;
-  const counts = { organCount: String(organCount), languageCount: String(languageCount) };
+  const { status } = site.common;
 
   return (
-    <section id="pricing-plans" className="pricing-plans ui-section" aria-labelledby="pricing-plans-title">
+    <section id="pricing-plans" className="pricing-plans" aria-labelledby="pricing-plans-title">
       <Container>
-        <SectionHeader id="pricing-plans-title" eyebrow={plans.eyebrow} title={plans.title} lede={plans.lede} />
+        <header className="pricing-plans__head">
+          <h2 id="pricing-plans-title" className="pricing-plans__title">
+            {plans.title}
+          </h2>
+          <p className="pricing-plans__summary">{plans.summary}</p>
+        </header>
 
         <div className="pricing-ledger">
           {planOrder.map((key, index) => {
             const plan = plans.items[key];
-            const available = key === "free";
+            const anchor = planAnchor(key);
             return (
               <article
                 key={key}
-                id={planAnchor(key)}
-                className={`pricing-plan ${available ? "pricing-plan--available" : "pricing-plan--planned"}`}
-                aria-labelledby={`${planAnchor(key)}-name`}
+                id={anchor}
+                className={`pricing-plan ${key === "free" ? "pricing-plan--available" : "pricing-plan--planned"}`}
+                aria-labelledby={`${anchor}-name`}
                 data-reveal
                 style={{ "--reveal-delay": `${index * 120}ms` } as React.CSSProperties}
               >
                 <div className="pricing-plan__meta">
                   <span className="pricing-plan__number">{format(plans.numberLabel, { number: planNumber(index) })}</span>
-                  <StatusTag tone={available ? "available" : "soon"}>
-                    {available ? status.availableNow : status.comingSoon}
+                  <StatusTag tone={key === "free" ? "available" : "soon"}>
+                    {key === "free" ? status.availableNow : status.comingSoon}
                   </StatusTag>
                 </div>
 
-                <h3 id={`${planAnchor(key)}-name`} className="pricing-plan__name">
+                <h3 id={`${anchor}-name`} className="pricing-plan__name">
                   {plan.name}
                 </h3>
                 <p className="pricing-plan__tagline">{plan.tagline}</p>
@@ -64,25 +60,35 @@ export function PlanLedger({
 
                 <p className="pricing-plan__description ui-body">{plan.description}</p>
 
-                <p className="pricing-plan__list-heading">{plan.listHeading}</p>
-                <ul className="pricing-plan__list">
-                  {Object.entries(plan.list).map(([id, item]) => (
-                    <li key={id}>{format(item, counts)}</li>
-                  ))}
-                </ul>
+                <div className="pricing-plan__list-block">
+                  <p className="pricing-plan__list-heading">{plan.listHeading}</p>
+                  <ul className="pricing-plan__list">
+                    {Object.entries(plan.list).map(([id, item]) => (
+                      <li key={id}>{format(item, counts)}</li>
+                    ))}
+                  </ul>
+                </div>
 
                 <div className="pricing-plan__foot">
-                  {available && (
+                  {key === "free" ? (
                     <ButtonLink href={localeHref(locale, "explore")} arrow>
-                      {actions.exploreBody}
+                      {plan.cta}
                     </ButtonLink>
+                  ) : (
+                    <a
+                      className="ui-button ui-button--text pricing-plan__more"
+                      href={`#${learnMoreAnchor[key]}`}
+                      aria-label={format(plans.learnMore, { plan: plan.name })}
+                    >
+                      {plan.cta}
+                    </a>
                   )}
                 </div>
               </article>
             );
           })}
-          <p className="pricing-ledger__note ui-caption">{plans.plannedNote}</p>
         </div>
+        <p className="pricing-ledger__note ui-caption">{plans.plannedNote}</p>
       </Container>
     </section>
   );
