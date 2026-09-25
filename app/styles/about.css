@@ -660,7 +660,7 @@
   .about-studio { aspect-ratio: 8 / 11; background-size: 24px 24px; }
   .about-studio__sheet { top: 8%; right: auto; left: 7%; width: 40%; rotate: -3deg; }
   .about-studio__slide { top: 14%; right: 9%; width: 24%; padding: 3px; }
-  .about-studio__specimen { top: 40%; left: 18%; width: 64%; }
+  .about-studio__specimen { top: 40%; left: 22%; width: 62%; }
   .about-studio__tag { left: 7%; bottom: 4%; }
   .about-studio__slider { bottom: 5%; width: 30%; }
 }

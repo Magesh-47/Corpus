@@ -257,6 +257,7 @@ export function AnatomyApp({
           />
 
           <section className="info-panel" aria-labelledby="organ-title">
+            <div className="info-scroll">
             <div className="info-body" key={organId}>
               <div className="info-primary">
                 <header className="info-head">
@@ -313,16 +314,19 @@ export function AnatomyApp({
                   </div>
                 </div>
 
-                <section className="test-yourself" aria-labelledby="test-title">
-                  <h2 id="test-title" className="info-heading">{t.info.quiz}</h2>
-                  <p>{t.info.quizIntro}</p>
-                  <button type="button" className="ui-button ui-button--primary test-start" onClick={startQuiz}>
-                    {t.quiz.start}
-                    <ArrowRight size={16} className="ui-arrow" aria-hidden />
-                  </button>
-                </section>
               </div>
             </div>
+            </div>
+
+            {/* Kept outside the scrolling column so it is always in view on desktop. */}
+            <section className="test-yourself" aria-labelledby="test-title">
+              <h2 id="test-title" className="info-heading">{t.info.quiz}</h2>
+              <p>{t.info.quizIntro}</p>
+              <button type="button" className="ui-button ui-button--primary test-start" onClick={startQuiz}>
+                {t.quiz.start}
+                <ArrowRight size={16} className="ui-arrow" aria-hidden />
+              </button>
+            </section>
           </section>
         </div>
 

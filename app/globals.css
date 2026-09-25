@@ -491,7 +491,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 
 /* ------------------------------------------------------------- information */
 
-.info-panel { padding: 20px 22px 22px; overflow: auto; scrollbar-width: thin; }
+.info-panel { display: flex; flex-direction: column; overflow: hidden; }
+.info-scroll { flex: 1; min-height: 0; padding: 20px 22px 22px; overflow: auto; scrollbar-width: thin; }
 .info-body { animation: info-in .5s var(--ease-editorial) both; }
 @keyframes info-in { from { opacity: 0; transform: translateY(6px); } }
 .info-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
@@ -541,14 +542,13 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 .info-note p:last-child { margin: 0; font: 400 15px/1.5 var(--font-serif), serif; }
 
 .test-yourself {
-  margin-top: 22px;
-  padding: 16px;
-  border: 1px solid var(--rule-strong);
-  border-radius: var(--radius-md);
+  flex: none;
+  padding: 16px 22px 18px;
+  border-top: 1px solid var(--rule-strong);
   background: var(--site-bg);
 }
-.test-yourself .info-heading { margin: 0 0 6px; color: var(--accent-ink); }
-.test-yourself p { margin: 0 0 14px; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
+.test-yourself .info-heading { margin: 0 0 4px; color: var(--accent-ink); }
+.test-yourself p { margin: 0 0 12px; color: var(--ink-2); font-size: 13.5px; line-height: 1.45; }
 .test-start { width: 100%; justify-content: space-between; white-space: normal; text-align: start; line-height: 1.25; }
 
 /* ------------------------------------------------------------------ plates */
@@ -856,7 +856,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 
 @media (max-width: 1350px) {
   .workspace { grid-template-columns: 216px minmax(0, 1fr) 312px; }
-  .info-panel { padding-inline: 18px; }
+  .info-scroll, .test-yourself { padding-inline: 18px; }
   .plates-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .plate-art { width: min(100%, 260px); }
 }
@@ -864,7 +864,9 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 @media (max-width: 1040px) {
   .workspace { grid-template-columns: 200px minmax(0, 1fr); height: auto; }
   .organ-library, .viewer-shell { height: 620px; }
-  .info-panel { grid-column: 1 / -1; overflow: visible; padding: 24px; }
+  .info-panel { grid-column: 1 / -1; display: block; overflow: visible; }
+  .info-scroll { overflow: visible; padding: 24px; }
+  .test-yourself { padding: 18px 24px 22px; border-radius: 0 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px); }
   .info-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 36px; }
   .info-secondary > .info-heading:first-child { margin-top: 0; }
   .app-search { width: min(280px, 34vw); }
@@ -969,7 +971,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   .quiz-summary { top: calc(50% - 32px); }
   .authoring-panel { inset-inline-start: 10px; max-width: calc(100% - 20px); bottom: 76px; }
 
-  .info-panel { padding: 20px 18px; overflow: visible; }
+  .info-scroll { padding: 20px 18px; }
+  .test-yourself { padding: 16px 18px 18px; }
   .info-body { display: block; }
   .info-secondary > .info-heading:first-child { margin-top: 24px; }
   .specimen-stamp { width: 72px; height: 72px; }
