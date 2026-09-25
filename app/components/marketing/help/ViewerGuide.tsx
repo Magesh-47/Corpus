@@ -41,9 +41,11 @@ export function ViewerGuide({ ctx }: { ctx: HelpContext }) {
         {/* Visual column heads only; each cell carries its own <dt> label. */}
         <div className="help-controls__head" aria-hidden>
           <span>{copy.columns.action}</span>
-          {INPUTS.map((input) => (
-            <span key={input}>{copy.columns[input]}</span>
-          ))}
+          <span className="help-controls__head-inputs">
+            {INPUTS.map((input) => (
+              <span key={input}>{copy.columns[input]}</span>
+            ))}
+          </span>
         </div>
         <ul className="help-controls__rows">
           {Object.entries(copy.controls).map(([key, control]) => {

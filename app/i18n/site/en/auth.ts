@@ -19,8 +19,8 @@ export const auth = {
 
   shell: {
     back: "Back to the site",
-    helpPrompt: "Questions about Corpus?",
-    helpLink: "Visit Help",
+    disclaimer: "Corpus is for learning anatomy. It is not medical advice.",
+    helpLink: "Help",
   },
 
   notice: {

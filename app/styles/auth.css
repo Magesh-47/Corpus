@@ -73,12 +73,14 @@
 .auth-main:focus { outline: none; }
 .auth-content { width: 100%; }
 
+/* One quiet line: the disclaimer and a way to Help. */
 .auth-footer {
   grid-area: foot;
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 6px 24px;
+  gap: 4px 24px;
   margin-inline: var(--auth-inset);
   padding-block: 16px 20px;
   border-top: 1px solid var(--rule);
@@ -341,7 +343,8 @@
 /* Images never mirror, so the leader line keeps its physical direction in RTL. */
 .auth-plate .ui-notes { direction: ltr; }
 .auth-plate .ui-note__label { unicode-bidi: plaintext; }
-.auth-plate__ta { margin-inline-start: 0.5em; color: var(--ink-2); }
+.auth-plate .ui-note__label { display: inline-flex; gap: 0.5em; }
+.auth-plate__ta { color: var(--ink-2); }
 
 .auth-plate__caption {
   grid-area: caption;

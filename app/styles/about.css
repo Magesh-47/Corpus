@@ -206,16 +206,20 @@
 .about-atelier__meaning { font-style: italic; }
 .about-atelier__visual { grid-column: 7 / -1; }
 
+/* The verbs share one column edge (subgrid), so the notes line up. */
 .about-verbs {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: clamp(20px, 2.4vw, 36px);
   margin: clamp(12px, 2vw, 24px) 0 0;
   padding: 0;
   list-style: none;
   border-bottom: 1px solid var(--rule);
 }
 .about-verbs__item {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 11em) minmax(0, 1fr);
-  column-gap: 20px;
+  grid-template-columns: subgrid;
   align-items: baseline;
   padding-block: 14px;
   border-top: 1px solid var(--rule);
@@ -490,6 +494,7 @@
 .about-names__item {
   display: grid;
   align-content: start;
+  justify-items: start;
   gap: 2px;
   padding-block: 14px;
   border-bottom: 1px solid var(--rule);
@@ -543,7 +548,6 @@
   .about-atelier__visual { grid-column: 7 / -1; }
   .about-world__visual { grid-column: 1 / span 6; }
   .about-world__text { grid-column: 7 / -1; }
-  .about-verbs__item { grid-template-columns: minmax(0, 1fr); row-gap: 4px; }
 }
 
 @media (max-width: 860px) {
@@ -573,7 +577,6 @@
 
   .about-atelier__grid { row-gap: clamp(48px, 8vw, 72px); }
   .about-atelier__text { max-width: 36em; }
-  .about-verbs__item { grid-template-columns: minmax(0, 10em) minmax(0, 1fr); }
   .about-atelier__visual { width: min(100%, 600px); }
 
   .about-world__grid { row-gap: clamp(48px, 8vw, 72px); }
@@ -597,7 +600,8 @@
     border-top: 1px solid var(--rule-strong);
   }
 
-  .about-verbs__item { grid-template-columns: minmax(0, 1fr); }
+  .about-verbs { grid-template-columns: minmax(0, 1fr); }
+  .about-verbs__item { row-gap: 4px; }
   .about-names__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   /* The table turns portrait: sheet above, specimen below. */

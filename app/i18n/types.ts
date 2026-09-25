@@ -26,41 +26,39 @@ export type OrganContentDictionary = Record<OrganId, OrganContent>;
 
 export type UiDictionary = {
   meta: { title: string; description: string; ogTitle: string; ogDescription: string; imageAlt: string };
-  brand: { tagline: string; home: string };
-  nav: { explore: string; systems: string; lessons: string; library: string; notes: string };
-  search: { placeholder: string };
-  profile: { open: string };
+  brand: { home: string };
+  /** The Explore top bar. `account` links to sign-in; `skip` is the skip link. */
+  nav: { label: string; skip: string; explore: string; account: string };
+  search: { label: string; placeholder: string; toggle: string };
   language: { label: string; choose: string };
-  library: {
-    title: string; open: string; close: string; saved: string; viewAll: string;
-    quoteLine1: string; quoteLine2: string; quoteSign: string;
-  };
+  library: { title: string; showAll: string; empty: string; quoteLine1: string; quoteLine2: string; quoteSign: string };
   tools: { label: string; rotate: string; zoom: string; isolate: string; section: string; layers: string; compare: string; reset: string };
   viewer: {
     title: string; canvas: string; tip: string; tipDrag: string; tipScroll: string; tipClick: string;
-    loading: string; autoRotate: string; caption: string; structures: string;
+    loading: string; autoRotate: string; caption: string; structures: string; selected: string; selectHint: string;
   };
   info: {
-    kicker: string; keyFacts: string; size: string; weight: string; daily: string;
+    keyFacts: string; size: string; weight: string; daily: string;
     location: string; bloodSupply: string; function: string; medical: string;
-    didYouKnow: string; viewLesson: string; animate: string; quiz: string; compare: string;
+    didYouKnow: string;
+    /** "Test yourself" — the labelling quiz's name wherever it is offered. */
+    quiz: string; quizIntro: string;
   };
   compare: { title: string; comparing: string; reference: string; primaryRole: string; scale: string; vs: string; close: string };
   cards: {
-    resources: string; microscopic: string; compareOrgans: string; functionAnimation: string;
-    clinicalNotes: string; whereItWorks: string; commonConditions: string;
+    title: string; microscopic: string; compareOrgans: string; functionAnimation: string;
+    clinicalNotes: string; whereItWorks: string; curiosity: string; commonConditions: string;
     exploreTissue: string; openComparison: string; playAnimation: string; seeAll: string; seeSystem: string;
-    playAria: string; systemAria: string;
   };
   quiz: {
     start: string; find: string; progress: string; correct: string; wrong: string;
     reveal: string; answer: string; done: string; score: string; retry: string; exit: string; hint: string;
   };
   modal: {
-    guided: string; close: string; continueExploring: string;
-    quizTitle: string; motionTitle: string; bodyTitle: string; insideTitle: string;
-    quizPrompt: string; quizA: string; quizB: string; quizC: string;
-    lessonBody: string; systemIntro: string; system: string; primaryRole: string; bloodSupply: string;
+    close: string; continueExploring: string;
+    motionTitle: string; bodyTitle: string; insideTitle: string; clinicalTitle: string;
+    tissueIntro: string; motionIntro: string; disclaimer: string; tissue: string;
+    systemIntro: string; system: string; primaryRole: string; bloodSupply: string;
   };
 };
 

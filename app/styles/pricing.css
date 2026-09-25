@@ -471,6 +471,7 @@
   .pricing-plan--planned:nth-child(2) { padding-inline-start: 0; }
   @supports (grid-template-rows: subgrid) {
     .pricing-plan--available { display: flex; grid-row: auto; }
+    .pricing-plan--available .pricing-plan__foot { align-self: stretch; }
   }
 
   .pricing-collection__grid,

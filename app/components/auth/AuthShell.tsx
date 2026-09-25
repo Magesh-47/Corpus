@@ -43,13 +43,10 @@ export function AuthShell({
       {plate}
 
       <footer className="auth-footer">
-        <p className="auth-footer__disclaimer">{navigation.footer.disclaimer}</p>
-        <p className="auth-footer__help">
-          {auth.shell.helpPrompt}{" "}
-          <Link className="auth-link" href={localeHref(locale, "help")}>
-            {auth.shell.helpLink}
-          </Link>
-        </p>
+        <p className="auth-footer__disclaimer">{auth.shell.disclaimer}</p>
+        <Link className="auth-link" href={localeHref(locale, "help")}>
+          {auth.shell.helpLink}
+        </Link>
       </footer>
     </div>
   );
