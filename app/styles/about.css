@@ -100,6 +100,33 @@
   padding-block-start: 22px;
   border-top: 1px solid var(--rule-strong);
 }
+/* Contents: four chapters, set like the index of a catalogue. */
+.about-contents { margin-block-start: clamp(40px, 5vw, 72px); }
+.about-contents__title { margin: 0 0 10px; }
+.about-contents__list { margin: 0; padding: 0; list-style: none; }
+.about-contents__link {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  min-height: 44px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font: 500 var(--text-lg)/1.3 var(--font-serif), serif;
+  text-decoration: none;
+  transition: color 0.25s var(--ease-editorial), border-color 0.25s var(--ease-editorial);
+}
+.about-contents__link:hover { color: var(--accent-ink); border-color: var(--rule-strong); }
+.about-contents__n {
+  flex: none;
+  color: var(--accent-ink);
+  font: 500 var(--text-xs)/1 var(--font-sans), sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+/* Anchored chapters clear the sticky header. */
+.about [id] { scroll-margin-top: 112px; }
+
 .about-hero__figure {
   grid-column: 6 / -1;
   margin: 0;

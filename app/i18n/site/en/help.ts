@@ -22,7 +22,7 @@ export const help = {
 
   search: {
     label: "What can we help you find?",
-    placeholder: "Try “zoom”, “hotspots” or “languages”",
+    placeholder: "Try “zoom” or “hotspots”",
     clear: "Clear search",
     resultsLabel: "Search results",
     count: "Results: {count}",

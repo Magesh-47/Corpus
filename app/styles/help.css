@@ -58,7 +58,7 @@
   /* On a phone the search matters more than the picture: the plate becomes a
      small vignette beside the caption rather than a full-width block. */
   .help-plate { width: 100%; justify-self: stretch; display: grid; grid-template-columns: 96px minmax(0, 1fr); align-items: end; gap: 16px; }
-  .help-plate__caption { flex-direction: column; justify-content: end; }
+  .help-plate__caption { flex-direction: column; justify-content: end; padding-block: 0 4px; border-top: 0; }
 }
 @media (min-width: 720px) {
   .help-hero__inner {

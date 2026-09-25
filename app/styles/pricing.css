@@ -488,6 +488,15 @@
   .pricing-closing__art { width: min(72%, 360px); }
 }
 
+@media (max-width: 960px) {
+  /* Tablet: the table keeps its columns, with lighter headings so each plan
+     name sits on one line. */
+  .pricing-table__corner { width: 24%; }
+  .pricing-table thead th { font-size: 1.375rem; }
+  .pricing-table th,
+  .pricing-table td { padding-inline: 14px; }
+}
+
 @media (max-width: 760px) {
   /* The table restacks: each feature becomes a short block with one line per
      plan. Roles set in the markup keep it a table for assistive technology. */

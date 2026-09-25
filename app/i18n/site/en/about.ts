@@ -19,6 +19,7 @@ export const about = {
     eyebrow: "About Corpus",
     titleFirst: "Anatomy is a visual language.",
     titleSecond: "We built a place to learn it.",
+    contents: "Contents",
     lede: "Corpus is an anatomy atelier: 3D organs, painted plates and precise Latin names, arranged so you can learn the body by looking closely.",
     alt: "Watercolour painting of the human brain seen from the left side, with the cerebellum and brainstem beneath it.",
   },
