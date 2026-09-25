@@ -7,7 +7,7 @@ import { stepKeys, stepNumber, type HowCopy, type Organs, type Status, type Step
  * spine. Text and figure swap sides from step to step, so the page reads as a
  * sequence rather than a stack of identical cards.
  */
-export function HowSteps({ copy, organs, status }: { locale: string; copy: HowCopy; organs: Organs; status: Status }) {
+export function HowSteps({ copy, organs, status }: { copy: HowCopy; organs: Organs; status: Status }) {
   const { steps } = copy;
 
   const figures: Record<StepKey, ReactNode> = {

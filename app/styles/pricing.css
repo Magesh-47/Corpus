@@ -513,7 +513,7 @@
   .pricing-table th,
   .pricing-table td { padding: 0; border: 0; }
   .pricing-table__feature { margin-block-end: 12px; }
-  .pricing-cell {
+  .pricing-table .pricing-cell {
     display: grid;
     grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
     grid-template-areas: "plan status" "plan detail";
@@ -583,5 +583,5 @@
   .pricing-hero__stage { width: 74%; }
   .pricing-hero .ui-note__line { width: 22px; }
   .pricing-hero .ui-note__label { padding-inline: 6px; font-size: 11px; }
-  .pricing-cell { grid-template-columns: minmax(0, 6rem) minmax(0, 1fr); column-gap: 12px; }
+  .pricing-table .pricing-cell { grid-template-columns: minmax(0, 6rem) minmax(0, 1fr); column-gap: 12px; }
 }

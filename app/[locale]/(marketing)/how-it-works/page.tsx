@@ -37,7 +37,7 @@ export default async function HowItWorksPage({ params }: Props) {
   return (
     <div className="how">
       <HowHero copy={copy} />
-      <HowSteps locale={code} copy={copy} organs={organs} status={common.status} />
+      <HowSteps copy={copy} organs={organs} status={common.status} />
       <HowClosing locale={code} copy={copy} organs={organs} />
     </div>
   );

@@ -17,6 +17,7 @@ export const marketing = {
     lede: "Explore the human body through detailed 3D anatomy, discover the structures beneath the surface, and build an understanding that goes beyond the diagram.",
     primary: "Explore the body",
     secondary: "Discover Corpus",
+    supportingLabel: "What Corpus is",
     supporting: {
       anatomy: "3D anatomy",
       visual: "Visual learning",
@@ -56,22 +57,27 @@ export const marketing = {
         title: "Look beneath the surface.",
         body: "Explore structures spatially instead of reducing the body to a flat diagram.",
         alt: "The 3D heart from Explore, turned to show its side, with the great vessels rising from the top.",
-        caption: "The heart, turned in Explore to its left side.",
+        caption: "The heart, turned in Explore.",
       },
       understand: {
         label: "Understand",
         title: "Connect the pieces.",
         body: "Move from a structure to its function, relationships, blood supply, tissue, and clinical context.",
-        alt: "Watercolour illustration of the heart seen from the front.",
-        caption: "What Explore shows alongside the heart.",
-        clinical: "Clinical context",
+        alt: "Watercolour illustration of the brain seen from the side.",
+        caption: "What Explore shows alongside the brain.",
+        facets: {
+          function: "Function",
+          bloodSupply: "Blood supply",
+          tissue: "Tissue",
+          clinical: "Clinical context",
+        },
       },
       remember: {
         label: "Remember",
         title: "Make knowledge active.",
         body: "Test yourself through identification, exploration, and recall.",
-        alt: "Watercolour illustration of the kidneys with three structures marked by numbers.",
-        caption: "Name each marked structure, then check your answer.",
+        alt: "Watercolour illustration of the lungs and trachea, with four structures marked by numbers.",
+        caption: "A static labelling sheet. In Explore, you find each named structure on the 3D model.",
         blank: "Name this structure",
       },
     },
@@ -82,7 +88,6 @@ export const marketing = {
     title: "Start anywhere in the body.",
     lede: "Explore the structures that make us human — from the rhythm of the heart to the architecture of the brain.",
     explore: "Explore",
-    exploreOrgan: "Explore the {organ}",
     /** One line per organ, keyed by organ id. */
     lines: {
       heart: "The muscular pump at the center of the circulatory system.",
@@ -101,9 +106,9 @@ export const marketing = {
     lede: "Rotate it. Isolate it. Follow its structures. See how everything connects.",
     cta: "Open the anatomy atlas",
     still: "A still from Explore",
-    alt: "The 3D heart in Explore, seen from the front, with coloured dots marking structures that can be selected.",
+    alt: "The 3D heart in Explore, seen from the front, with dots marking structures that can be selected.",
     caption: "Each dot on the model is a structure you can select to see its name and role.",
-    controlsLabel: "Controls in the viewer",
+    controlsLabel: "In the viewer",
   },
 
   features: {
@@ -119,20 +124,20 @@ export const marketing = {
       isolate: {
         label: "Isolate",
         line: "Focus on what matters.",
-        body: "Lift the organ away from its surroundings and study it on its own.",
-        alt: "The 3D eye model floating on its own, with the optic nerve leaving the back.",
+        body: "Set the surroundings aside and study one organ on its own.",
+        alt: "The 3D eye floating on its own, with the optic nerve leaving the back.",
       },
       section: {
         label: "Section",
         line: "Understand what lies beneath the surface.",
-        body: "Cut through the model to see the chambers and layers inside.",
-        alt: "The 3D heart cut through by a section plane, showing its interior.",
+        body: "Pass a section plane through the model and read its form in profile.",
+        alt: "The 3D heart cut in half by a section plane.",
       },
       compare: {
         label: "Compare",
         line: "See anatomy through relationships.",
-        body: "Set one organ against another to compare their roles and scale.",
-        alt: "The 3D lungs and heart shown side by side.",
+        body: "Set one organ beside another to compare their roles and scale.",
+        alt: "The 3D brain and heart shown side by side.",
       },
     },
     note: "Stills captured from the 3D viewer in Explore.",
@@ -151,10 +156,9 @@ export const marketing = {
     title: "See it.\nThen prove you know it.",
     lede: "Turn exploration into active recall with anatomy labeling and identification challenges.",
     cta: "Test yourself",
-    panelLabel: "Test yourself",
+    identify: "Identify",
     alt: "The 3D brain from Explore with four structures marked by the numbers 1 to 4.",
-    caption: "A preview of the labelling challenge in Explore. In Explore, you answer by selecting the structure on the model.",
-    markedLabel: "Marked structures",
+    caption: "A still of the labelling quiz in Explore, where you answer by selecting the structure on the model.",
   },
 
   ai: {
@@ -168,7 +172,7 @@ export const marketing = {
     answer:
       "The left ventricle pumps blood through the systemic circulation, so it must generate much higher pressure than the right ventricle.",
     status: "Under development",
-    disclaimer: "A written example, not a live assistant. Nothing here is generated, and there is no guide to talk to yet.",
+    disclaimer: "A written example, not a live assistant. There is no guide to talk to yet.",
   },
 
   languages: {
@@ -176,8 +180,10 @@ export const marketing = {
     title: "Anatomy in the language\nyou think in.",
     lede: "Corpus is built for learners around the world, with multilingual interfaces and a shared anatomical vocabulary grounded in Latin terminology.",
     wallLabel: "Corpus in twelve languages",
-    anchorLabel: "One term, every language",
+    /** Endonyms shown on the language wall where the display form differs from the switcher. Not translated. */
+    endonyms: { id: "Bahasa Indonesia" },
     rtlNote: "Arabic reads right to left, and the interface mirrors with it.",
+    latinNote: "The Latin name stays the same in every language.",
   },
 
   rigor: {
