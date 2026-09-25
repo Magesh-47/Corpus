@@ -13,11 +13,14 @@ type Copy = SiteDictionary["about"];
  * pole to the left), as a percentage of the square image.
  */
 const BRAIN_NOTES = [
-  { id: "frontal", x: 17, y: 31, side: "left", length: 56 },
-  { id: "cerebellum", x: 76, y: 63, side: "right", length: 48 },
+  { id: "frontal", x: 17, y: 33, side: "left", length: 48 },
+  { id: "cerebellum", x: 74, y: 64, side: "right", length: 44 },
 ] as const;
 
-/** The manifesto's opening: two sentences and one large, labelled plate. */
+/**
+ * The manifesto's opening: the two sentences set across the page, then one
+ * large labelled plate with the lede beside it.
+ */
 export function AboutHero({ copy, organ }: { copy: Copy; organ: Organ }) {
   const { hero } = copy;
   const picked = pickNotes(organ, BRAIN_NOTES);
@@ -28,36 +31,35 @@ export function AboutHero({ copy, organ }: { copy: Copy; organ: Organ }) {
 
   return (
     <section className="about-hero" aria-labelledby="about-title">
-      <div className="ui-container about-hero__grid">
-        <div className="about-hero__text">
-          <p className="ui-eyebrow ui-rise">{hero.eyebrow}</p>
-          <h1 id="about-title" className="ui-display about-hero__title ui-rise" style={{ "--rise-delay": "80ms" } as CSSProperties}>
-            <span className="about-hero__line">{hero.titleFirst}</span>{" "}
-            <span className="about-hero__line about-hero__line--second">{hero.titleSecond}</span>
-          </h1>
-          <p className="ui-lede about-hero__lede ui-rise" style={{ "--rise-delay": "200ms" } as CSSProperties}>
-            {hero.lede}
-          </p>
-        </div>
+      <div className="ui-container">
+        <p className="ui-eyebrow ui-rise">{hero.eyebrow}</p>
+        <h1 id="about-title" className="ui-display about-hero__title ui-rise" style={{ "--rise-delay": "80ms" } as CSSProperties}>
+          <span className="about-hero__line">{hero.titleFirst}</span>{" "}
+          <span className="about-hero__line about-hero__line--second">{hero.titleSecond}</span>
+        </h1>
 
-        <figure className="about-hero__figure ui-rise" style={{ "--rise-delay": "260ms" } as CSSProperties}>
-          <div className="about-hero__stage">
-            <OrganArt organ={organ} asset="organ" alt={hero.alt} size={720} loading="eager" />
-            <Annotations notes={notes} />
+        <div className="about-hero__grid">
+          <div className="about-hero__aside ui-rise" style={{ "--rise-delay": "220ms" } as CSSProperties}>
+            <p className="ui-lede about-hero__lede">{hero.lede}</p>
           </div>
-          <figcaption className="about-caption about-hero__caption">
-            <span className="about-caption__plate">
-              {format(copy.plate, { number: "I" })}
-            </span>
-            <span className="ui-latin about-caption__latin" lang="la">
-              {organ.scientificName}
-            </span>
-            <span className="about-caption__text">
-              {organ.name}
-              <span className="ui-sr">: {picked.map(({ hotspot }) => hotspot.label).join(", ")}</span>
-            </span>
-          </figcaption>
-        </figure>
+
+          <figure className="about-hero__figure ui-rise" style={{ "--rise-delay": "300ms" } as CSSProperties}>
+            <div className="about-hero__stage">
+              <OrganArt organ={organ} asset="organ" alt={hero.alt} size={720} loading="eager" />
+              <Annotations notes={notes} className="about-hero__notes" />
+            </div>
+            <figcaption className="about-caption">
+              <span className="about-caption__plate">{format(copy.plate, { number: "I" })}</span>
+              <span className="ui-latin about-caption__latin" lang="la">
+                {organ.scientificName}
+              </span>
+              <span className="about-caption__text">
+                {organ.name}
+                <span className="ui-sr">: {picked.map(({ hotspot }) => hotspot.label).join(", ")}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   );
