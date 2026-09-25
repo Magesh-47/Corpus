@@ -326,9 +326,9 @@
 }
 .about-studio__orbit {
   position: absolute;
-  left: -6%;
-  bottom: 2%;
-  width: 112%;
+  left: 2%;
+  bottom: 3%;
+  width: 96%;
   height: auto;
   aspect-ratio: 5 / 1;
   fill: none;
@@ -343,9 +343,9 @@
 /* A section plane, marked A–A as on an engineering drawing. */
 .about-studio__section {
   position: absolute;
-  top: 47%;
-  left: -8%;
-  right: -8%;
+  top: 55%;
+  left: -6%;
+  right: -6%;
   display: flex;
   justify-content: space-between;
   border-top: 1px dashed color-mix(in srgb, var(--accent-ink) 70%, transparent);
@@ -532,7 +532,7 @@
   align-items: center;
 }
 .about-closing__art {
-  grid-column: 1 / span 5;
+  grid-column: 1 / span 4;
   align-self: end;
   max-width: 440px;
   width: 100%;
@@ -544,13 +544,13 @@
   mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
 }
 .about-closing__text {
-  grid-column: 7 / -1;
+  grid-column: 6 / -1;
   display: grid;
   justify-items: start;
   gap: clamp(32px, 3.4vw, 48px);
   padding-block-end: clamp(72px, 9vw, 136px);
 }
-.about-closing__title { font-size: var(--display-lg); }
+.about-closing__title { font-size: var(--display-md); line-height: var(--leading-display); }
 .about-closing__line:last-child { font-style: italic; color: var(--ink-2); }
 .about-closing__line { display: block; }
 
