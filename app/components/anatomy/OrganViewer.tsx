@@ -6,12 +6,12 @@ import {
   CircleDashed,
   Layers3,
   Maximize2,
+  Rotate3d,
   RotateCcw,
   ScanLine,
-  Search,
+  ZoomIn,
   Check,
   Crosshair,
-  Sparkles,
   X,
 } from "lucide-react";
 import type { Hotspot, Organ } from "../../i18n/merge";
@@ -27,6 +27,8 @@ type Props = {
   onCompare: () => void;
   quizActive: boolean;
   onQuizExit: () => void;
+  /** The structure named by the last dot press, mirrored outside the canvas. */
+  onSelectionChange?: (hotspot: Hotspot | null) => void;
 };
 
 /** Fisher–Yates. The quiz asks for every structure once, in a fresh order. */
@@ -89,6 +91,21 @@ function LabelQuiz({
     };
   });
 
+  // Escape leaves the quiz, unless a dialog above it is handling the key.
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !document.querySelector("dialog[open]")) onExit();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onExit]);
+
+  // The result panel takes focus, so keyboard users land on "Try again".
+  const summaryRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (finished) summaryRef.current?.focus();
+  }, [finished]);
+
   const retry = () => {
     setStep(0);
     setScore(0);
@@ -117,13 +134,13 @@ function LabelQuiz({
             </ol>
             <small>{t.quiz.hint}</small>
           </div>
-          <button type="button" onClick={onExit} aria-label={t.quiz.exit}><X size={16} /></button>
+          <button type="button" onClick={onExit} aria-label={t.quiz.exit}><X size={18} aria-hidden /></button>
         </div>
       )}
 
       {answer && (
         <div className={`quiz-answer ${answer.correct ? "ok" : "no"} ${answer.atTop ? "at-top" : ""}`} role="status" aria-live="assertive">
-          <span className="quiz-answer-icon">{answer.correct ? <Check size={22} /> : <X size={22} />}</span>
+          <span className="quiz-answer-icon" aria-hidden>{answer.correct ? <Check size={22} /> : <X size={22} />}</span>
           <div>
             <strong>{answer.correct ? t.quiz.correct : t.quiz.wrong}</strong>
             {answer.correct ? (
@@ -139,13 +156,13 @@ function LabelQuiz({
       )}
 
       {finished && (
-        <div className="quiz-summary" role="dialog" aria-modal="true">
-          <span className="modal-icon">{score === order.length ? "★" : "✓"}</span>
-          <h2>{t.quiz.done}</h2>
-          <p>{format(t.quiz.score, { score: String(score), total: String(order.length) })}</p>
+        <div className="quiz-summary" role="group" aria-labelledby="quiz-summary-title">
+          <p className="ui-label">{t.info.quiz}</p>
+          <h2 id="quiz-summary-title">{t.quiz.done}</h2>
+          <p className="quiz-summary-score" role="status">{format(t.quiz.score, { score: String(score), total: String(order.length) })}</p>
           <div className="quiz-summary-actions">
-            <button type="button" className="lesson-button" onClick={retry}>{t.quiz.retry}</button>
-            <button type="button" onClick={onExit}>{t.quiz.exit}</button>
+            <button type="button" ref={summaryRef} className="ui-button ui-button--primary" onClick={retry}>{t.quiz.retry}</button>
+            <button type="button" className="ui-button ui-button--secondary" onClick={onExit}>{t.quiz.exit}</button>
           </div>
         </div>
       )}
@@ -162,7 +179,7 @@ function useAuthoringFlag() {
   );
 }
 
-export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCompare, quizActive, onQuizExit }: Props) {
+export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCompare, quizActive, onQuizExit, onSelectionChange }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<AnatomyViewer | null>(null);
   const organRef = useRef(organ);
@@ -182,6 +199,10 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
 
   // The viewer captures its callbacks once, so live handlers go through refs.
   const pickRef = useRef<(hotspot: Hotspot) => void>(() => {});
+  const selectionRef = useRef(onSelectionChange);
+  useEffect(() => {
+    selectionRef.current = onSelectionChange;
+  }, [onSelectionChange]);
   const authorRef = useRef<(point: { x: number; y: number; z: number }) => void>(() => {});
   useEffect(() => {
     authorRef.current = setAuthorPoint;
@@ -219,7 +240,10 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
     void import("../../lib/three/viewer").then(({ AnatomyViewer: Viewer }) => {
       if (cancelled || !mountRef.current) return;
       viewer = new Viewer(mountRef.current, {
-        onSelect: setSelected,
+        onSelect: (hotspot) => {
+          setSelected(hotspot);
+          selectionRef.current?.(hotspot);
+        },
         onLoading: (isLoading, value) => {
           setLoading(isLoading);
           setProgress(value);
@@ -281,9 +305,18 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
     }
   };
 
+  // Toggles report their state with aria-pressed; one-shot actions (zoom,
+  // reset) carry none, so they are never announced as stuck "not pressed".
+  const pressed: Record<string, boolean | undefined> = {
+    rotate: autoRotate,
+    isolate: activeTool === "isolate",
+    section: activeTool === "section",
+    layers: activeTool === "layers",
+    compare,
+  };
   const tools = [
-    { id: "rotate", label: t.tools.rotate, icon: RotateCcw },
-    { id: "zoom", label: t.tools.zoom, icon: Search },
+    { id: "rotate", label: t.tools.rotate, icon: Rotate3d },
+    { id: "zoom", label: t.tools.zoom, icon: ZoomIn },
     { id: "isolate", label: t.tools.isolate, icon: CircleDashed },
     { id: "section", label: t.tools.section, icon: ScanLine },
     { id: "layers", label: t.tools.layers, icon: Layers3 },
@@ -292,38 +325,41 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
   ];
 
   return (
-    <section className="viewer-shell" aria-label={format(t.viewer.title, { organ: organ.name })}>
+    <section id="viewer" className="viewer-shell" aria-label={format(t.viewer.title, { organ: organ.name })}>
       <div className="viewer-glow" style={{ "--organ-accent": organ.accent } as React.CSSProperties} />
       <div ref={mountRef} className="three-mount" />
 
-      <div className="viewer-tools" aria-label={t.tools.label}>
+      <div className="viewer-tools" role="toolbar" aria-label={t.tools.label}>
         {tools.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
             type="button"
-            className={`tool-button ${(activeTool === id || (id === "compare" && compare)) ? "active" : ""}`}
+            className={`tool-button tool-${id}`}
             onClick={() => handleTool(id)}
-            aria-pressed={activeTool === id || (id === "compare" && compare)}
-            title={label}
+            aria-pressed={pressed[id]}
           >
-            <Icon size={19} strokeWidth={1.65} />
+            <Icon size={19} strokeWidth={1.5} aria-hidden />
             <span>{label}</span>
           </button>
         ))}
       </div>
 
       {!quizActive && (
-      <aside className="tip-note" aria-label={t.viewer.tip}>
-        <span><Sparkles size={15} /> {t.viewer.tip}</span>
-        <p>{t.viewer.tipDrag}<br />{t.viewer.tipScroll}<br />{t.viewer.tipClick}</p>
-      </aside>
+      <div className="tip-note">
+        <p className="ui-label">{t.viewer.tip}</p>
+        <ul>
+          <li>{t.viewer.tipDrag}</li>
+          <li>{t.viewer.tipScroll}</li>
+          <li>{t.viewer.tipClick}</li>
+        </ul>
+      </div>
       )}
 
       {selected && !quizActive && (
         <div className="hotspot-callout" ref={calloutRef} data-side="right">
           <div className="callout-body" style={{ "--hotspot-color": selected.color } as React.CSSProperties}>
             <button className="callout-close" type="button" onClick={() => viewerRef.current?.clearSelection()} aria-label={t.modal.close}>
-              <X size={13} />
+              <X size={14} aria-hidden />
             </button>
             <b>{selected.label}</b>
             <small>{selected.detail}</small>
@@ -375,7 +411,7 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
 
       {loading && slowLoad && (
         <div className="model-loader" role="status" aria-live="polite">
-          <div className="loader-orbit"><Maximize2 size={20} /></div>
+          <div className="loader-orbit" aria-hidden><Maximize2 size={20} /></div>
           <strong>{format(t.viewer.loading, { organ: organ.name })}</strong>
           <span>{Math.max(8, Math.round(progress * 100))}%</span>
         </div>
@@ -383,14 +419,14 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
 
       {!quizActive && (
       <button className="auto-rotate" type="button" onClick={() => onAutoRotate(!autoRotate)} aria-pressed={autoRotate}>
-        <RotateCcw size={14} /> {t.viewer.autoRotate}
-        <span className={`switch ${autoRotate ? "on" : ""}`}><i /></span>
+        <Rotate3d size={15} strokeWidth={1.5} aria-hidden /> {t.viewer.autoRotate}
+        <span className={`switch ${autoRotate ? "on" : ""}`} aria-hidden><i /></span>
       </button>
       )}
 
       <div className="view-caption">
         <span>{t.viewer.caption}</span>
-        <strong>{organ.scientificName}</strong>
+        <strong lang="la">{organ.scientificName}</strong>
       </div>
     </section>
   );

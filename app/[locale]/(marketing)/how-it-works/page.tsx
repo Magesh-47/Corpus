@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { HowCta } from "../../../components/marketing/how-it-works/HowCta";
+import { HowClosing } from "../../../components/marketing/how-it-works/HowClosing";
 import { HowHero } from "../../../components/marketing/how-it-works/HowHero";
-import { HowDifferent, HowRecall, HowWhy3d } from "../../../components/marketing/how-it-works/HowPrinciples";
 import { HowSteps } from "../../../components/marketing/how-it-works/HowSteps";
 import { getLocale } from "../../../i18n/config";
 import { getDictionary } from "../../../i18n/dictionaries";
@@ -21,29 +20,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: howItWorks.meta.title,
     description: howItWorks.meta.description,
     imageAlt: common.ogImageAlt,
+    absoluteTitle: true,
   });
 }
 
 /**
- * How it works — the Corpus learning philosophy, told as one sequence:
- * see, explore, understand, practise, remember. Every organ fact, name and
- * Latin term on this page is read from the anatomy data, never retyped.
+ * How it works — one sequence, told in five numbered steps: see, explore,
+ * understand, practice, remember. Organ facts, structure labels and Latin
+ * terms on this page are read from the anatomy data, never retyped.
  */
 export default async function HowItWorksPage({ params }: Props) {
   const { code } = getLocale((await params).locale);
   const [{ howItWorks: copy, common }, { organs: prose }] = await Promise.all([getSiteDictionary(code), getDictionary(code)]);
   const organs = indexOrgans(buildOrgans(prose));
-  const shared = { locale: code, copy, organs };
-  const status = { available: common.status.availableNow, comingSoon: common.status.comingSoon, example: common.status.example };
 
   return (
     <div className="how">
-      <HowHero {...shared} exploreLabel={common.actions.exploreBody} />
-      <HowSteps {...shared} status={status} />
-      <HowWhy3d copy={copy} organs={organs} />
-      <HowRecall copy={copy} />
-      <HowDifferent copy={copy} organs={organs} />
-      <HowCta {...shared} exploreLabel={common.actions.exploreBody} />
+      <HowHero copy={copy} />
+      <HowSteps locale={code} copy={copy} organs={organs} status={common.status} />
+      <HowClosing locale={code} copy={copy} organs={organs} />
     </div>
   );
 }

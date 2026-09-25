@@ -315,9 +315,9 @@
 /* The specimen, on a turntable. */
 .about-studio__specimen {
   position: absolute;
-  top: 25%;
-  left: 9%;
-  width: 54%;
+  top: 24%;
+  left: 13%;
+  width: 52%;
 }
 .about-studio__stage { position: relative; }
 .about-studio__stage img {
@@ -357,10 +357,27 @@
   letter-spacing: 0.08em;
 }
 
+/* A microscope field of the same tissue, cut to its circle. */
+.about-studio__slide {
+  position: absolute;
+  right: 9%;
+  top: 56%;
+  width: 20%;
+  aspect-ratio: 1;
+  padding: 5px;
+  border: 1px solid var(--studio-line);
+  border-radius: 50%;
+}
+.about-studio__slide img {
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(closest-side, #000 97%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 97%, transparent 100%);
+}
+
 /* The specimen tag: the Latin name set large, under a short rule. */
 .about-studio__tag {
   position: absolute;
-  left: 9%;
+  left: 8%;
   bottom: 6%;
   display: grid;
   gap: 8px;

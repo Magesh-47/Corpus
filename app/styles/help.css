@@ -63,7 +63,9 @@
 @media (min-width: 720px) {
   .help-hero__inner {
     grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    align-items: end;
+    /* Top-aligned, so search results only ever grow the page downwards and
+       the heading never jumps while someone types. */
+    align-items: start;
   }
   .help-plate { width: min(100%, 420px); }
 }

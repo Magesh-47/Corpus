@@ -16,7 +16,8 @@ const KIDNEY_NOTES = [
 /**
  * Chapter 02's picture: a drawn study table, not a photograph of one. A pencil
  * study of the heart pinned at an angle, a painted specimen on a turntable
- * with leader-line labels and a specimen tag, and a few drawn instruments (a
+ * with leader-line labels and a specimen tag, a microscope field of its
+ * tissue, and a few drawn instruments (a
  * section line, a turntable orbit, a scale slider). It is one image to
  * assistive technology (`role="img"` with a single description) and nothing
  * in it is interactive or styled to look pressable.
@@ -61,6 +62,10 @@ export function StudioTable({ sketch, specimen, alt }: { sketch: Organ; specimen
           <ellipse cx="50" cy="10" rx="48" ry="8" />
           <path d="M 82 16.6 L 87.5 15.5 L 84.6 12.6" />
         </svg>
+      </div>
+
+      <div className="about-studio__slide" aria-hidden>
+        <OrganArt organ={specimen} asset="microscopic" alt="" size={360} />
       </div>
 
       <p className="about-studio__tag" aria-hidden>
