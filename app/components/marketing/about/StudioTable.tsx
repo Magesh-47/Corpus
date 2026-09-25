@@ -30,7 +30,7 @@ export function StudioTable({ sketch, specimen, alt }: { sketch: Organ; specimen
   }));
 
   return (
-    <div className="about-studio" role="img" aria-label={alt} dir="ltr">
+    <div className="about-studio" role="img" aria-label={alt}>
       <div className="about-studio__ruler" aria-hidden />
 
       <div className="about-studio__sheet" aria-hidden>

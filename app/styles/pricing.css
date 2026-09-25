@@ -69,7 +69,6 @@
 }
 .pricing-hero__caption {
   margin: 0;
-  max-width: 30em;
   padding-block-start: 12px;
   border-top: 1px solid var(--rule);
 }
@@ -399,22 +398,23 @@
   align-items: start;
 }
 .pricing-faq__header { margin-block-end: 0; }
-.pricing-faq__list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(32px, 4vw, 64px);
-}
+.pricing-faq__list { border-bottom: 1px solid var(--rule); }
+/* Question and answer side by side on one rule, like entries in an index. */
 .pricing-faq__item {
-  padding-block: 22px 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(24px, 3vw, 48px);
+  padding-block: 24px 32px;
   border-top: 1px solid var(--rule);
+  scroll-margin-block-start: 104px;
 }
 .pricing-faq__question {
-  margin: 0 0 12px;
+  margin: 0;
   color: var(--ink);
   font: 500 clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem)/1.2 var(--font-serif), serif;
   text-wrap: balance;
 }
-.pricing-faq__answer { margin: 0; }
+.pricing-faq__answer { margin: 0; max-width: 34em; }
 
 /* --------------------------------------------------------------- closing */
 
@@ -569,8 +569,7 @@
   .pricing-plate__caption { grid-area: caption; align-self: start; }
   .pricing-plate__count { margin-block-start: 4px; }
 
-  .pricing-faq__list { grid-template-columns: minmax(0, 1fr); }
-  .pricing-faq__item { padding-block: 20px 28px; }
+  .pricing-faq__item { grid-template-columns: minmax(0, 1fr); row-gap: 12px; padding-block: 20px 28px; }
 
   .pricing-hero .pricing-actions,
   .pricing-closing__text { width: 100%; }

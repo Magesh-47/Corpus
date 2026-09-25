@@ -35,7 +35,6 @@ export function useAuthForm<K extends string>({
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<AuthResult | null>(null);
   const fields = useRef<Partial<Record<K, HTMLInputElement | null>>>({});
-  const statusRef = useRef<HTMLDivElement>(null);
 
   const change = (key: K) => (event: ChangeEvent<HTMLInputElement>) => {
     const next = { ...values, [key]: event.target.value };
@@ -78,16 +77,9 @@ export function useAuthForm<K extends string>({
       return cleared;
     });
     setAttempted(false);
-    // The status is announced by its live region. Disabling the submit button
-    // while busy can drop focus to the page; if so, place it on the status so
-    // keyboard users are not sent back to the top.
-    requestAnimationFrame(() => {
-      const active = document.activeElement;
-      if (!active || active === document.body || (active as HTMLButtonElement).disabled) statusRef.current?.focus();
-    });
   };
 
   const hasErrors = order.some((key) => errors[key]);
 
-  return { values, errors, busy, result, hasErrors, change, register, onSubmit, statusRef };
+  return { values, errors, busy, result, hasErrors, change, register, onSubmit };
 }

@@ -86,7 +86,7 @@ export function SignUpForm({ locale, copy }: { locale: string; copy: AuthCopy })
           <SubmitButton busy={form.busy} label={copy.signUp.submit} busyLabel={copy.signUp.busy} />
         </div>
       </form>
-      <AuthStatus locale={locale} copy={copy} result={form.result} unavailable={copy.signUp.unavailable} ref={form.statusRef} />
+      <AuthStatus locale={locale} copy={copy} result={form.result} unavailable={copy.signUp.unavailable} />
     </>
   );
 }

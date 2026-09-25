@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { Ref } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import type { SiteDictionary } from "../../i18n/site";
 import { format } from "../../i18n/types";
@@ -48,14 +48,21 @@ export function AuthStatus({
   copy,
   result,
   unavailable,
-  ref,
 }: {
   locale: string;
   copy: AuthCopy;
   result: AuthResult | null;
   unavailable: { title: string; body: string };
-  ref: Ref<HTMLDivElement>;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  // Disabling the submit button while busy can drop focus to the page; if so,
+  // place it on the outcome so keyboard users are not sent back to the top.
+  useEffect(() => {
+    if (!result) return;
+    const active = document.activeElement;
+    if (!active || active === document.body || (active as HTMLButtonElement).disabled) ref.current?.focus();
+  }, [result]);
+
   return (
     <div className="auth-status-slot" aria-live="polite">
       {result && !result.ok && (

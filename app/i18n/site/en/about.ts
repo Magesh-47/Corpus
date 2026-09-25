@@ -56,7 +56,7 @@ export const about = {
       practice: { verb: "You practice.", note: "Find each structure when asked, and check yourself." },
     },
     studioAlt:
-      "An illustrated study table: a pencil study of the heart, a painted pair of kidneys with two structures labelled, and their Latin name.",
+      "A drawn study table: a pencil study of the heart pinned to it, and a painted pair of kidneys on a turntable, labelled with leader lines and their Latin name.",
   },
 
   principles: {
@@ -93,7 +93,7 @@ export const about = {
       languages:
         "The anatomy in Explore, from organ names and descriptions to every structure label, is available in {count} languages.",
       scripts:
-        "Arabic reads from right to left. Chinese, Japanese and Korean are set in typefaces made for their scripts.",
+        "In Arabic the whole layout reads from right to left. Chinese, Japanese and Korean are set in typefaces made for their scripts.",
       latin:
         "Beneath every language sits the same Latin term. It keeps a student in Cairo and a student in Seoul pointing at the same structure, whatever they call it.",
       honest:

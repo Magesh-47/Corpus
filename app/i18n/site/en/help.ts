@@ -26,6 +26,7 @@ export const help = {
     clear: "Clear search",
     resultsLabel: "Search results",
     count: "Results: {count}",
+    more: "Showing the first {shown}. Every matching question is also shown below.",
     kind: {
       question: "Question",
       guide: "Guide",
@@ -52,7 +53,7 @@ export const help = {
   },
 
   gettingStarted: {
-    title: "Getting started",
+    title: "Your first few minutes",
     intro: "Corpus runs in your web browser. There is nothing to install and no account to create.",
     steps: {
       open: {
@@ -76,7 +77,7 @@ export const help = {
   },
 
   viewer: {
-    title: "Using the 3D viewer",
+    title: "Turn, zoom and read a model",
     intro: "Each organ is a 3D model you can examine from every side, with a mouse, a touch screen or the keyboard.",
     columns: {
       action: "Action",
@@ -126,7 +127,7 @@ export const help = {
   },
 
   exploring: {
-    title: "Exploring anatomy",
+    title: "Organs, facts and learning cards",
     intro: "Corpus includes {count} organs. Each opens with its 3D model at the centre and its facts alongside.",
     parts: {
       library: {
@@ -149,7 +150,7 @@ export const help = {
   },
 
   practice: {
-    title: "Practice and recall",
+    title: "Test yourself on the model",
     intro: "Practice happens on the model itself. The labelling quiz asks you to find each named structure of the organ you are viewing.",
     steps: {
       start: "Open an organ and select {quiz}. The model stops turning, so the dots stay still.",
@@ -162,7 +163,7 @@ export const help = {
   },
 
   languages: {
-    title: "Languages",
+    title: "Reading Corpus in your language",
     intro: "Corpus is available in {count} languages. In Explore, organ names, descriptions, structure labels and controls are translated into each of them.",
     switchBody:
       "Choose a language at the foot of any page, or from the language menu at the top of Explore. You stay on the page you were reading.",
@@ -172,8 +173,8 @@ export const help = {
   },
 
   account: {
-    title: "Your account",
-    body: "Accounts are not available yet. The sign-in, sign-up and password reset pages are in place, but they do not create an account or send any email.",
+    title: "Accounts are coming soon",
+    body: "The sign-in, sign-up and password reset forms are in place, but accounts do not exist yet. The forms say so, and nothing you enter is sent.",
     saved: "You do not need an account: everything in Explore works without one. Nothing you do is saved between visits.",
     cta: "Start exploring",
   },
@@ -222,11 +223,11 @@ export const help = {
     },
     createAccount: {
       q: "How do I create an account?",
-      a: "Accounts are coming soon. The sign-up page is in place, but it does not create an account yet. You do not need one to use Explore.",
+      a: "Accounts are coming soon. The sign-up form is in place, but it does not create an account yet and nothing you enter is sent. You do not need an account to use Explore.",
     },
     resetPassword: {
       q: "How do I reset my password?",
-      a: "There are no accounts yet, so there is no password to reset. The reset page is in place for later, and it does not send any email today.",
+      a: "There are no accounts yet, so there is no password to reset. The reset form is in place for later; today it does not send any email.",
     },
   },
   faqLinks: {

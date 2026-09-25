@@ -46,7 +46,6 @@ export function ForgotPasswordForm({ locale, copy }: { locale: string; copy: Aut
         copy={copy}
         result={form.result}
         unavailable={copy.forgotPassword.unavailable}
-        ref={form.statusRef}
       />
     </>
   );

@@ -3,7 +3,7 @@ import { SectionHeader } from "../../ui/SectionHeader";
 import type { SiteDictionary } from "../../../i18n/site";
 
 /**
- * A short set of honest answers, all visible at once — four questions do not
+ * A short set of honest answers, all visible at once — three questions do not
  * need an accordion, and nothing should be hidden on a page about money.
  */
 export function PricingFaq({ site }: { site: SiteDictionary }) {
@@ -20,7 +20,7 @@ export function PricingFaq({ site }: { site: SiteDictionary }) {
               id={`pricing-faq-${id}`}
               className="pricing-faq__item"
               data-reveal
-              style={{ "--reveal-delay": `${(index % 2) * 100}ms` } as React.CSSProperties}
+              style={{ "--reveal-delay": `${index * 80}ms` } as React.CSSProperties}
             >
               <h3 className="pricing-faq__question">{item.q}</h3>
               <p className="pricing-faq__answer ui-body">{item.a}</p>

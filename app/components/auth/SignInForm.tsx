@@ -59,7 +59,7 @@ export function SignInForm({ locale, copy }: { locale: string; copy: AuthCopy })
           </Link>
         </div>
       </form>
-      <AuthStatus locale={locale} copy={copy} result={form.result} unavailable={copy.signIn.unavailable} ref={form.statusRef} />
+      <AuthStatus locale={locale} copy={copy} result={form.result} unavailable={copy.signIn.unavailable} />
     </>
   );
 }

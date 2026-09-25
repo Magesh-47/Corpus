@@ -154,10 +154,6 @@ export const pricing = {
     eyebrow: "Questions",
     title: "Asked plainly, answered plainly.",
     items: {
-      isFree: {
-        q: "Is Corpus free?",
-        a: "Yes. Everything in Explore today is free to use: every organ, the 3D viewer and its tools, the learning cards and the labelling quiz.",
-      },
       account: {
         q: "Do I need an account?",
         a: "No. You can open Explore and start straight away, without signing in.",
