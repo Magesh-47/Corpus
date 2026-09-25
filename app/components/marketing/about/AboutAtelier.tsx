@@ -6,21 +6,23 @@ import { StudioTable } from "./StudioTable";
 
 type Copy = SiteDictionary["about"];
 
-/** Chapter 02: what the name means, the five verbs of the atelier, and its table. */
+/** Chapter 02: what the name means, the five verbs of the atelier, and its drawn study table. */
 export function AboutAtelier({ copy, sketch, specimen }: { copy: Copy; sketch: Organ; specimen: Organ }) {
   const { atelier } = copy;
   return (
     <section className="ui-section ui-tone-deep about-atelier" aria-labelledby="about-atelier-title">
       <div className="ui-container about-atelier__grid">
         <div className="about-atelier__text">
-          <IndexMarker n={2} label={atelier.label} />
-          <h2 id="about-atelier-title" className="ui-display about-atelier__title" data-reveal>
-            {atelier.title}
-          </h2>
+          <header className="about-chapter-head">
+            <IndexMarker n={2} label={atelier.label} />
+            <h2 id="about-atelier-title" className="ui-display about-atelier__title" data-reveal>
+              {atelier.title}
+            </h2>
+          </header>
           <p className="ui-statement about-atelier__meaning" data-reveal>
             {atelier.meaning}
           </p>
-          <p className="ui-lede" data-reveal>
+          <p className="ui-lede about-atelier__body" data-reveal>
             {atelier.body}
           </p>
 

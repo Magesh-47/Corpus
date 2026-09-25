@@ -6,6 +6,9 @@ import { format } from "../../../i18n/types";
 import type { HelpCopy } from "./shared";
 import { normalise, searchStore } from "./searchStore";
 
+/** The hero shows the strongest matches only; the questions below show all. */
+const SHOWN = 6;
+
 export type SearchEntry = {
   /** The id of the element the result links to (a question or a guide). */
   id: string;
@@ -144,7 +147,7 @@ export function HelpSearch({
               {summary}
             </p>
             <ul className="help-search__list" aria-label={copy.resultsLabel}>
-              {results.map((entry) => (
+              {results.slice(0, SHOWN).map((entry) => (
                 <li key={entry.id}>
                   <a href={`#${entry.id}`} className="help-search__result" onClick={() => openTarget(entry.id)}>
                     <span className="help-search__kind">{copy.kind[entry.kind]}</span>
@@ -155,6 +158,11 @@ export function HelpSearch({
                 </li>
               ))}
             </ul>
+            {results.length > SHOWN && (
+              <p className="help-search__more">
+                {format(copy.more, { shown: new Intl.NumberFormat(locale).format(SHOWN) })}
+              </p>
+            )}
           </>
         )}
         {active && results.length === 0 && (

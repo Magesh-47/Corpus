@@ -10,11 +10,11 @@ export function HelpHero({ ctx, entries }: { ctx: HelpContext; entries: SearchEn
   const plate = ctx.organs.find((organ) => organ.id === PLATE_ORGAN)!;
 
   return (
-    <div className="help-hero">
+    <section className="help-hero" aria-labelledby="help-title">
       <div className="ui-container help-hero__inner">
         <div className="help-hero__text">
           <p className="ui-eyebrow ui-rise">{hero.eyebrow}</p>
-          <h1 className="ui-display help-hero__title ui-rise" style={{ "--rise-delay": "80ms" } as React.CSSProperties}>
+          <h1 id="help-title" className="ui-display help-hero__title ui-rise" style={{ "--rise-delay": "80ms" } as React.CSSProperties}>
             {hero.title}
           </h1>
           <div className="ui-rise" style={{ "--rise-delay": "160ms" } as React.CSSProperties}>
@@ -34,6 +34,6 @@ export function HelpHero({ ctx, entries }: { ctx: HelpContext; entries: SearchEn
           </figcaption>
         </figure>
       </div>
-    </div>
+    </section>
   );
 }

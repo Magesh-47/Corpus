@@ -87,7 +87,7 @@ export function ViewerGuide({ ctx }: { ctx: HelpContext }) {
                   <span className="help-tools__icon" aria-hidden>
                     <Icon size={17} strokeWidth={1.6} />
                   </span>
-                  {ctx.ui.tools[id]}
+                  <span className="help-tools__name">{ctx.ui.tools[id]}</span>
                 </dt>
                 <dd>{format(description, labels)}</dd>
               </div>
