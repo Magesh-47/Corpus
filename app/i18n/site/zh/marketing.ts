@@ -79,7 +79,7 @@ export const marketing: SiteDictionary["marketing"] = {
 
   collection: {
     eyebrow: "馆藏",
-    title: "从人体的任何地方开始。",
+    title: "从人体的\n任何地方开始。",
     lede: "探索那些让我们成为人的结构——从心脏的节律，到大脑的构造。",
     explore: "探索",
     lines: {
@@ -106,7 +106,7 @@ export const marketing: SiteDictionary["marketing"] = {
 
   features: {
     eyebrow: "查看器之内",
-    title: "标本的每一个角度。",
+    title: "标本的每个角度。",
     items: {
       rotate: {
         label: "旋转",

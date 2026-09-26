@@ -4,7 +4,7 @@ export const about: SiteDictionary["about"] = {
   meta: {
     title: "À propos de Corpus — Atelier d’anatomie",
     description:
-      "Pourquoi Corpus aborde l’anatomie comme un langage visuel : organes en 3D, planches peintes et terminologie latine, pour apprendre le corps en l’observant, en le manipulant et en s’en souvenant, en {count} langues.",
+      "Pourquoi Corpus aborde l’anatomie comme un langage visuel : organes en 3D, planches peintes et terminologie latine, pour apprendre le corps en l’observant, en le manipulant et en s’en souvenant, en {count} langues.",
   },
 
   plate: "Planche {number}",
@@ -14,7 +14,7 @@ export const about: SiteDictionary["about"] = {
     titleFirst: "L’anatomie est un langage visuel.",
     titleSecond: "Nous avons créé un lieu pour l’apprendre.",
     contents: "Sommaire",
-    lede: "Corpus est un atelier d’anatomie : des organes en 3D, des planches peintes et des noms latins précis, agencés pour que vous appreniez le corps en le regardant de près.",
+    lede: "Corpus est un atelier d’anatomie : des organes en 3D, des planches peintes et des noms latins précis, agencés pour que vous appreniez le corps en le regardant de près.",
     alt: "Aquarelle du cerveau humain vu du côté gauche, avec le cervelet et le tronc cérébral en dessous.",
   },
 
@@ -51,7 +51,7 @@ export const about: SiteDictionary["about"] = {
       practice: { verb: "Vous vous exercez.", note: "Retrouvez chaque structure demandée, puis vérifiez vos réponses." },
     },
     studioAlt:
-      "Une table d’étude dessinée : une étude du cœur au crayon y est épinglée, et une paire de reins peinte repose sur un plateau tournant, légendée par des lignes de rappel et son nom latin.",
+      "Une table d’étude dessinée : une étude du cœur au crayon y est épinglée, et une paire de reins peinte repose sur un plateau tournant, légendée par des lignes de rappel et son nom latin.",
   },
 
   principles: {
@@ -92,7 +92,7 @@ export const about: SiteDictionary["about"] = {
       latin:
         "Sous chaque langue se trouve le même terme latin. Il permet à une étudiante du Caire et à un étudiant de Séoul de désigner la même structure, quel que soit le nom qu’ils lui donnent.",
       honest:
-        "La traduction est un travail minutieux et continu : certaines langues se liront plus naturellement que d’autres, le temps que nous les affinions.",
+        "La traduction est un travail minutieux et continu : certaines langues se liront plus naturellement que d’autres, le temps que nous les affinions.",
     },
     namesTitle: "Une structure, {count} noms",
     namesCaption: "Le cœur, tel qu’Explorer le nomme dans chaque langue. Le terme latin reste le même.",

@@ -4,7 +4,7 @@ export const marketing: SiteDictionary["marketing"] = {
   meta: {
     title: "Corpus — Apprendre l’anatomie comme un artiste",
     description:
-      "Explorez le corps humain en 3D détaillée : faites pivoter le cœur, le cerveau, les poumons et d’autres organes, regardez sous la surface et testez-vous sur les structures qu’ils renferment.",
+      "Explorez le corps humain en 3D détaillée : faites pivoter le cœur, le cerveau, les poumons et d’autres organes, regardez sous la surface et testez-vous sur les structures qu’ils renferment.",
   },
 
   hero: {
@@ -91,7 +91,7 @@ export const marketing: SiteDictionary["marketing"] = {
       kidneys: "Des filtres qui règlent la composition du milieu intérieur de l’organisme.",
       eyeball: "Un organe sensoriel qui transforme la lumière en information visuelle.",
     },
-    more: "Également dans Explorer : {organs}.",
+    more: "Également dans Explorer : {organs}.",
     note: "Les illustrations et les modèles 3D sont des représentations pédagogiques simplifiées.",
   },
 
@@ -162,9 +162,9 @@ export const marketing: SiteDictionary["marketing"] = {
     exampleLabel: "Un échange à titre d’illustration",
     you: "Vous",
     corpus: "Corpus",
-    question: "Pourquoi le ventricule gauche est-il plus épais que le droit ?",
+    question: "Pourquoi le ventricule gauche est-il plus épais que le droit ?",
     answer:
-      "Le ventricule gauche propulse le sang dans la circulation systémique : il doit donc générer une pression bien plus élevée que le ventricule droit.",
+      "Le ventricule gauche propulse le sang dans la circulation systémique : il doit donc générer une pression bien plus élevée que le ventricule droit.",
     status: "En développement",
     disclaimer: "Un exemple rédigé, pas un assistant réel. Il n’existe encore aucun guide avec qui échanger.",
   },

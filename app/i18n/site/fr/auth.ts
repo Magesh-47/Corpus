@@ -4,15 +4,15 @@ export const auth: SiteDictionary["auth"] = {
   meta: {
     signIn: {
       title: "Se connecter",
-      description: "Connectez-vous à Corpus. Les comptes seront bientôt disponibles ; Explorer fonctionne sans.",
+      description: "Connectez-vous à Corpus. Les comptes seront bientôt disponibles ; Explorer fonctionne sans.",
     },
     signUp: {
       title: "Créer un compte",
-      description: "Créez un compte Corpus. Les comptes seront bientôt disponibles ; Explorer fonctionne sans.",
+      description: "Créez un compte Corpus. Les comptes seront bientôt disponibles ; Explorer fonctionne sans.",
     },
     forgotPassword: {
       title: "Réinitialiser votre mot de passe",
-      description: "Réinitialisez votre mot de passe Corpus. Les comptes seront bientôt disponibles ; Explorer fonctionne sans.",
+      description: "Réinitialisez votre mot de passe Corpus. Les comptes seront bientôt disponibles ; Explorer fonctionne sans.",
     },
   },
 
@@ -60,12 +60,12 @@ export const auth: SiteDictionary["auth"] = {
     lede: "Poursuivez votre exploration du corps humain.",
     submit: "Se connecter",
     busy: "Connexion…",
-    forgot: "Mot de passe oublié ?",
-    switchPrompt: "Nouveau sur Corpus ?",
+    forgot: "Mot de passe oublié ?",
+    switchPrompt: "Nouveau sur Corpus ?",
     switchAction: "Créer un compte",
     unavailable: {
       title: "La connexion n’est pas encore disponible.",
-      body: "Les comptes Corpus sont encore en construction : rien n’a été envoyé ni enregistré. Votre mot de passe a été effacé du formulaire.",
+      body: "Les comptes Corpus sont encore en construction : rien n’a été envoyé ni enregistré. Votre mot de passe a été effacé du formulaire.",
     },
   },
 
@@ -75,11 +75,11 @@ export const auth: SiteDictionary["auth"] = {
     lede: "Créez votre compte Corpus et construisez votre pratique de l’anatomie.",
     submit: "Créer le compte",
     busy: "Création du compte…",
-    switchPrompt: "Vous avez déjà un compte ?",
+    switchPrompt: "Vous avez déjà un compte ?",
     switchAction: "Se connecter",
     unavailable: {
       title: "Les comptes ne peuvent pas encore être créés.",
-      body: "Les comptes Corpus sont encore en construction : rien n’a été envoyé ni enregistré. Vos mots de passe ont été effacés du formulaire.",
+      body: "Les comptes Corpus sont encore en construction : rien n’a été envoyé ni enregistré. Vos mots de passe ont été effacés du formulaire.",
     },
   },
 
@@ -89,11 +89,11 @@ export const auth: SiteDictionary["auth"] = {
     lede: "Saisissez votre adresse e-mail et nous vous aiderons à revenir dans Corpus.",
     submit: "Envoyer le lien",
     busy: "Envoi…",
-    switchPrompt: "Il vous est revenu ?",
+    switchPrompt: "Il vous est revenu ?",
     switchAction: "Retour à la connexion",
     unavailable: {
       title: "La réinitialisation du mot de passe n’est pas encore disponible.",
-      body: "Les comptes Corpus sont encore en construction : il n’y a donc aucun mot de passe à réinitialiser. Aucun e-mail n’a été envoyé et rien n’a été enregistré.",
+      body: "Les comptes Corpus sont encore en construction : il n’y a donc aucun mot de passe à réinitialiser. Aucun e-mail n’a été envoyé et rien n’a été enregistré.",
     },
   },
 
@@ -103,7 +103,7 @@ export const auth: SiteDictionary["auth"] = {
 
   plates: {
     label: "Planche anatomique",
-    marked: "Structure repérée : {structure}",
+    marked: "Structure repérée : {structure}",
     note: "Une illustration pédagogique simplifiée.",
     signIn: {
       number: "Planche I",

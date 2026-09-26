@@ -26,7 +26,7 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Commencer par l’ensemble.",
       line: "Choisissez un organe et observez sa forme avant de vous soucier de ses légendes.",
       body:
-        "Explorer s’ouvre sur une bibliothèque de neuf organes, du cœur et du cerveau jusqu’au pancréas et à la peau. Choisissez-en un : il apparaît entier. Ses structures sont signalées par de petits points, et leurs noms attendent que vous les demandiez.",
+        "Explorer s’ouvre sur une bibliothèque de neuf organes, du cœur et du cerveau jusqu’au pancréas et à la peau. Choisissez-en un : il apparaît entier. Ses structures sont signalées par de petits points, et leurs noms attendent que vous les demandiez.",
       plateLabel: "Planche I",
       caption: "{organ}, vue d’ensemble. Un des neuf organes de la bibliothèque d’Explorer.",
       alt: "Étude à l’aquarelle du cœur humain vu de face, avec l’aorte qui s’arque au-dessus",
@@ -53,7 +53,7 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Relier la structure à la fonction.",
       line: "Explorez la vascularisation, la situation, la fonction, le tissu et le contexte clinique.",
       body:
-        "À côté du modèle, un panneau d’information expose ce qu’est l’organe et ce qu’il fait. Les cartes d’apprentissage vont plus loin : le tissu au microscope, la comparaison avec un autre organe, là où il agit dans le corps, et les affections qui le touchent le plus souvent.",
+        "À côté du modèle, un panneau d’information expose ce qu’est l’organe et ce qu’il fait. Les cartes d’apprentissage vont plus loin : le tissu au microscope, la comparaison avec un autre organe, là où il agit dans le corps, et les affections qui le touchent le plus souvent.",
       panelLabel: "Panneau d’information",
       facts: {
         size: "Taille",
@@ -63,7 +63,7 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
         tissue: "Tissu",
       },
       conditionsLabel: "Contexte clinique",
-      caption: "{organ} : repères tirés du panneau d’information et des cartes d’apprentissage d’Explorer.",
+      caption: "{organ} : repères tirés du panneau d’information et des cartes d’apprentissage d’Explorer.",
       organAlt: "Étude à l’aquarelle des poumons, avec la trachée qui se divise en deux bronches principales",
       tissueAlt: "Vue circulaire au microscope des alvéoles, les minuscules sacs aériens des poumons",
     },
@@ -72,11 +72,11 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Tester ce que vous venez d’explorer.",
       line: "Identifiez les structures et pratiquez le rappel actif.",
       body:
-        "Lancez le quiz d’identification : le modèle s’immobilise. Corpus nomme une structure et vous la retrouvez sur le modèle. En cas d’erreur, la bonne réponse vous est montrée, et chaque manche se termine par votre score et la possibilité de recommencer dans un nouvel ordre.",
+        "Lancez le quiz d’identification : le modèle s’immobilise. Corpus nomme une structure et vous la retrouvez sur le modèle. En cas d’erreur, la bonne réponse vous est montrée, et chaque manche se termine par votre score et la possibilité de recommencer dans un nouvel ordre.",
       prompt: "Trouvez",
       hint: "Sélectionnez le point correspondant",
       caption: "Illustration du quiz d’identification d’Explorer, où l’on sélectionne les points directement sur le modèle 3D.",
-      alt: "Étude à l’aquarelle du cerveau avec quatre structures numérotées et des légendes vierges, accompagnée de la consigne « Trouvez : {structure} »",
+      alt: "Étude à l’aquarelle du cerveau avec quatre structures numérotées et des légendes vierges, accompagnée de la consigne « Trouvez : {structure} »",
     },
     remember: {
       name: "Retenir",
@@ -84,7 +84,7 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       line:
         "La future expérience Corpus vous aidera à revoir des structures, à reprendre des conversations et à revenir sur les points qui demandent plus d’attention.",
       body:
-        "Cette partie n’existe pas encore. Corpus n’enregistre pas ce que vous avez étudié : chaque visite dans Explorer repart de zéro. D’ici là, refaire le quiz d’identification est le moyen de revenir à une structure.",
+        "Cette partie n’existe pas encore. Corpus n’enregistre pas ce que vous avez étudié : chaque visite dans Explorer repart de zéro. D’ici là, refaire le quiz d’identification est le moyen de revenir à une structure.",
       futureLabel: "Prévu",
       future: {
         structures: "Structures à revoir",

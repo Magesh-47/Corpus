@@ -11,12 +11,12 @@ export const pricing: SiteDictionary["pricing"] = {
     eyebrow: "Tarifs",
     titleLead: "Explorez le corps.",
     titleRest: "Choisissez jusqu’où vous voulez aller.",
-    lede: "L’anatomie essentielle s’explore gratuitement dès aujourd’hui, sans compte ni paiement. Corpus Plus et Éducation sont encore en développement : ni l’une ni l’autre n’a de prix pour l’instant.",
+    lede: "L’anatomie essentielle s’explore gratuitement dès aujourd’hui, sans compte ni paiement. Corpus Plus et Éducation sont encore en développement : ni l’une ni l’autre n’a de prix pour l’instant.",
     primary: "Commencer l’exploration",
     secondary: "Comparer les formules",
     plate: {
-      label: "Planche : {organ}, en coupe",
-      alt: "Un bloc de peau à l’aquarelle, entaillé pour montrer ses couches : la surface, le derme avec ses follicules pileux, ses glandes et ses vaisseaux, et la graisse jaune en dessous",
+      label: "Planche : {organ}, en coupe",
+      alt: "Un bloc de peau à l’aquarelle, entaillé pour montrer ses couches : la surface, le derme avec ses follicules pileux, ses glandes et ses vaisseaux, et la graisse jaune en dessous",
       caption: "De la surface jusqu’à la graisse sous-jacente. Les mêmes couches sont légendées sur le modèle 3D, en libre accès.",
     },
   },
@@ -81,7 +81,7 @@ export const pricing: SiteDictionary["pricing"] = {
     eyebrow: "Comparer",
     title: "Ce que comprend chaque formule.",
     lede: "La colonne Gratuit décrit Corpus tel qu’il est aujourd’hui. Les deux autres décrivent des formules en développement, susceptibles d’évoluer.",
-    caption: "Fonctions par formule. Gratuit est disponible dès maintenant ; Corpus Plus et Éducation sont en développement.",
+    caption: "Fonctions par formule. Gratuit est disponible dès maintenant ; Corpus Plus et Éducation sont en développement.",
     featureHeading: "Fonction",
     status: {
       available: "Disponible",
@@ -147,9 +147,9 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "La collection gratuite, ouverte à tous.",
     lede: "Chaque organe a un modèle 3D, une planche illustrée et des structures légendées. Choisissez-en un pour l’ouvrir dans Explorer.",
     plateLabel: "Planche {number}",
-    structures: "Structures légendées : {count}",
-    openOrgan: "{organ} : ouvrir dans Explorer",
-    footnote: "Les modèles et les illustrations sont des représentations pédagogiques simplifiées, et non des références cliniques ; rien dans Corpus ne constitue un avis médical.",
+    structures: "Structures légendées : {count}",
+    openOrgan: "{organ} : ouvrir dans Explorer",
+    footnote: "Les modèles et les illustrations sont des représentations pédagogiques simplifiées, et non des références cliniques ; rien dans Corpus ne constitue un avis médical.",
   },
 
   faq: {
@@ -157,26 +157,26 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "Questions simples, réponses franches.",
     items: {
       account: {
-        q: "Faut-il un compte ?",
+        q: "Faut-il un compte ?",
         a: "Non. Vous pouvez ouvrir Explorer et commencer tout de suite, sans vous connecter.",
       },
       payments: {
-        q: "Puis-je payer Corpus Plus ou Éducation dès maintenant ?",
+        q: "Puis-je payer Corpus Plus ou Éducation dès maintenant ?",
         a: "Non. Aucune de ces formules n’est disponible, aucun prix n’a été fixé, et Corpus n’accepte aujourd’hui aucun paiement, de quelque nature que ce soit. Lorsqu’une formule sera prête, elle sera décrite ici.",
       },
       classroom: {
-        q: "Puis-je utiliser Corpus en classe dès aujourd’hui ?",
-        a: "Oui. Explorer est gratuit et ne demande aucun compte : les élèves peuvent l’ouvrir dans un navigateur récent. Les outils pour la classe et pour les enseignants ne sont pas encore disponibles.",
+        q: "Puis-je utiliser Corpus en classe dès aujourd’hui ?",
+        a: "Oui. Explorer est gratuit et ne demande aucun compte : les élèves peuvent l’ouvrir dans un navigateur récent. Les outils pour la classe et pour les enseignants ne sont pas encore disponibles.",
       },
     },
   },
 
   closing: {
     eyebrow: "Commencer",
-    titleLead: "Vous ne savez pas par où commencer ?",
+    titleLead: "Vous ne savez pas par où commencer ?",
     titleRest: "Explorez l’anatomie gratuitement.",
     cta: "Explorer Corpus",
-    imageAlt: "Aquarelle de la peau au microscope : l’épiderme rose et stratifié au-dessus du tissu plus lâche et ondulé du derme",
-    caption: "{organ} au microscope : {tissue}",
+    imageAlt: "Aquarelle de la peau au microscope : l’épiderme rose et stratifié au-dessus du tissu plus lâche et ondulé du derme",
+    caption: "{organ} au microscope : {tissue}",
   },
 };
