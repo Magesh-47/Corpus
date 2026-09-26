@@ -83,6 +83,9 @@
   -webkit-font-smoothing: antialiased;
 }
 .site-main { flex: 1; }
+/* A safety net: nothing decorative may widen the page. clip (unlike hidden)
+   creates no scroll container, so the sticky header keeps working. */
+.site { overflow-x: clip; }
 .site ::selection { background: rgba(235, 124, 107, 0.24); }
 .site :focus-visible {
   outline: 2px solid var(--focus);

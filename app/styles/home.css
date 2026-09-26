@@ -507,6 +507,9 @@
 }
 .home-feature__visual {
   display: grid;
+  /* A definite track, so a still's height: 100% resolves against the plate's
+     height instead of falling back to the image's natural size. */
+  grid-template: 100% / 100%;
   place-items: center;
   min-height: 0;
 }
@@ -836,7 +839,20 @@
   pointer-events: none;
 }
 .home-closing__inner > :not(img) { position: relative; z-index: 1; }
-.home-closing__title { font-size: var(--display-xl); }
+/* "The body is a masterpiece." set like an inscription; the line beneath it
+   is the quieter answer. Uppercase is a no-op for scripts without case. */
+.home-closing__title {
+  font-size: var(--display-lg);
+  text-transform: uppercase;
+  letter-spacing: calc(var(--track-caps) * 0.35);
+  line-height: calc(var(--leading-display) + 0.04);
+}
+.home-closing__line {
+  margin: 0;
+  color: var(--ink-2);
+  font: italic 400 var(--display-md)/1.1 var(--font-serif), serif;
+  letter-spacing: var(--track-display);
+}
 
 /* ---------------------------------------------------------- responsive */
 
@@ -921,6 +937,12 @@
 }
 
 @media (max-width: 640px) {
+  /* Leader-line labels have no room beside the organ at phone width: keep the
+     dots (the caption and legend name the structures) and drop the labels. */
+  .home-promo__notes .ui-note__label,
+  .home-story__notes .ui-note__label { display: none; }
+  .home-promo__notes .ui-note,
+  .home-story__notes .ui-note { --len: 14px; }
   /* The plate keeps its numbered dots; the names move into the legend below it. */
   .home-hero__specimen { height: auto; width: min(78%, 330px); }
   .home-hero__notes .ui-note__line,

@@ -237,8 +237,8 @@ export const marketing = {
   },
 
   closing: {
-    eyebrow: "The body is a masterpiece.",
-    title: "Learn to see it.",
+    title: "The body is a masterpiece.",
+    line: "Learn to see it.",
     cta: "Explore the body",
   },
 };

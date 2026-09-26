@@ -17,12 +17,12 @@ export function Closing({ locale, copy }: { locale: string; copy: SiteDictionary
           loading="lazy"
           decoding="async"
         />
-        <p className="ui-eyebrow" data-reveal>
-          {copy.eyebrow}
-        </p>
-        <h2 id="home-closing-title" className="ui-display home-closing__title" data-reveal style={revealDelay(120)}>
+        <h2 id="home-closing-title" className="ui-display home-closing__title" data-reveal>
           {copy.title}
         </h2>
+        <p className="home-closing__line" data-reveal style={revealDelay(120)}>
+          {copy.line}
+        </p>
         <div data-reveal style={revealDelay(240)}>
           <ButtonLink href={localeHref(locale, "explore")} arrow>
             {copy.cta}
