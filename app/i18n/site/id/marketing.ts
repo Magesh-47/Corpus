@@ -48,7 +48,7 @@ export const marketing: SiteDictionary["marketing"] = {
     steps: {
       see: {
         label: "Lihat",
-        title: "Tengok di balik permukaan.",
+        title: "Selami yang ada di balik permukaan.",
         body: "Jelajahi struktur secara spasial, alih-alih menyederhanakan tubuh menjadi diagram datar.",
         alt: "Jantung 3D dari Jelajahi, diputar hingga tampak sisinya, dengan pembuluh-pembuluh besar menjulang dari bagian atasnya.",
         caption: "Jantung, diputar di Jelajahi.",

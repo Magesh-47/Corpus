@@ -59,7 +59,7 @@ export const about: SiteDictionary["about"] = {
     lines: {
       science: "과학이 먼저.",
       story: "이야기는 그다음.",
-      visuals: "시각은 언제나.",
+      visuals: "시각화는 언제나.",
     },
     columns: {
       scientific: {

@@ -189,7 +189,18 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [slowLoad, setSlowLoad] = useState(false);
-  const [activeTool, setActiveTool] = useState<string | null>(null);
+  // Each view tool is an independent toggle in the viewer, so each keeps its
+  // own pressed state — one shared "active tool" drifted out of step with the
+  // scene as soon as two were on together.
+  const [views, setViews] = useState({ isolate: false, section: false, layers: false });
+  // Wireframe belongs to the outgoing model's materials (and is undone when a
+  // cached model returns), so a new specimen always arrives without it.
+  // Isolate and the section plane carry over.
+  const [viewsOrgan, setViewsOrgan] = useState(organ.id);
+  if (viewsOrgan !== organ.id) {
+    setViewsOrgan(organ.id);
+    if (views.layers) setViews({ ...views, layers: false });
+  }
 
   // Opt-in coordinate probe for placing hotspots — not a user-facing feature.
   const authoring = useAuthoringFlag();
@@ -295,13 +306,17 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
     if (!viewer) return;
     if (tool === "rotate") onAutoRotate(!autoRotate);
     if (tool === "zoom") viewer.zoom(-1);
-    if (tool === "isolate") setActiveTool(viewer.toggleIsolate() ? tool : null);
-    if (tool === "section") setActiveTool(viewer.toggleCrossSection() ? tool : null);
-    if (tool === "layers") setActiveTool(viewer.toggleLayers() ? tool : null);
+    if (tool === "isolate") setViews({ ...views, isolate: viewer.toggleIsolate() });
+    if (tool === "section") setViews({ ...views, section: viewer.toggleCrossSection() });
+    if (tool === "layers") setViews({ ...views, layers: viewer.toggleLayers() });
     if (tool === "compare") onCompare();
     if (tool === "reset") {
+      // The home view: camera, selection, and every view tool switched off.
       viewer.reset();
-      setActiveTool(null);
+      if (views.isolate) viewer.toggleIsolate();
+      if (views.section) viewer.toggleCrossSection();
+      if (views.layers) viewer.toggleLayers();
+      setViews({ isolate: false, section: false, layers: false });
     }
   };
 
@@ -309,9 +324,7 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
   // reset) carry none, so they are never announced as stuck "not pressed".
   const pressed: Record<string, boolean | undefined> = {
     rotate: autoRotate,
-    isolate: activeTool === "isolate",
-    section: activeTool === "section",
-    layers: activeTool === "layers",
+    ...views,
     compare,
   };
   const tools = [

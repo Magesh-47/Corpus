@@ -21,6 +21,9 @@ export function LanguageSwitcher({ locale, t }: { locale: LocaleConfig; t: UiDic
     <div className="language-switcher" title={t.language.label}>
       <Globe size={16} aria-hidden />
       <span className="language-current">{locale.nativeName}</span>
+      {/* Narrow screens have no room for the endonym; the code keeps the
+          current language visible. The select itself announces it. */}
+      <span className="language-code" aria-hidden>{locale.code.toUpperCase()}</span>
       <ChevronDown size={14} aria-hidden />
       <select
         aria-label={t.language.choose}

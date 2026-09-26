@@ -202,6 +202,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.language-code { display: none; color: var(--ink); font: 600 11px/1 var(--font-sans), sans-serif; letter-spacing: 0.06em; }
 /* Stretched over the whole control and invisible, so every pixel of it opens
    the native picker. The visible row sits underneath. */
 .language-switcher select {
@@ -959,7 +960,9 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   .tool-reset::after { inset-inline: auto; inset-inline-start: -3px; top: 10px; bottom: 10px; border-top: 0; border-inline-start: 1px solid var(--rule); }
   .tip-note { display: none; }
   .auto-rotate { bottom: 76px; inset-inline-end: 10px; min-height: 44px; }
-  .view-caption { inset-inline-start: 12px; bottom: 78px; }
+  /* The auto-rotate switch owns the lower edge on a phone; the caption takes
+     the free top edge instead of running underneath it. */
+  .view-caption { inset-inline: 14px; top: 12px; bottom: auto; }
   .callout-body { width: 160px; top: -28px; }
   .quiz-bar { inset-inline: 8px; top: 8px; gap: 10px; padding-block: 8px; padding-inline: 14px 4px; }
   .quiz-prompt strong { font-size: 19px; }
@@ -1002,7 +1005,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 
 @media (max-width: 470px) {
   .language-current { display: none; }
-  .language-switcher { padding-inline: 10px; }
+  .language-code { display: block; }
+  .language-switcher { gap: 5px; padding-inline: 9px; }
   .app-account span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .compare-strip strong { font-size: 17px; }
   .compare-strip .compare-organ { padding-inline-start: 0; }
