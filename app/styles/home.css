@@ -110,6 +110,23 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+  counter-reset: legend;
+  list-style: none;
+}
+/* …and becomes the plate's key, numbered like its dots, when the labels have
+   no room beside the specimen (phones; the mirrored spread in Arabic). */
+.home-hero__legend li { display: flex; align-items: center; gap: 10px; counter-increment: legend; }
+.home-hero__legend li::before {
+  content: counter(legend);
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  font: 600 10px/1 var(--font-sans), sans-serif;
+  font-style: normal;
 }
 
 /* The thin editorial transition under the hero. */
@@ -842,7 +859,8 @@
 /* "The body is a masterpiece." set like an inscription; the line beneath it
    is the quieter answer. Uppercase is a no-op for scripts without case. */
 .home-closing__title {
-  font-size: var(--display-lg);
+  /* Capped by the viewport so "MASTERPIECE." still fits one line at 320px. */
+  font-size: min(var(--display-lg), 11vw);
   text-transform: uppercase;
   letter-spacing: calc(var(--track-caps) * 0.35);
   line-height: calc(var(--leading-display) + 0.04);
@@ -936,6 +954,31 @@
   }
 }
 
+/* Arabic mirrors the spread: the plate moves to the page's left edge, where
+   the long leader lines that run left from the neck and chest would leave the
+   page, and the ones that run right would cross into the text. Until the
+   margins are wide enough, the plate keeps its numbered dots and the names
+   sit in a key under the caption, as on phones. Coordinates never mirror. */
+@media (min-width: 641px) and (max-width: 1599px) {
+  [dir="rtl"] .home-hero__notes .ui-note__line,
+  [dir="rtl"] .home-hero__notes .ui-note__label { display: none; }
+  [dir="rtl"] .home-hero__legend {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 22px;
+    margin: 12px 0 0;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--rule);
+  }
+}
+
 @media (max-width: 640px) {
   /* Leader-line labels have no room beside the organ at phone width: keep the
      dots (the caption and legend name the structures) and drop the labels. */
@@ -959,22 +1002,7 @@
     margin: 12px 0 0;
     padding: 12px 0 0;
     border-top: 1px solid var(--rule);
-    counter-reset: legend;
-    list-style: none;
     text-align: start;
-  }
-  .home-hero__legend li { display: flex; align-items: center; gap: 10px; counter-increment: legend; }
-  .home-hero__legend li::before {
-    content: counter(legend);
-    display: grid;
-    place-items: center;
-    flex: none;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--ink);
-    border-radius: 50%;
-    font: 600 10px/1 var(--font-sans), sans-serif;
-    font-style: normal;
   }
   .home-hero__caption { justify-items: start; text-align: start; width: 100%; }
   .home-hero__plate-head { width: 100%; }
@@ -1010,6 +1038,8 @@
 
   .home-feature--isolate,
   .home-feature--section { grid-template-columns: minmax(0, 1fr); }
+  /* The two organs keep their relative scale but shrink with the column. */
+  .home-feature__pair { height: clamp(140px, 48vw, 200px); }
 
   .home-practice__figure { grid-template-columns: minmax(0, 1fr); }
   .home-practice__model { margin-inline-end: 0; width: 92%; justify-self: center; }
