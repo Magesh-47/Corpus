@@ -35,7 +35,7 @@ function* strings(node, path = []) {
   for (const [key, value] of Object.entries(node)) {
     const next = [...path, key];
     if (typeof value === "string") yield [next.join("."), value];
-    else if (Array.isArray(value)) value.forEach((item, i) => { if (typeof item === "string") return void (0); });
+    else if (Array.isArray(value)) continue; // arrays (e.g. organ conditions) hold prose checked elsewhere
     else if (value && typeof value === "object") yield* strings(value, next);
   }
 }
