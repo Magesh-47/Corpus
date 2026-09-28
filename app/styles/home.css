@@ -188,9 +188,12 @@
   margin-block-end: clamp(72px, 10vw, 160px);
 }
 .home-philosophy__intro .ui-eyebrow { grid-column: 1 / -1; }
-/* Capped by the viewport so each of its two lines holds in the 7/12 column
-   between 900px and 1300px. */
-.home-philosophy__title { font-size: min(var(--display-lg), 6.4vw); }
+.home-philosophy__title { font-size: var(--display-lg); }
+/* Beside the lede (above 900px) the title has 7/12 of the page: capped by the
+   viewport so each of its two lines holds between 900px and 1300px. */
+@media (min-width: 901px) {
+  .home-philosophy__title { font-size: min(var(--display-lg), 6.4vw); }
+}
 .home-philosophy__lede { padding-block-end: 0.5em; }
 
 .home-chapters { margin: 0; padding: 0; list-style: none; display: grid; gap: clamp(96px, 12vw, 200px); }
@@ -471,7 +474,10 @@
 .home-promo__text { display: grid; gap: 28px; align-content: center; justify-items: start; padding-block: 24px 48px; }
 /* The text column is 5/12 of the panel: sized to it, so the first line
    breaks once, evenly, instead of leaving "Don't just" on its own. */
-.home-promo__title { font-size: min(var(--display-lg), 5.4vw); }
+.home-promo__title { font-size: var(--display-lg); }
+@media (min-width: 901px) {
+  .home-promo__title { font-size: min(var(--display-lg), 5.4vw); }
+}
 .home-promo__lede { max-width: 24em; }
 .home-promo__figure { position: relative; margin: 0; display: grid; grid-template-rows: auto 1fr auto; }
 .home-promo__head {
@@ -963,7 +969,6 @@
 
   .home-promo__panel { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; min-height: 0; }
   .home-promo__text { padding-block: 8px 16px; }
-  .home-promo__title { font-size: var(--display-lg); }
   .home-promo__model { width: min(60%, 400px); }
 
   .home-features__grid { grid-template-columns: minmax(0, 1fr); }

@@ -376,6 +376,9 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   cursor: pointer;
   font: 500 10px/1.15 var(--font-sans), sans-serif;
   text-align: center;
+  /* Long single-word labels (Querschnitt, Zurücksetzen) hyphenate where the
+     language allows; an arbitrary break is only the last resort. */
+  hyphens: auto;
   overflow-wrap: anywhere;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -603,6 +606,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   text-transform: uppercase;
 }
 .plate-n { color: var(--accent-ink); font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
+/* A long single word (FUNKTIONSANIMATION) wraps inside a narrow column. */
+.plate-label > span:last-child { min-width: 0; hyphens: auto; overflow-wrap: anywhere; }
 .plate-title {
   margin: 8px 0 14px;
   min-height: 2.5em;
@@ -876,7 +881,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 @media (max-width: 760px) {
   .app-shell { --app-top: 56px; --app-gutter: 16px; }
   .app-topbar { column-gap: 8px; }
-  .app-brand { margin-inline-end: auto; }
+  .app-brand { margin-inline-end: auto; min-height: 44px; align-items: center; padding-block: 0; }
   .app-nav { display: none; }
   .app-search { display: none; order: 10; flex: 1 0 100%; width: 100%; height: 44px; margin: 0 0 10px; }
   .app-search.is-open { display: flex; }
@@ -954,7 +959,9 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
     overflow-x: auto;
     scrollbar-width: none;
   }
-  .tool-button { flex: 1 0 44px; min-height: 0; font-size: 9.5px; gap: 4px; }
+  /* Sized to their labels, so a long word (Zurücksetzen, Réinitialiser) keeps
+     one line when the row has room; never narrower than a 44px target. */
+  .tool-button { flex: 1 1 auto; min-width: 44px; min-height: 0; padding-inline: 3px; font-size: 9.5px; gap: 4px; }
   .tool-button[aria-pressed="true"]::before { inset-block: auto 0; inset-inline: 10px; width: auto; height: 2px; }
   .tool-reset { margin: 0 0 0 0; margin-inline-start: 4px; }
   .tool-reset::after { inset-inline: auto; inset-inline-start: -3px; top: 10px; bottom: 10px; border-top: 0; border-inline-start: 1px solid var(--rule); }
@@ -1013,6 +1020,13 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   .compare-strip strong { font-size: 17px; }
   .compare-strip .compare-organ { padding-inline-start: 0; }
   .compare-organ > img, .compare-organ > .art-fallback { display: none; }
+}
+
+/* The narrowest phones (320px): the top bar keeps one row, and the viewer
+   runs edge to edge so all seven tools keep a 44px target without scrolling. */
+@media (max-width: 340px) {
+  .app-topbar { column-gap: 4px; }
+  .viewer-shell { margin-inline: calc(var(--app-gutter) * -1); border-inline: 0; border-radius: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

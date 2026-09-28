@@ -578,7 +578,7 @@
     grid-template-columns: 88px minmax(0, 1fr);
     grid-template-areas: "art number" "art caption";
     align-content: center;
-    column-gap: 18px;
+    gap: 6px 18px;
     padding: 14px 0;
   }
   .pricing-plate__number { grid-area: number; align-self: end; }
