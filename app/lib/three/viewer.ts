@@ -586,8 +586,12 @@ export class AnatomyViewer {
     if (event.key === "ArrowLeft" && pivot) pivot.rotation.y -= 0.08;
     if (event.key === "ArrowRight" && pivot) pivot.rotation.y += 0.08;
     // "=" is the unshifted plus key on many layouts.
-    if (event.key === "+" || event.key === "=") this.viewDistance = this.clampDistance(this.viewDistance - 0.35);
-    if (event.key === "-") this.viewDistance = this.clampDistance(this.viewDistance + 0.35);
+    const zoomIn = event.key === "+" || event.key === "=";
+    if (zoomIn || event.key === "-") {
+      // A running zoom or intro tween would otherwise overwrite the step.
+      gsap.killTweensOf(this, "viewDistance");
+      this.viewDistance = this.clampDistance(this.viewDistance + (zoomIn ? -0.35 : 0.35));
+    }
     if (event.key === "Escape") this.select(null);
     this.dirty = true;
   };
@@ -606,12 +610,18 @@ export class AnatomyViewer {
 
   reset() {
     this.select(null);
+    // The camera is tweened to an absolute home position; a zoom still in
+    // flight would fight it.
+    gsap.killTweensOf(this, "viewDistance");
     this.tween(this.camera.position, { ...HOME_CAMERA, duration: 0.8, ease: "power3.out" });
     this.tween(this.controls.target, { ...HOME_TARGET, duration: 0.8, ease: "power3.out" });
     if (this.organ) this.tween(this.organ.pivot.rotation, { x: 0.05, y: -0.28, z: 0, duration: 0.8, ease: "power3.out" });
   }
 
   zoom(direction: 1 | -1) {
+    // Supersedes any distance tween still running — including an organ's intro
+    // settling back to the home distance, which would undo this press.
+    gsap.killTweensOf(this, "viewDistance");
     this.tween(this, {
       viewDistance: this.clampDistance(this.viewDistance + direction * 1.2),
       duration: 0.5,

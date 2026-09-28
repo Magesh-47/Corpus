@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { ArrowRight, Search, UserRound, X } from "lucide-react";
 import { OrganArt, type OrganAsset } from "./OrganArt";
 import { OrganViewer } from "./OrganViewer";
@@ -52,9 +52,12 @@ export function AnatomyApp({
   const [selected, setSelected] = useState<Hotspot | null>(null);
   const prefetched = useRef(new Set<OrganId>());
   const searchInput = useRef<HTMLInputElement>(null);
+  const searchToggle = useRef<HTMLButtonElement>(null);
+  const organList = useRef<HTMLUListElement>(null);
   const activeItem = useRef<HTMLButtonElement>(null);
   const organ = organById[organId];
-  const reference = organById[organId === "heart" ? "brain" : "heart"];
+  // The partner its own comparison card names, so the card and the strip agree.
+  const reference = organById[organ.compareWith];
   const filteredOrgans = useMemo(
     () =>
       organs.filter((item) =>
@@ -64,8 +67,16 @@ export function AnatomyApp({
   );
 
   // A deep-linked organ may sit off-screen in the compact mobile selector.
+  // Only the list scrolls — scrollIntoView would also move the window and
+  // tuck the top bar away on a short screen.
   useEffect(() => {
-    if (initialOrgan !== "heart") activeItem.current?.scrollIntoView({ block: "nearest", inline: "center" });
+    const item = activeItem.current;
+    const list = organList.current;
+    if (initialOrgan === "heart" || !item || !list) return;
+    const box = item.getBoundingClientRect();
+    const frame = list.getBoundingClientRect();
+    const top = box.top < frame.top ? box.top - frame.top : box.bottom > frame.bottom ? box.bottom - frame.bottom : 0;
+    list.scrollBy({ left: box.left + box.width / 2 - (frame.left + frame.width / 2), top });
   }, [initialOrgan]);
 
   useEffect(() => {
@@ -182,7 +193,11 @@ export function AnatomyApp({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Escape" && !query) setSearchOpen(false);
+              if (event.key === "Escape" && !query && searchOpen) {
+                // The field is about to be hidden; focus must not fall to <body>.
+                searchToggle.current?.focus();
+                setSearchOpen(false);
+              }
             }}
             placeholder={t.search.placeholder}
             autoComplete="off"
@@ -190,6 +205,7 @@ export function AnatomyApp({
         </div>
         <button
           type="button"
+          ref={searchToggle}
           className="app-search-toggle"
           aria-expanded={searchOpen}
           aria-controls="organ-search"
@@ -212,7 +228,7 @@ export function AnatomyApp({
               <p id="library-title" className="ui-label">{t.library.title}</p>
               <span className="panel-count" aria-hidden>{plateNumber(filteredOrgans.length)}</span>
             </div>
-            <ul className="organ-list">
+            <ul className="organ-list" ref={organList}>
               {filteredOrgans.map((item) => {
                 const current = organId === item.id;
                 return (
@@ -363,10 +379,26 @@ export function AnatomyApp({
 
       {compare && (
         <section className="compare-strip" aria-label={t.compare.title}>
-          <div className="compare-organ"><OrganArt organ={organ} asset="thumb" alt="" /><span>{t.compare.comparing}</span><strong>{organ.name}</strong><small>{organ.system}</small></div>
-          <b>{t.compare.vs}</b>
-          <div className="compare-organ"><OrganArt organ={reference} asset="thumb" alt="" /><span>{t.compare.reference}</span><strong>{reference.name}</strong><small>{reference.system}</small></div>
-          <dl><div><dt>{t.compare.primaryRole}</dt><dd><Measure>{organ.function}</Measure></dd></div><div><dt>{t.compare.scale}</dt><dd><Measure>{organ.size}</Measure></dd></div></dl>
+          {[
+            { item: organ, role: t.compare.comparing },
+            { item: reference, role: t.compare.reference },
+          ].map(({ item, role }, index) => (
+            <Fragment key={item.id}>
+              {index > 0 && <b>{t.compare.vs}</b>}
+              <div className="compare-organ">
+                <div className="compare-id">
+                  <OrganArt organ={item} asset="thumb" alt="" />
+                  <span>{role}</span>
+                  <strong>{item.name}</strong>
+                  <small>{item.system}</small>
+                </div>
+                <dl>
+                  <div><dt>{t.compare.primaryRole}</dt><dd><Measure>{item.function}</Measure></dd></div>
+                  <div><dt>{t.compare.scale}</dt><dd><Measure>{item.size}</Measure></dd></div>
+                </dl>
+              </div>
+            </Fragment>
+          ))}
           <button type="button" onClick={() => setCompare(false)} aria-label={t.compare.close}><X size={18} aria-hidden /></button>
         </section>
       )}

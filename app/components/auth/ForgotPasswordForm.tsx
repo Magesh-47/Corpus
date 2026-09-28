@@ -26,7 +26,6 @@ export function ForgotPasswordForm({ locale, copy }: { locale: string; copy: Aut
           ref={form.register("email")}
           label={copy.fields.email.label}
           type="email"
-          name="email"
           autoComplete="email"
           inputMode="email"
           autoCapitalize="none"

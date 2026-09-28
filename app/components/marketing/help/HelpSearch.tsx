@@ -43,6 +43,10 @@ export function HelpSearch({
     inputRef.current?.focus();
   };
 
+  // The store is module-level, so it would survive a client navigation: a
+  // return to Help starts with an empty field and every question showing.
+  useEffect(() => () => searchStore.set({ query: "", faqMatches: 0 }), []);
+
   const index = useMemo(
     () => entries.map((entry) => ({ ...entry, haystack: normalise(`${entry.title} ${entry.text}`, locale), heading: normalise(entry.title, locale) })),
     [entries, locale],

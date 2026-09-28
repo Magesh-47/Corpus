@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { flushSync } from "react-dom";
 import type { AuthResult } from "../../lib/auth/client";
 import type { AuthErrorKey } from "../../lib/auth/validation";
 
@@ -53,7 +54,9 @@ export function useAuthForm<K extends string>({
     setResult(null);
 
     const found = validate(values);
-    setErrors(found);
+    // Commit the messages first: the field focused next is then announced
+    // with its aria-invalid state and error text, not before them.
+    flushSync(() => setErrors(found));
     const firstInvalid = order.find((key) => found[key]);
     if (firstInvalid) {
       fields.current[firstInvalid]?.focus();

@@ -184,6 +184,7 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
   const viewerRef = useRef<AnatomyViewer | null>(null);
   const organRef = useRef(organ);
   const autoRotateRef = useRef(autoRotate);
+  const quizActiveRef = useRef(quizActive);
   const canvasLabelRef = useRef(t.viewer.canvas);
   const [selected, setSelected] = useState<Hotspot | null>(null);
   const [loading, setLoading] = useState(true);
@@ -240,6 +241,10 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
   }, [autoRotate]);
 
   useEffect(() => {
+    quizActiveRef.current = quizActive;
+  }, [quizActive]);
+
+  useEffect(() => {
     canvasLabelRef.current = t.viewer.canvas;
     viewerRef.current?.setCanvasLabel(t.viewer.canvas);
   }, [t.viewer.canvas]);
@@ -265,7 +270,10 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
       });
       viewerRef.current = viewer;
       viewer.setCanvasLabel(canvasLabelRef.current);
-      viewer.setAutoRotate(autoRotateRef.current);
+      // A quiz may already be running if the 3D chunk arrived late: hold the
+      // model still and route dot presses to it, as the effects below would.
+      viewer.setAutoRotate(autoRotateRef.current && !quizActiveRef.current);
+      viewer.setQuizMode(quizActiveRef.current);
       viewer.setAuthoring(authoringRef.current);
       const current = organRef.current;
       viewer.setOrgan(current.model, current.hotspots, current.accent).catch(() => {

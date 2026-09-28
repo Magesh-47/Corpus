@@ -28,7 +28,6 @@ export function SignInForm({ locale, copy }: { locale: string; copy: AuthCopy })
           ref={form.register("email")}
           label={copy.fields.email.label}
           type="email"
-          name="email"
           autoComplete="email"
           inputMode="email"
           autoCapitalize="none"
@@ -43,7 +42,6 @@ export function SignInForm({ locale, copy }: { locale: string; copy: AuthCopy })
           id="signin-password"
           ref={form.register("password")}
           label={copy.fields.password.label}
-          name="password"
           autoComplete="current-password"
           required
           value={form.values.password}

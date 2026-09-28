@@ -639,6 +639,23 @@
   .about-closing__art { max-width: 320px; margin-block-start: clamp(40px, 8vw, 64px); }
 }
 
+/* Tablet: three columns would leave each heading a word a line, so the
+   principles become ledger rows — label, heading, note. */
+@media (min-width: 641px) and (max-width: 1100px) {
+  .about-principles__columns { grid-template-columns: minmax(0, 1fr); }
+  .about-principles__column,
+  .about-principles__column:first-child {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 5fr) minmax(0, 4fr);
+    column-gap: clamp(20px, 3vw, 36px);
+    align-items: baseline;
+    padding-inline: 0;
+    padding-block: 24px 28px;
+    border-inline-start: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .about-principles__column:first-child { border-top: 0; }
+}
+
 @media (max-width: 640px) {
   .about-hero__line--second { margin-inline-start: 0; }
   .about-hero__title .about-hero__line { text-wrap: balance; }

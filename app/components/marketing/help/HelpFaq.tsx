@@ -69,10 +69,10 @@ export function HelpFaq({ ctx }: { ctx: HelpContext }) {
     <section id={FAQ_ID} aria-labelledby={`${FAQ_ID}-title`} className="help-guide help-faq">
       <div className="ui-container help-guide__inner">
         <header className="help-guide__header" data-reveal>
-          <h2 id={`${FAQ_ID}-title`} className="ui-h2 help-guide__title">
+          <h2 id={`${FAQ_ID}-title`} className="ui-h2 help-guide__title" tabIndex={-1}>
             {faqHeading}
           </h2>
-          <HelpFaqStatus copy={search} total={items.length} locale={ctx.locale.code} />
+          <HelpFaqStatus copy={search} total={items.length} locale={ctx.locale.code} headingId={`${FAQ_ID}-title`} />
         </header>
         <div className="help-guide__body" data-reveal>
           <Accordion block="help-accordion" items={items} />

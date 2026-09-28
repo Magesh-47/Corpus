@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { ArrowRight } from "lucide-react";
 import type { SiteDictionary } from "../../i18n/site";
 import { format } from "../../i18n/types";
@@ -29,9 +29,22 @@ export function ErrorSummary({ copy, show }: { copy: AuthCopy; show: boolean }) 
   );
 }
 
+const noSubscription = () => () => {};
+
+/**
+ * Disabled until the form has hydrated: before that a press (or Enter in a
+ * field) would be a native submission, which must never happen — the inputs
+ * carry no names either, so even then nothing would be sent.
+ */
 export function SubmitButton({ busy, label, busyLabel }: { busy: boolean; label: string; busyLabel: string }) {
+  const hydrated = useSyncExternalStore(noSubscription, () => true, () => false);
   return (
-    <button type="submit" className="ui-button ui-button--primary auth-submit" disabled={busy} aria-busy={busy || undefined}>
+    <button
+      type="submit"
+      className="ui-button ui-button--primary auth-submit"
+      disabled={busy || !hydrated}
+      aria-busy={busy || undefined}
+    >
       {busy && <span className="auth-submit__spinner" aria-hidden />}
       {busy ? busyLabel : label}
     </button>

@@ -31,7 +31,6 @@ export function SignUpForm({ locale, copy }: { locale: string; copy: AuthCopy })
           id="signup-name"
           ref={form.register("name")}
           label={copy.fields.name.label}
-          name="name"
           autoComplete="name"
           required
           value={form.values.name}
@@ -44,7 +43,6 @@ export function SignUpForm({ locale, copy }: { locale: string; copy: AuthCopy })
           ref={form.register("email")}
           label={copy.fields.email.label}
           type="email"
-          name="email"
           autoComplete="email"
           inputMode="email"
           autoCapitalize="none"
@@ -60,7 +58,6 @@ export function SignUpForm({ locale, copy }: { locale: string; copy: AuthCopy })
           ref={form.register("password")}
           label={copy.fields.newPassword.label}
           hint={format(copy.fields.newPassword.hint, { min: String(MIN_PASSWORD_LENGTH) })}
-          name="new-password"
           autoComplete="new-password"
           required
           value={form.values.password}
@@ -73,7 +70,6 @@ export function SignUpForm({ locale, copy }: { locale: string; copy: AuthCopy })
           id="signup-confirm"
           ref={form.register("confirm")}
           label={copy.fields.confirmPassword.label}
-          name="confirm-password"
           autoComplete="new-password"
           required
           value={form.values.confirm}
