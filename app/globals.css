@@ -1025,7 +1025,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 /* The narrowest phones (320px): the top bar keeps one row, and the viewer
    runs edge to edge so all seven tools keep a 44px target without scrolling. */
 @media (max-width: 340px) {
-  .app-topbar { column-gap: 4px; }
+  .app-topbar { column-gap: 2px; }
+  .language-switcher { padding-inline: 8px; }
   .viewer-shell { margin-inline: calc(var(--app-gutter) * -1); border-inline: 0; border-radius: 0; }
   /* No row can hold every language's longest words here; breaking a word
      (hyphenated where supported) beats pushing a tool off screen. */

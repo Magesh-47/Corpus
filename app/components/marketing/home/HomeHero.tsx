@@ -2,6 +2,7 @@ import { ButtonLink } from "../../ui/Button";
 import { Annotations, type Note } from "../../ui/Editorial";
 import type { SiteDictionary } from "../../../i18n/site";
 import { localeHref } from "../../../lib/routes";
+import type { CSSProperties } from "react";
 import { riseDelay } from "./motion";
 import { Lines } from "./shared";
 
@@ -24,6 +25,9 @@ const NOTES: { id: Structure; x: number; y: number; side: "left" | "right"; leng
 export function HomeHero({ locale, copy }: { locale: string; copy: Copy }) {
   const { hero, transition } = copy;
   const { plate } = hero;
+  // The longest line, in characters: the stylesheet sizes the headline so that
+  // line holds in its column in every language (see .home-hero__title).
+  const measure = Math.max(...hero.title.split("\n").map((line) => Array.from(line).length));
   const notes: Note[] = NOTES.map((note) => ({
     ...note,
     label: (
@@ -39,7 +43,11 @@ export function HomeHero({ locale, copy }: { locale: string; copy: Copy }) {
         <div className="ui-container home-hero__grid">
           <div className="home-hero__text">
             <p className="ui-eyebrow ui-rise">{hero.eyebrow}</p>
-            <h1 id="home-hero-title" className="ui-display home-hero__title ui-rise" style={riseDelay(120)}>
+            <h1
+              id="home-hero-title"
+              className="ui-display home-hero__title ui-rise"
+              style={{ ...riseDelay(120), "--hero-measure": measure } as CSSProperties}
+            >
               <Lines text={hero.title} />
             </h1>
             <p className="ui-lede home-hero__lede ui-rise" style={riseDelay(260)}>

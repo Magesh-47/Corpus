@@ -38,12 +38,24 @@
   align-items: center;
   min-height: min(calc(100svh - var(--header-h, 76px) - 40px), 900px);
 }
-.home-hero__text { display: grid; justify-items: start; gap: 28px; padding-block: 24px; }
+.home-hero__text { display: grid; justify-items: start; gap: 28px; padding-block: 24px; container-type: inline-size; }
+/* The headline's two lines are fixed by the copy, and some languages run
+   longer ("Apprendre l'anatomie"): besides the viewport scale, the size is
+   capped so the longest line (--hero-measure characters, set by HomeHero, at
+   about --glyph em each) fits the column, instead of breaking a word a line. */
 .home-hero__title {
-  font-size: clamp(3rem, 1.2rem + 5.6vw, 7.25rem);
+  --glyph: 0.45;
+  --hero-fit: calc(100cqi / (var(--hero-measure, 13) * var(--glyph)));
+  font-size: min(clamp(3rem, 1.2rem + 5.6vw, 7.25rem), var(--hero-fit));
   line-height: var(--leading-display);
   text-wrap: initial;
 }
+.home-hero__title:lang(ru) { --glyph: 0.47; }
+.home-hero__title:lang(hi) { --glyph: 0.48; }
+.home-hero__title:lang(ar) { --glyph: 0.37; }
+.home-hero__title:lang(ko) { --glyph: 0.86; }
+.home-hero__title:lang(zh),
+.home-hero__title:lang(ja) { --glyph: 1.02; }
 .home-hero__lede { max-width: 31em; }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 4px; }
 .home-hero__facts {
@@ -1112,7 +1124,7 @@
 }
 
 @media (max-width: 360px) {
-  .home-hero__title { font-size: 2.6rem; }
+  .home-hero__title { font-size: min(2.6rem, var(--hero-fit)); }
   .home-hero__actions .ui-button { width: 100%; }
 }
 
