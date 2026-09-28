@@ -169,7 +169,7 @@ export const help: SiteDictionary["help"] = {
 
   account: {
     title: "Akun segera hadir",
-    body: "Formulir masuk, daftar, dan atur ulang kata sandi sudah tersedia, tetapi akun belum ada. Formulir itu menyatakannya dengan jelas, dan apa pun yang Anda masukkan tidak dikirim.",
+    body: "Formulir masuk, daftar, dan atur ulang kata sandi sudah disiapkan, tetapi akun belum ada. Formulir itu menyatakannya dengan jelas, dan apa pun yang Anda masukkan tidak dikirim.",
     saved: "Anda tidak memerlukan akun: semua yang ada di Jelajahi bisa digunakan tanpa akun. Tidak ada yang disimpan antarkunjungan.",
     cta: "Mulai menjelajah",
   },
@@ -218,7 +218,7 @@ export const help: SiteDictionary["help"] = {
     },
     createAccount: {
       q: "Bagaimana cara membuat akun?",
-      a: "Akun segera hadir. Formulir pendaftaran sudah tersedia, tetapi belum bisa membuat akun dan apa pun yang Anda masukkan tidak dikirim. Anda tidak memerlukan akun untuk menggunakan Jelajahi.",
+      a: "Akun segera hadir. Formulir pendaftaran sudah disiapkan, tetapi belum bisa membuat akun dan apa pun yang Anda masukkan tidak dikirim. Anda tidak memerlukan akun untuk menggunakan Jelajahi.",
     },
     resetPassword: {
       q: "Bagaimana cara mengatur ulang kata sandi?",

@@ -25,6 +25,9 @@
 /* Stills from Explore are transparent cut-outs: they sit on any ground. */
 .home-still { display: block; width: 100%; height: auto; }
 
+/* One line of a heading written with preferred breaks (see Lines). */
+.home-line { display: block; }
+
 /* ------------------------------------------------------------------ hero */
 
 .home-hero { padding-block: clamp(20px, 3vw, 40px) clamp(40px, 5vw, 72px); }
@@ -55,7 +58,22 @@
   letter-spacing: var(--track-caps);
   text-transform: uppercase;
 }
-.home-hero__facts li + li::before { content: "·"; padding-inline: 0.9em; color: var(--accent-ink); }
+/* Every fact carries its separator, and the list is pulled one separator into
+   the start margin and clipped there: when the line wraps (phones, longer
+   languages) no line begins with a stray dot. */
+.home-hero__facts {
+  --sep: 2em;
+  margin-inline-start: calc(var(--sep) * -1);
+  clip-path: inset(0 0 0 var(--sep));
+}
+[dir="rtl"] .home-hero__facts { clip-path: inset(0 var(--sep) 0 0); }
+.home-hero__facts li::before {
+  content: "·";
+  display: inline-block;
+  width: var(--sep);
+  color: var(--accent-ink);
+  text-align: center;
+}
 
 /* The plate: head, specimen, Latin caption — an atlas page, unframed. */
 .home-hero__plate {
@@ -601,7 +619,14 @@
   color: var(--ink-3);
   font-size: var(--text-sm);
 }
-.home-story__legend li + li::before { content: "·"; padding-inline: 0.7em; }
+/* Separators as in the hero facts: a wrapped line never starts with a dot. */
+.home-story__legend {
+  --sep: 1.5em;
+  margin-inline-start: calc(var(--sep) * -1);
+  clip-path: inset(0 0 0 var(--sep));
+}
+[dir="rtl"] .home-story__legend { clip-path: inset(0 var(--sep) 0 0); }
+.home-story__legend li::before { content: "·"; display: inline-block; width: var(--sep); text-align: center; }
 .home-story__figure { grid-column: 6 / -1; grid-row: 2; margin: 0; }
 .home-story__composition {
   position: relative;
@@ -738,6 +763,9 @@
   white-space: nowrap;
 }
 .home-wall__item a:hover .home-wall__name { color: var(--accent-ink); }
+@media (pointer: coarse) {
+  .home-wall__item a { min-height: 44px; }
+}
 .home-wall__item a[aria-current="true"] .home-wall__name {
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -979,13 +1007,22 @@
   }
 }
 
+/* In Arabic the composition sits at the page's left edge, where the labels
+   that run left (right lung, aorta) would leave the page until the column is
+   wide enough: step it in toward the text to give them room. */
+@media (min-width: 901px) and (max-width: 1279px) {
+  [dir="rtl"] .home-story__composition { width: min(100% - 88px, 620px); margin-inline: 0 auto; }
+}
+
 @media (max-width: 640px) {
   /* Leader-line labels have no room beside the organ at phone width: keep the
      dots (the caption and legend name the structures) and drop the labels. */
   .home-promo__notes .ui-note__label,
   .home-story__notes .ui-note__label { display: none; }
-  .home-promo__notes .ui-note,
-  .home-story__notes .ui-note { --len: 14px; }
+  /* Each note sets its own --len inline, so shorten the line itself: short
+     ticks, not long leader lines that lead nowhere. */
+  .home-promo__notes .ui-note__line,
+  .home-story__notes .ui-note__line { width: min(var(--len), 14px); }
   /* The plate keeps its numbered dots; the names move into the legend below it. */
   .home-hero__specimen { height: auto; width: min(78%, 330px); }
   .home-hero__notes .ui-note__line,

@@ -36,7 +36,7 @@ export const pricing: SiteDictionary["pricing"] = {
         listHeading: "Inclus aujourd’hui",
         list: {
           organs: "{organCount} organes en 3D, du cœur et du cerveau jusqu’à la peau",
-          viewer: "Rotation et zoom, avec isolement, coupe transversale et couches",
+          viewer: "Pivoter et zoomer, avec les vues Isoler, Coupe transversale et Couches",
           hotspots: "{structureCount} structures légendées, chacune avec son terme latin",
           cards: "Cartes d’apprentissage sur le tissu, la fonction, les affections et la comparaison",
           quiz: "Un quiz d’identification qui vous demande de retrouver les structures sur le modèle",
@@ -93,7 +93,7 @@ export const pricing: SiteDictionary["pricing"] = {
     rows: {
       exploration: {
         name: "Exploration anatomique en 3D",
-        free: "Rotation, zoom, isolement, coupe transversale et couches",
+        free: "Pivoter, zoomer, isoler, coupe transversale et couches",
         plus: "Tout ce qu’inclut Gratuit",
         education: "Tout ce qu’inclut Gratuit",
       },

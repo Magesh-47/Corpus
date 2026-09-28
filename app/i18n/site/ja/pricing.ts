@@ -130,7 +130,7 @@ export const pricing: SiteDictionary["pricing"] = {
       },
       progress: {
         name: "個人の進捗",
-        free: "進捗は次の訪問まで保存されません",
+        free: "進捗は訪問をまたいで保存されません",
         plus: "学んだ内容に戻るための手段",
         education: "このプランでは未定",
       },

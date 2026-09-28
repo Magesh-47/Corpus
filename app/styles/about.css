@@ -594,6 +594,13 @@
   .about-world__text { grid-column: 7 / -1; }
 }
 
+/* Arabic puts the plate at the page's left edge, where the frontal lobe's
+   label (drawn to the left, as the image is) would run off the page: until
+   the column is wide enough, step the plate in toward the text. */
+@media (min-width: 861px) and (max-width: 1279px) {
+  [dir="rtl"] .about-hero__stage { width: min(100% - 96px, 720px); margin-inline: 0 auto; }
+}
+
 @media (max-width: 860px) {
   .about-hero__grid,
   .about-depth__grid,
@@ -675,4 +682,7 @@
 @media (max-width: 380px) {
   /* No room beside the specimen for a second label. */
   .about-studio .ui-note--left { display: none; }
+  /* Shorter leaders keep both brain labels inside the narrowest screens. */
+  .about-hero .ui-note__line { width: 10px; }
+  .about-hero .ui-note__label { padding-inline: 4px; }
 }

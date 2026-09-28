@@ -15,7 +15,7 @@ export const common: SiteDictionary["common"] = {
     comingSoon: "Próximamente",
     preview: "Vista previa",
     example: "Ejemplo",
-    availableNow: "Disponible ya",
+    availableNow: "Ya disponible",
   },
   ogImageAlt: "Un espécimen anatómico de corazón flotando sobre un pedestal, junto al logotipo de Corpus",
   explore: {

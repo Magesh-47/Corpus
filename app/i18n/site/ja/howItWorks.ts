@@ -81,14 +81,14 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
     remember: {
       name: "覚える",
       title: "大切なところへ戻る。",
-      line: "これからの Corpus は、構造や会話、もっと注意が必要な分野を振り返る手助けをする予定です。",
+      line: "これからの Corpus は、構造や会話、もっと注意が必要なところを振り返る手助けをする予定です。",
       body:
         "この部分はまだ存在しません。Corpus は学習した内容を保存しないため、「探索」を訪れるたびに最初からのスタートになります。それまでは、ラベルクイズをやり直すことが、構造に立ち返る方法です。",
       futureLabel: "計画中",
       future: {
         structures: "振り返りたい構造",
         conversations: "続きを再開したい会話",
-        attention: "もっと注意が必要な分野",
+        attention: "もっと注意が必要なところ",
       },
     },
   },

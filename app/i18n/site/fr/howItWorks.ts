@@ -36,7 +36,7 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Se déplacer dans la structure.",
       line: "Faites pivoter, zoomez, isolez et examinez les relations anatomiques.",
       body:
-        "Chaque organe est un modèle 3D. Faites glisser pour le tourner, faites défiler ou pincez pour vous rapprocher, et sélectionnez un point pour nommer la structure qu’il désigne. L’isolement, la coupe transversale et les couches offrent chacun un autre regard sur la même forme.",
+        "Chaque organe est un modèle 3D. Faites glisser pour le tourner, faites défiler ou pincez pour vous rapprocher, et sélectionnez un point pour nommer la structure qu’il désigne. Les outils Isoler, Coupe transversale et Couches offrent chacun un autre regard sur la même forme.",
       viewerLabel: "Visionneuse 3D",
       controlsLabel: "Commandes de la visionneuse",
       controls: {

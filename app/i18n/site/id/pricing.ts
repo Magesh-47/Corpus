@@ -17,7 +17,7 @@ export const pricing: SiteDictionary["pricing"] = {
     plate: {
       label: "Lembar: {organ}, dalam potongan",
       alt: "Balok kulit dalam cat air yang dipotong untuk memperlihatkan lapisannya: permukaan, dermis dengan folikel rambut, kelenjar, dan pembuluh darah, serta lemak kuning di bawahnya",
-      caption: "Dari permukaan hingga lemak di bawahnya. Lapisan yang sama diberi label pada model 3D, bebas dijelajahi.",
+      caption: "Dari permukaan hingga lemak di bawahnya. Lapisan yang sama diberi label pada model 3D, yang bisa dijelajahi gratis.",
     },
   },
 

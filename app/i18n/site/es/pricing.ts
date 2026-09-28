@@ -81,10 +81,10 @@ export const pricing: SiteDictionary["pricing"] = {
     eyebrow: "Comparar",
     title: "Qué incluye cada plan.",
     lede: "La columna Gratis describe Corpus tal como es hoy. Las otras dos describen planes en desarrollo y pueden cambiar.",
-    caption: "Funciones por plan. Gratis está disponible ya; Corpus Plus y Educación están en desarrollo.",
+    caption: "Funciones por plan. Gratis ya está disponible; Corpus Plus y Educación están en desarrollo.",
     featureHeading: "Función",
     status: {
-      available: "Disponible ya",
+      available: "Ya disponible",
       planned: "Previsto",
       undecided: "Sin decidir",
       unavailable: "No disponible",

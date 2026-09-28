@@ -47,7 +47,7 @@ export const auth: SiteDictionary["auth"] = {
     summary: "Certaines informations sont à corriger. Consultez les messages sous chaque champ.",
     nameRequired: "Saisissez votre nom.",
     emailRequired: "Saisissez votre adresse e-mail.",
-    emailInvalid: "Saisissez une adresse e-mail au format name@example.com.",
+    emailInvalid: "Saisissez une adresse e-mail au format nom@exemple.com.",
     passwordRequired: "Saisissez votre mot de passe.",
     passwordTooShort: "Utilisez au moins {min} caractères.",
     confirmRequired: "Saisissez à nouveau votre mot de passe.",
@@ -89,7 +89,7 @@ export const auth: SiteDictionary["auth"] = {
     lede: "Saisissez votre adresse e-mail et nous vous aiderons à revenir dans Corpus.",
     submit: "Envoyer le lien",
     busy: "Envoi…",
-    switchPrompt: "Il vous est revenu ?",
+    switchPrompt: "Vous vous en souvenez ?",
     switchAction: "Retour à la connexion",
     unavailable: {
       title: "La réinitialisation du mot de passe n’est pas encore disponible.",

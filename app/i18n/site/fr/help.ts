@@ -4,7 +4,7 @@ export const help: SiteDictionary["help"] = {
   meta: {
     title: "Aide de Corpus — Guide d’apprentissage de l’anatomie",
     description:
-      "Comment utiliser Corpus : faire pivoter et zoomer les modèles 3D d’organes, lire leurs structures, vous tester, changer de langue et trouver des réponses claires aux questions fréquentes.",
+      "Comment utiliser Corpus : faire pivoter les modèles 3D d’organes et zoomer dessus, lire leurs structures, vous tester, changer de langue et trouver des réponses claires aux questions fréquentes.",
   },
 
   hero: {

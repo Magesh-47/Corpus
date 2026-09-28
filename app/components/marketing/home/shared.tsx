@@ -5,14 +5,20 @@ export function plateNumber(value: number) {
   return String(value).padStart(2, "0");
 }
 
-/** A display heading whose copy marks preferred line breaks with "\n". */
+/**
+ * A display heading whose copy marks preferred line breaks with "\n". Each
+ * line is its own block, so when a line has to wrap on a narrow screen it is
+ * balanced on its own (text-wrap does not balance across <br>) instead of
+ * leaving one word behind. The space between lines keeps the accessible name
+ * reading as a sentence.
+ */
 export function Lines({ text }: { text: string }) {
   return (
     <>
       {text.split("\n").map((line, index) => (
         <Fragment key={index}>
-          {index > 0 && <br />}
-          {line}
+          {index > 0 && " "}
+          <span className="home-line">{line}</span>
         </Fragment>
       ))}
     </>

@@ -45,7 +45,7 @@ export const about: SiteDictionary["about"] = {
     verbsTitle: "アトリエでは",
     verbs: {
       observe: { verb: "観察する。", note: "モデルを回し、近づいて見る。" },
-      manipulate: { verb: "操作する。", note: "臓器を単独表示し、断面で切る。" },
+      manipulate: { verb: "操作する。", note: "臓器を単独表示したり、断面で切ったりする。" },
       compare: { verb: "比較する。", note: "臓器を並べて比べる。" },
       question: { verb: "問いかける。", note: "構造を選んで、その名前と役割を見る。" },
       practice: { verb: "練習する。", note: "問われた構造を探し、自分で確かめる。" },

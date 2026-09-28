@@ -11,7 +11,7 @@ export const pricing: SiteDictionary["pricing"] = {
     eyebrow: "요금",
     titleLead: "인체를 탐색하세요.",
     titleRest: "얼마나 깊이 들어갈지는 직접 고르세요.",
-    lede: "핵심 해부학은 지금 계정도 결제도 없이 무료로 탐색할 수 있습니다. Corpus Plus와 교육용 플랜은 아직 개발 중이어서 둘 다 가격이 없습니다.",
+    lede: "핵심 해부학은 지금 계정도 결제도 없이 무료로 탐색할 수 있습니다. Corpus Plus와 교육용 플랜은 아직 개발 중이어서 둘 다 가격이 정해지지 않았습니다.",
     primary: "탐색 시작하기",
     secondary: "플랜 비교하기",
     plate: {
@@ -47,7 +47,7 @@ export const pricing: SiteDictionary["pricing"] = {
       plus: {
         name: "Corpus Plus",
         tagline: "앞으로 마련할 학습·개인화 기능으로 더 깊이 들어갑니다.",
-        price: "아직 가격 없음",
+        price: "가격 미정",
         priceNote: "개발 중",
         description: "핵심 컬렉션보다 더 나아가고, 학습한 내용으로 다시 돌아가고 싶은 분들을 위해 계획 중입니다.",
         listHeading: "검토 중인 내용",
@@ -62,7 +62,7 @@ export const pricing: SiteDictionary["pricing"] = {
       education: {
         name: "교육용",
         tagline: "Corpus를 가르치고 배우는 현장으로 가져갑니다.",
-        price: "아직 가격 없음",
+        price: "가격 미정",
         priceNote: "개발 중",
         description: "수업이나 강좌에 Corpus를 활용하려는 교사와 학교를 위해 계획 중입니다.",
         listHeading: "검토 중인 내용",

@@ -36,7 +36,7 @@ export const pricing: SiteDictionary["pricing"] = {
         listHeading: "Incluído hoje",
         list: {
           organs: "{organCount} órgãos em 3D, do coração e do cérebro à pele",
-          viewer: "Girar e zoom, com as vistas Isolar, Corte transversal e Camadas",
+          viewer: "Girar e dar zoom, com as vistas Isolar, Corte transversal e Camadas",
           hotspots: "{structureCount} estruturas rotuladas, cada uma com seu termo em latim",
           cards: "Cartões de aprendizagem sobre tecido, função, doenças e comparação",
           quiz: "Um quiz de identificação que pede que você encontre estruturas no modelo",

@@ -23,6 +23,7 @@ const PLINTH_TOP = PLINTH_Y + 0.17;
  *  rather than an edge-on band across the background. */
 const HOME_CAMERA = { x: 0, y: 1.05, z: 8.2 };
 const HOME_TARGET = { x: 0, y: 0.02, z: 0 };
+const HOME_DISTANCE = Math.hypot(HOME_CAMERA.x - HOME_TARGET.x, HOME_CAMERA.y - HOME_TARGET.y, HOME_CAMERA.z - HOME_TARGET.z);
 
 export class AnatomyViewer {
   private renderer: THREE.WebGLRenderer;
@@ -269,7 +270,7 @@ export class AnatomyViewer {
       this.dirty = true;
     }
 
-    this.tween(this.camera.position, { z: 9.2, duration: 0.42, ease: "power2.inOut" });
+    this.tween(this, { viewDistance: HOME_DISTANCE + 1, duration: 0.42, ease: "power2.inOut" });
 
     let organ: LoadedOrgan;
     try {
@@ -307,7 +308,7 @@ export class AnatomyViewer {
     gsap.timeline({ onUpdate: () => (this.dirty = true) })
       .to(organ.pivot.scale, { x: 1, y: 1, z: 1, duration: 0.9, ease: "back.out(1.25)" }, 0)
       .to(organ.pivot.position, { z: 0, duration: 0.85, ease: "power3.out" }, 0)
-      .to(this.camera.position, { z: 8.2, duration: 0.9, ease: "power2.out" }, 0.08);
+      .to(this, { viewDistance: HOME_DISTANCE, duration: 0.9, ease: "power2.out" }, 0.08);
   }
 
   private materials(organ: LoadedOrgan) {
@@ -582,8 +583,8 @@ export class AnatomyViewer {
     const pivot = this.organ?.pivot;
     if (event.key === "ArrowLeft" && pivot) pivot.rotation.y -= 0.08;
     if (event.key === "ArrowRight" && pivot) pivot.rotation.y += 0.08;
-    if (event.key === "+") this.camera.position.z = Math.max(4.8, this.camera.position.z - 0.35);
-    if (event.key === "-") this.camera.position.z = Math.min(12, this.camera.position.z + 0.35);
+    if (event.key === "+") this.viewDistance = this.clampDistance(this.viewDistance - 0.35);
+    if (event.key === "-") this.viewDistance = this.clampDistance(this.viewDistance + 0.35);
     if (event.key === "Escape") this.select(null);
     this.dirty = true;
   };
@@ -608,11 +609,31 @@ export class AnatomyViewer {
   }
 
   zoom(direction: 1 | -1) {
-    this.tween(this.camera.position, {
-      z: THREE.MathUtils.clamp(this.camera.position.z + direction * 1.2, 4.8, 12),
+    this.tween(this, {
+      viewDistance: this.clampDistance(this.viewDistance + direction * 1.2),
       duration: 0.5,
       ease: "power2.out",
     });
+  }
+
+  /**
+   * The camera's distance from the orbit target, as one tweenable number.
+   * Writing it slides the camera along its current line of sight. Zooming used
+   * to move `position.z` alone, which only zooms from the home view: once the
+   * learner had orbited, it swung the camera sideways and could even zoom out.
+   */
+  private get viewDistance() {
+    return this.camera.position.distanceTo(this.controls.target);
+  }
+
+  private set viewDistance(distance: number) {
+    const offset = this.camera.position.clone().sub(this.controls.target).setLength(distance);
+    this.camera.position.copy(this.controls.target).add(offset);
+    this.dirty = true;
+  }
+
+  private clampDistance(distance: number) {
+    return THREE.MathUtils.clamp(distance, this.controls.minDistance, this.controls.maxDistance);
   }
 
   toggleIsolate() {
@@ -669,6 +690,7 @@ export class AnatomyViewer {
     this.loadRequest += 1;
     cancelAnimationFrame(this.frame);
     gsap.killTweensOf(this.camera.position);
+    gsap.killTweensOf(this);
     this.controls.removeEventListener("start", this.onControlStart);
     this.controls.dispose();
     this.resizeObserver.disconnect();

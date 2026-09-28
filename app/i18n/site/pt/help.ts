@@ -77,7 +77,7 @@ export const help: SiteDictionary["help"] = {
     columns: {
       action: "Ação",
       pointer: "Mouse ou trackpad",
-      touch: "Tela de toque",
+      touch: "Tela sensível ao toque",
       keyboard: "Teclado",
     },
     controls: {

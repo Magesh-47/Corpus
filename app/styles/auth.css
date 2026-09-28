@@ -103,6 +103,11 @@
 }
 .auth-link:hover { text-decoration-color: currentColor; }
 .auth-link--strong { font-weight: 500; }
+/* On touch screens the link's target reaches 44px without moving the text. */
+@media (pointer: coarse) {
+  .auth-link { position: relative; }
+  .auth-link::after { content: ""; position: absolute; inset: -13px -6px; }
+}
 
 /* ------------------------------------------------------------------ page */
 

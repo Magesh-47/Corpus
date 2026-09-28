@@ -44,7 +44,7 @@ export const auth: SiteDictionary["auth"] = {
     summary: "Beberapa isian perlu diperbaiki. Periksa pesan di bawah setiap kolom.",
     nameRequired: "Masukkan nama Anda.",
     emailRequired: "Masukkan alamat email Anda.",
-    emailInvalid: "Masukkan alamat email dengan format name@example.com.",
+    emailInvalid: "Masukkan alamat email dengan format nama@contoh.com.",
     passwordRequired: "Masukkan kata sandi Anda.",
     passwordTooShort: "Gunakan minimal {min} karakter.",
     confirmRequired: "Masukkan kata sandi Anda sekali lagi.",

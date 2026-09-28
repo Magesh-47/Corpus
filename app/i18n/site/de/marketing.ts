@@ -21,7 +21,7 @@ export const marketing: SiteDictionary["marketing"] = {
     },
     plate: {
       number: "Tafel I",
-      view: "Ansicht von vorn seitlich",
+      view: "Anterolaterale Ansicht",
       latinTitle: "Musculi capitis, colli et thoracis",
       caption: "Die oberflächlichen Muskeln von Kopf, Hals und Brust.",
       alt: "Eine anatomische Büste ohne Haut, die die oberflächlichen Muskeln von Gesicht, Hals, Schulter und Brust zeigt. Der Kopf ist zur Seite gedreht und nach oben geneigt.",
@@ -43,7 +43,7 @@ export const marketing: SiteDictionary["marketing"] = {
 
   philosophy: {
     eyebrow: "Philosophie",
-    title: "Anatomie lernt man nicht\nflach auswendig.",
+    title: "Anatomie lernt man nicht\nin zwei Dimensionen.",
     lede: "Der Körper ist dreidimensional, vernetzt und ständig in Bewegung. Corpus macht Anatomie zu etwas, das Sie sehen, erkunden und verstehen können.",
     steps: {
       see: {

@@ -47,7 +47,7 @@ export const auth: SiteDictionary["auth"] = {
     summary: "Einige Angaben müssen korrigiert werden. Prüfen Sie die Hinweise unter den einzelnen Feldern.",
     nameRequired: "Geben Sie Ihren Namen ein.",
     emailRequired: "Geben Sie Ihre E-Mail-Adresse ein.",
-    emailInvalid: "Geben Sie eine E-Mail-Adresse im Format name@example.com ein.",
+    emailInvalid: "Geben Sie eine E-Mail-Adresse im Format name@beispiel.de ein.",
     passwordRequired: "Geben Sie Ihr Passwort ein.",
     passwordTooShort: "Verwenden Sie mindestens {min} Zeichen.",
     confirmRequired: "Geben Sie Ihr Passwort erneut ein.",

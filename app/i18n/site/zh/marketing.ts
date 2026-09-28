@@ -191,7 +191,7 @@ export const marketing: SiteDictionary["marketing"] = {
       },
       clarity: {
         title: "视觉清晰",
-        body: "呈现复杂的解剖，而不添加不必要的复杂。",
+        body: "呈现复杂的解剖，却不增添不必要的繁复。",
       },
     },
     entry: {

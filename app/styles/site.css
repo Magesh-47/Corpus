@@ -674,3 +674,35 @@ html:has(.site-menu[open]) { overflow: hidden; }
 @media (max-width: 520px) {
   .site-footer__inner { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ------------------------------------------------------------------ touch */
+
+/* On touch screens every link and control offers a target at least 44px
+   tall. Lists of links get 44px rows; a link keeps its hairline underline and
+   reaches the full row through an invisible ::after, so nothing moves. */
+@media (pointer: coarse) {
+  .ui-skip { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; }
+  .site-brand { min-height: 44px; align-items: center; }
+  .ui-button--sm { --button-h: 44px; }
+
+  .ui-button--text,
+  .site-nav a,
+  .site-actions__link,
+  .site-footer a,
+  .site-menu__languages a { position: relative; }
+  .ui-button--text::after,
+  .site-nav a::after,
+  .site-actions__link::after,
+  .site-footer a::after,
+  .site-menu__languages a::after {
+    content: "";
+    position: absolute;
+    inset-block: min(0px, calc((100% - 44px) / 2));
+    inset-inline: -6px;
+  }
+
+  .site-footer ul,
+  .site-menu__languages ul { row-gap: 0; }
+  .site-footer li,
+  .site-menu__languages li { display: flex; align-items: center; min-height: 44px; }
+}
