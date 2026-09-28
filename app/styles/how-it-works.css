@@ -70,7 +70,8 @@
 .how-hero__title {
   grid-area: title;
   display: grid;
-  line-height: 0.98;
+  /* 0.98 in Latin; the taller scripts keep their own display leading. */
+  line-height: calc(var(--leading-display) - 0.04);
 }
 /* Each verb steps in a little further: the sequence, read as a cascade. */
 .how-hero__line {

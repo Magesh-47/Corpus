@@ -62,7 +62,8 @@
    the start margin and clipped there: when the line wraps (phones, longer
    languages) no line begins with a stray dot. */
 .home-hero__facts {
-  --sep: 2em;
+  /* Narrower than the smallest gutter, so the clipped margin stays on the page. */
+  --sep: 1.6em;
   margin-inline-start: calc(var(--sep) * -1);
   clip-path: inset(0 0 0 var(--sep));
 }
@@ -621,7 +622,7 @@
 }
 /* Separators as in the hero facts: a wrapped line never starts with a dot. */
 .home-story__legend {
-  --sep: 1.5em;
+  --sep: 1.3em;
   margin-inline-start: calc(var(--sep) * -1);
   clip-path: inset(0 0 0 var(--sep));
 }
