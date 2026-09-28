@@ -3,7 +3,7 @@ import type { UiDictionary } from "../types";
 export const ui: UiDictionary = {
   meta: {
     title: "Corpus — 예술가처럼 배우는 해부학",
-    description: "심장, 뇌, 폐, 간, 콩팥, 눈, 장, 이자, 피부까지 — 의학적으로 정밀한 3D 장기를 인터랙티브 해부 아틀리에에서 살펴보세요.",
+    description: "심장, 뇌, 폐, 간, 콩팥, 눈, 장, 이자, 피부까지 — 의학적으로 정밀한 3D 장기를 인터랙티브 해부학 아틀리에에서 살펴보세요.",
     ogTitle: "Corpus — 예술가처럼 배우는 해부학",
     ogDescription: "몰입감 있고 의학적으로 정밀한 3D 표본으로 해부학을 배웁니다.",
     imageAlt: "받침대 위에 떠 있는 해부학적 심장 표본과 Corpus 로고",

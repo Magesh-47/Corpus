@@ -9,7 +9,7 @@ export const ui: UiDictionary = {
     imageAlt: "Un cœur anatomique flottant au-dessus d'un socle, à côté du logotype Corpus",
   },
   brand: {
-    home: "Accueil d'Corpus",
+    home: "Accueil de Corpus",
   },
   nav: {
     label: "Navigation principale",
