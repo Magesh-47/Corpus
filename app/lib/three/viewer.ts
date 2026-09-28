@@ -39,7 +39,8 @@ export class AnatomyViewer {
   private contactShadow!: THREE.Mesh;
 
   private frame = 0;
-  private clock = new THREE.Clock();
+  // THREE.Clock is deprecated (r183) and warns on construction.
+  private clock = new THREE.Timer();
   private resizeObserver: ResizeObserver;
   private intersectionObserver: IntersectionObserver;
   private clipPlane = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 0);
@@ -388,6 +389,7 @@ export class AnatomyViewer {
     this.frame = requestAnimationFrame(this.animate);
     if (!this.isVisible || !this.isPageVisible) return;
 
+    this.clock.update();
     const delta = Math.min(this.clock.getDelta(), 0.05);
     const now = performance.now();
 
@@ -425,7 +427,7 @@ export class AnatomyViewer {
   private onVisibilityChange = () => {
     this.isPageVisible = !document.hidden;
     if (this.isPageVisible) {
-      this.clock.start();
+      this.clock.reset();
       this.dirty = true;
     }
   };
@@ -583,7 +585,8 @@ export class AnatomyViewer {
     const pivot = this.organ?.pivot;
     if (event.key === "ArrowLeft" && pivot) pivot.rotation.y -= 0.08;
     if (event.key === "ArrowRight" && pivot) pivot.rotation.y += 0.08;
-    if (event.key === "+") this.viewDistance = this.clampDistance(this.viewDistance - 0.35);
+    // "=" is the unshifted plus key on many layouts.
+    if (event.key === "+" || event.key === "=") this.viewDistance = this.clampDistance(this.viewDistance - 0.35);
     if (event.key === "-") this.viewDistance = this.clampDistance(this.viewDistance + 0.35);
     if (event.key === "Escape") this.select(null);
     this.dirty = true;
