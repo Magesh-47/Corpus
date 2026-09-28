@@ -120,7 +120,7 @@ export const ui: UiDictionary = {
     motionIntro: "Vereinfachte Darstellung dieses Organs bei der Arbeit.",
     disclaimer: "Nur zu Lernzwecken, keine medizinische Beratung.",
     tissue: "Gewebe",
-    systemIntro: "{location}. Verfolgen Sie, wie dieses Organ ({organ}) mit dem übrigen Körper verbunden ist.",
+    systemIntro: "{location}. Verfolgen Sie die Verbindungen zwischen {organ} und übrigem Körper.",
     system: "System",
     primaryRole: "Hauptaufgabe",
     bloodSupply: "Blutversorgung",

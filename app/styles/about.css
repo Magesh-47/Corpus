@@ -437,7 +437,9 @@
 
 .about-principles__lines {
   margin-block-start: clamp(36px, 4vw, 56px);
-  font-size: clamp(3rem, 1.2rem + 6.4vw, 8rem);
+  /* The vw cap only bites under 360px, where "Visuals always." and its step
+     in would otherwise break a word a line. */
+  font-size: min(clamp(3rem, 1.2rem + 6.4vw, 8rem), 13vw);
   line-height: calc(var(--leading-display) + 0.02);
 }
 .about-principles__line {

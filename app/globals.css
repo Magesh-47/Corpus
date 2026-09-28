@@ -964,6 +964,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
      the free top edge instead of running underneath it. */
   .view-caption { inset-inline: 14px; top: 12px; bottom: auto; }
   .callout-body { width: 160px; top: -28px; }
+  /* A 44px touch target around the small visible close mark. */
+  .callout-close::after { content: ""; position: absolute; inset: -9px; }
   .quiz-bar { inset-inline: 8px; top: 8px; gap: 10px; padding-block: 8px; padding-inline: 14px 4px; }
   .quiz-prompt strong { font-size: 19px; }
   .quiz-meta small { display: none; }

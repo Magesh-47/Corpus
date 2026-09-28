@@ -22,7 +22,8 @@
   gap: 28px;
   justify-items: start;
 }
-.pricing-hero__title { max-width: 11em; }
+/* The vw cap only bites under 360px, so "Explore the body." keeps one line. */
+.pricing-hero__title { max-width: 11em; font-size: min(var(--display-lg), 12.5vw); }
 .pricing-hero__lead,
 .pricing-hero__rest { display: block; }
 .pricing-hero__rest {

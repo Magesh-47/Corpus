@@ -120,7 +120,7 @@ export const ui: UiDictionary = {
     motionIntro: "A simplified illustration of this organ at work.",
     disclaimer: "Educational information only, not medical advice.",
     tissue: "Tissue",
-    systemIntro: "{location}. Trace how the {organ} connects to the rest of the body.",
+    systemIntro: "{location}. Trace the connections between the {organ} and the rest of the body.",
     system: "System",
     primaryRole: "Primary role",
     bloodSupply: "Blood supply",
