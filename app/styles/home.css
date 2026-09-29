@@ -101,7 +101,7 @@
   gap: 16px;
   width: min(100%, 520px);
   padding-block-end: 12px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--accent-ink);
 }
 .home-hero__specimen {
   position: relative;
