@@ -75,7 +75,7 @@
    languages) no line begins with a stray dot. */
 .home-hero__facts {
   /* Narrower than the smallest gutter, so the clipped margin stays on the page. */
-  --sep: 1.6em;
+  --sep: 1.8em;
   margin-inline-start: calc(var(--sep) * -1);
   clip-path: inset(0 0 0 var(--sep));
 }
