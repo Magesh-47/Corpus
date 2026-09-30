@@ -38,7 +38,7 @@
   align-items: center;
   min-height: min(calc(100svh - var(--header-h, 76px) - 40px), 900px);
 }
-.home-hero__text { display: grid; justify-items: start; gap: 28px; padding-block: 24px; container-type: inline-size; }
+.home-hero__text { display: grid; justify-items: start; gap: 30px; padding-block: 24px; container-type: inline-size; }
 /* The headline's two lines are fixed by the copy, and some languages run
    longer ("Apprendre l'anatomie"): besides the viewport scale, the size is
    capped so the longest line (--hero-measure characters, set by HomeHero, at
@@ -61,8 +61,8 @@
 .home-hero__facts {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 0;
-  margin: 12px 0 0;
+  gap: 8px 0;
+  margin: 18px 0 0;
   padding: 0;
   list-style: none;
   color: var(--ink-3);
