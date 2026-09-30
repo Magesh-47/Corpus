@@ -94,6 +94,11 @@
   display: grid;
   justify-items: center;
   gap: 24px;
+  padding: 20px 18px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 22px 48px rgba(14, 18, 22, 0.08);
 }
 .home-hero__plate-head {
   display: flex;
