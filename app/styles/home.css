@@ -134,8 +134,9 @@
 .home-hero__caption {
   display: grid;
   justify-items: center;
-  gap: 4px;
+  gap: 6px;
   text-align: center;
+  padding-top: 8px;
 }
 .home-hero__latin { color: var(--ink); font-size: var(--text-lg); }
 /* The legend is for assistive technology while the labels are drawn on the plate… */
