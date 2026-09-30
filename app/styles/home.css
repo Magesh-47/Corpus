@@ -172,7 +172,7 @@
   align-items: baseline;
   gap: clamp(16px, 3vw, 48px);
   margin: 0;
-  padding-block: 24px;
+  padding-block: 28px;
   border-block: 1px solid var(--rule);
 }
 .home-transition__number {
