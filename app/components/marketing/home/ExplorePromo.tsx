@@ -8,12 +8,17 @@ import { localeHref } from "../../../lib/routes";
 import { revealDelay } from "./motion";
 import { Lines, StillImage, stills } from "./shared";
 
-/** Which of the heart's hotspots are named on the still, and which way each label runs. */
+/**
+ * Which of the heart's hotspots are named on the still, and which way each
+ * label runs. Lengths are for the still at its largest (440px wide); home.css
+ * scales them with the still, so the two right-hand labels always start in one
+ * column just clear of the heart's edge.
+ */
 const LABELLED: { id: keyof typeof stills.heart.points; side: "left" | "right"; length: number }[] = [
   { id: "aorta", side: "left", length: 96 },
-  { id: "right-atrium", side: "left", length: 56 },
-  { id: "left-atrium", side: "right", length: 120 },
-  { id: "left-ventricle", side: "right", length: 88 },
+  { id: "right-atrium", side: "left", length: 48 },
+  { id: "left-atrium", side: "right", length: 146 },
+  { id: "left-ventricle", side: "right", length: 132 },
 ];
 /** Shown as dots only, as Explore shows them before one is selected. */
 const UNLABELLED: (keyof typeof stills.heart.points)[] = ["right-ventricle", "mitral"];

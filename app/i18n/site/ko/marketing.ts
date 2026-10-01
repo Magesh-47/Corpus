@@ -152,7 +152,7 @@ export const marketing: SiteDictionary["marketing"] = {
     cta: "스스로 확인하기",
     identify: "찾기",
     alt: "‘탐색’의 3D 뇌. 네 개의 구조에 1부터 4까지 번호가 표시되어 있습니다.",
-    caption: "‘탐색’의 이름 맞히기 퀴즈 장면입니다. 모델에서 구조를 선택해 답합니다.",
+    caption: "‘탐색’의 이름 맞히기 퀴즈를 그린 그림입니다. 모델에서 구조를 선택해 답합니다.",
   },
 
   ai: {

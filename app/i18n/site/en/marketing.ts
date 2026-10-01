@@ -159,7 +159,7 @@ export const marketing = {
     cta: "Test yourself",
     identify: "Identify",
     alt: "The 3D brain from Explore with four structures marked by the numbers 1 to 4.",
-    caption: "A still of the labelling quiz in Explore, where you answer by selecting the structure on the model.",
+    caption: "An illustration of the labelling quiz in Explore, where you answer by selecting the structure on the model.",
   },
 
   ai: {

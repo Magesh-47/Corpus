@@ -41,21 +41,17 @@
 .home-hero__text { display: grid; justify-items: start; gap: 30px; padding-block: 24px; container-type: inline-size; }
 /* The headline's two lines are fixed by the copy, and some languages run
    longer ("Apprendre l'anatomie"): besides the viewport scale, the size is
-   capped so the longest line (--hero-measure characters, set by HomeHero, at
-   about --glyph em each) fits the column, instead of breaking a word a line. */
+   capped so the widest line (--hero-measure, its estimated width in em, set
+   by HomeHero) fits the column with a little to spare, instead of breaking a
+   word a line. English keeps its size at desktop widths. */
 .home-hero__title {
-  --glyph: 0.45;
-  --hero-fit: calc(100cqi / (var(--hero-measure, 13) * var(--glyph)));
-  font-size: min(clamp(3rem, 1.2rem + 5.6vw, 7.25rem), var(--hero-fit));
+  --hero-fit: calc(98cqi / var(--hero-measure, 6));
+  /* Never under 2.25rem: on the narrowest phones a long first line may break
+     once rather than shrink the headline to caption size. */
+  font-size: max(2.25rem, min(clamp(3rem, 1.2rem + 5.6vw, 7.25rem), var(--hero-fit)));
   line-height: var(--leading-display);
   text-wrap: initial;
 }
-.home-hero__title:lang(ru) { --glyph: 0.47; }
-.home-hero__title:lang(hi) { --glyph: 0.48; }
-.home-hero__title:lang(ar) { --glyph: 0.37; }
-.home-hero__title:lang(ko) { --glyph: 0.86; }
-.home-hero__title:lang(zh),
-.home-hero__title:lang(ja) { --glyph: 1.02; }
 .home-hero__lede { max-width: 31em; }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 4px; }
 .home-hero__facts {
@@ -516,6 +512,14 @@
 }
 .home-promo__model img { display: block; width: 100%; height: auto; }
 .home-promo__notes .ui-note__label { font-size: 13px; }
+/* Leader lines are set for the still at its largest (440px) and scale with it
+   (tan(atan2()) turns the still's width into a plain ratio), so each label
+   keeps its place beside the heart instead of running onto it or into the
+   text column as the still narrows. */
+.home-promo__model { container-type: inline-size; }
+@supports (width: calc(1px * tan(atan2(1px, 1px)))) {
+  .home-promo__notes .ui-note__line { width: calc(var(--len) * tan(atan2(100cqi, 440px))); }
+}
 .home-promo__caption {
   display: flex;
   flex-wrap: wrap;
@@ -888,7 +892,9 @@
 }
 .home-audience__group:first-child { padding-inline-start: 0; border-inline-start: 0; }
 .home-audience__number { color: var(--accent-ink); font: 500 var(--text-sm)/1 var(--font-sans), sans-serif; letter-spacing: 0.08em; }
-.home-audience__title { margin: 0; font: 500 var(--display-md)/1.05 var(--font-serif), serif; letter-spacing: var(--track-display); }
+/* In three columns the size is capped so a two-word name ("Curious minds")
+   keeps one line; stacked (under 900px) it takes the full display size. */
+.home-audience__title { margin: 0; font: 500 min(var(--display-md), 4vw, 3.6rem)/1.05 var(--font-serif), serif; letter-spacing: var(--track-display); }
 .home-audience__group .ui-body { margin: 0; max-width: 24em; }
 .home-audience__cta { margin-block-start: 8px; }
 
@@ -1013,6 +1019,7 @@
   .home-record { max-width: 560px; }
 
   .home-audience__groups { grid-template-columns: minmax(0, 1fr); }
+  .home-audience__title { font-size: var(--display-md); }
   .home-audience__group,
   .home-audience__group:first-child {
     padding-inline: 0;
@@ -1130,7 +1137,7 @@
 }
 
 @media (max-width: 360px) {
-  .home-hero__title { font-size: min(2.6rem, var(--hero-fit)); }
+  .home-hero__title { font-size: max(2.25rem, min(2.6rem, var(--hero-fit))); }
   .home-hero__actions .ui-button { width: 100%; }
 }
 

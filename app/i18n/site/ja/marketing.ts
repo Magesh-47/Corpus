@@ -152,7 +152,7 @@ export const marketing: SiteDictionary["marketing"] = {
     cta: "理解度チェック",
     identify: "識別",
     alt: "「探索」の 3D 脳。4つの構造に 1〜4 の番号が付いている。",
-    caption: "「探索」のラベルクイズの静止画。モデル上の構造を選んで答えます。",
+    caption: "「探索」のラベルクイズの説明図。モデル上の構造を選んで答えます。",
   },
 
   ai: {

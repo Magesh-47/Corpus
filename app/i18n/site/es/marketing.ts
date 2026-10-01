@@ -152,7 +152,7 @@ export const marketing: SiteDictionary["marketing"] = {
     cta: "Ponte a prueba",
     identify: "Identifica",
     alt: "El cerebro 3D de Explorar con cuatro estructuras marcadas con los números del 1 al 4.",
-    caption: "Un fotograma del cuestionario de identificación de Explorar, donde respondes seleccionando la estructura en el modelo.",
+    caption: "Una ilustración del cuestionario de identificación de Explorar, donde respondes seleccionando la estructura en el modelo.",
   },
 
   ai: {

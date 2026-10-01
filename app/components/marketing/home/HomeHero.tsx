@@ -4,7 +4,7 @@ import type { SiteDictionary } from "../../../i18n/site";
 import { localeHref } from "../../../lib/routes";
 import type { CSSProperties } from "react";
 import { riseDelay } from "./motion";
-import { Lines } from "./shared";
+import { Lines, displayMeasure } from "./shared";
 
 type Copy = SiteDictionary["marketing"];
 type Structure = keyof Copy["hero"]["plate"]["structures"];
@@ -25,9 +25,9 @@ const NOTES: { id: Structure; x: number; y: number; side: "left" | "right"; leng
 export function HomeHero({ locale, copy }: { locale: string; copy: Copy }) {
   const { hero, transition } = copy;
   const { plate } = hero;
-  // The longest line, in characters: the stylesheet sizes the headline so that
+  // The widest line, in em: the stylesheet caps the headline's size so that
   // line holds in its column in every language (see .home-hero__title).
-  const measure = Math.max(...hero.title.split("\n").map((line) => Array.from(line).length));
+  const measure = Math.max(...hero.title.split("\n").map(displayMeasure));
   const notes: Note[] = NOTES.map((note) => ({
     ...note,
     label: (

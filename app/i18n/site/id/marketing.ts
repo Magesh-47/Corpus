@@ -152,7 +152,7 @@ export const marketing: SiteDictionary["marketing"] = {
     cta: "Uji diri Anda",
     identify: "Kenali",
     alt: "Otak 3D dari Jelajahi dengan empat struktur yang ditandai angka 1 sampai 4.",
-    caption: "Cuplikan kuis penamaan di Jelajahi, tempat Anda menjawab dengan memilih struktur pada model.",
+    caption: "Ilustrasi kuis penamaan di Jelajahi, tempat Anda menjawab dengan memilih struktur pada model.",
   },
 
   ai: {
