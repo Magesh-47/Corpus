@@ -26,9 +26,9 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Comece pelo todo.",
       line: "Escolha um órgão e veja sua forma antes de se preocupar com os nomes.",
       body:
-        "O Explorar abre com uma biblioteca de nove órgãos, do coração e do cérebro ao pâncreas e à pele. Escolha um e ele aparece inteiro. Suas estruturas são marcadas com pequenos pontos, e os nomes esperam até que você os peça.",
+        "O Explorar abre com uma biblioteca de {count} órgãos, do coração e do cérebro ao pâncreas e à pele. Escolha um e ele aparece inteiro. Suas estruturas são marcadas com pequenos pontos, e os nomes esperam até que você os peça.",
       plateLabel: "Prancha I",
-      caption: "{organ}: a forma inteira. Um dos nove órgãos da biblioteca do Explorar.",
+      caption: "{organ}: a forma inteira. Um dos {count} órgãos da biblioteca do Explorar.",
       alt: "Estudo em aquarela do coração humano visto de frente, com a aorta formando um arco acima dele",
     },
     explore: {

@@ -26,9 +26,9 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Mit dem Ganzen beginnen.",
       line: "Wählen Sie ein Organ und betrachten Sie seine Form, bevor Sie sich um die Beschriftungen kümmern.",
       body:
-        "Der Bereich Entdecken öffnet mit einer Bibliothek aus neun Organen, von Herz und Gehirn bis zu Bauchspeicheldrüse und Haut. Wählen Sie eines aus, und es erscheint als Ganzes. Seine Strukturen sind mit kleinen Punkten markiert; ihre Namen warten, bis Sie danach fragen.",
+        "Der Bereich Entdecken öffnet mit einer Bibliothek aus {count} Organen, von Herz und Gehirn bis zu Bauchspeicheldrüse und Haut. Wählen Sie eines aus, und es erscheint als Ganzes. Seine Strukturen sind mit kleinen Punkten markiert; ihre Namen warten, bis Sie danach fragen.",
       plateLabel: "Tafel I",
-      caption: "{organ} als Ganzes. Eines der neun Organe in der Organbibliothek.",
+      caption: "{organ} als Ganzes. Eines der {count} Organe in der Organbibliothek.",
       alt: "Aquarellstudie des menschlichen Herzens von vorn, darüber der Bogen der Aorta",
     },
     explore: {

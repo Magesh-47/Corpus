@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { format } from "../../../i18n/types";
+import { organStructures } from "../../../lib/anatomy-data";
 import { ExploreFigure, PracticeFigure, RememberFigure, SeeFigure, UnderstandFigure } from "./HowFigures";
 import { stepKeys, stepNumber, type HowCopy, type Organs, type Status, type StepKey } from "./types";
 
@@ -8,7 +10,12 @@ import { stepKeys, stepNumber, type HowCopy, type Organs, type Status, type Step
  * sequence rather than a stack of identical cards.
  */
 export function HowSteps({ copy, organs, status }: { copy: HowCopy; organs: Organs; status: Status }) {
-  const { steps } = copy;
+  // The library's size is counted from the anatomy data, never written into the copy.
+  const count = { count: String(organStructures.length) };
+  const steps = {
+    ...copy.steps,
+    see: { ...copy.steps.see, body: format(copy.steps.see.body, count), caption: format(copy.steps.see.caption, count) },
+  };
 
   const figures: Record<StepKey, ReactNode> = {
     see: <SeeFigure organ={organs.heart} copy={steps.see} />,

@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 import { stepKeys, stepNumber, type HowCopy } from "./types";
 
 /**
@@ -15,14 +15,18 @@ export function HowHero({ copy }: { copy: HowCopy }) {
         <p className="ui-eyebrow how-hero__eyebrow ui-rise">{hero.eyebrow}</p>
 
         <h1 id="how-title" className="ui-display ui-display--xl how-hero__title">
+          {/* The spaces between lines are for the accessible name ("See. Explore. …");
+              the grid ignores them, so the visual is unchanged. */}
           {lines.map(([key, line], index) => (
-            <span
-              key={key}
-              className="how-hero__line ui-rise"
-              style={{ "--rise-delay": `${80 + index * 90}ms`, "--line": index } as CSSProperties}
-            >
-              {line}
-            </span>
+            <Fragment key={key}>
+              {index > 0 && " "}
+              <span
+                className="how-hero__line ui-rise"
+                style={{ "--rise-delay": `${80 + index * 90}ms`, "--line": index } as CSSProperties}
+              >
+                {line}
+              </span>
+            </Fragment>
           ))}
         </h1>
 
