@@ -43,7 +43,7 @@ export const help: SiteDictionary["help"] = {
       exploring: { label: "Exploration", line: "Trouver organes et structures." },
       practice: { label: "S’exercer", line: "Comprendre les légendes et le rappel." },
       languages: { label: "Langues", line: "Changer la langue de Corpus." },
-      account: { label: "Compte", line: "Gérer votre compte." },
+      account: { label: "Compte", line: "Les comptes seront bientôt disponibles." },
     },
   },
 
@@ -57,7 +57,7 @@ export const help: SiteDictionary["help"] = {
       },
       choose: {
         title: "Choisir un organe",
-        body: "Choisissez un organe dans la bibliothèque, à côté du modèle. Sur téléphone, ouvrez la bibliothèque depuis le haut de l’écran.",
+        body: "Choisissez un organe dans la bibliothèque, à côté du modèle. Sur téléphone, faites défiler la rangée d’organes en haut de l’écran, puis touchez-en un.",
       },
       look: {
         title: "Regarder de près",
@@ -161,8 +161,8 @@ export const help: SiteDictionary["help"] = {
     title: "Lire Corpus dans votre langue",
     intro: "Corpus est disponible en {count} langues. Dans Explorer, les noms des organes, les descriptions, les légendes des structures et les commandes sont traduits dans chacune d’elles.",
     switchBody:
-      "Choisissez une langue en bas de n’importe quelle page, ou depuis le menu des langues en haut d’Explorer. Vous restez sur la page que vous lisiez.",
-    rtl: "L’arabe se lit de droite à gauche, et toute la mise en page s’inverse en conséquence. Les pages pas encore traduites s’affichent en anglais.",
+      "Choisissez une langue en bas de cette page et des autres pages principales du site, ou depuis le menu des langues en haut d’Explorer. Vous restez sur la page que vous lisiez.",
+    rtl: "L’arabe se lit de droite à gauche, et toute la mise en page s’inverse en conséquence.",
     listLabel: "Langues disponibles",
     current: "Langue actuelle",
   },

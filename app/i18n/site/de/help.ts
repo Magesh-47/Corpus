@@ -43,7 +43,7 @@ export const help: SiteDictionary["help"] = {
       exploring: { label: "Erkunden", line: "Organe und Strukturen finden." },
       practice: { label: "Üben", line: "Beschriften und Abrufen verstehen." },
       languages: { label: "Sprachen", line: "Die Sprache von Corpus ändern." },
-      account: { label: "Konto", line: "Ihr Konto verwalten." },
+      account: { label: "Konto", line: "Konten sind bald verfügbar." },
     },
   },
 
@@ -57,7 +57,7 @@ export const help: SiteDictionary["help"] = {
       },
       choose: {
         title: "Ein Organ wählen",
-        body: "Wählen Sie ein Organ aus der Bibliothek neben dem Modell. Auf dem Smartphone öffnen Sie die Bibliothek oben auf dem Bildschirm.",
+        body: "Wählen Sie ein Organ aus der Bibliothek neben dem Modell. Auf dem Smartphone wischen Sie durch die Organleiste oben auf dem Bildschirm und tippen auf eines.",
       },
       look: {
         title: "Genau hinsehen",
@@ -161,8 +161,8 @@ export const help: SiteDictionary["help"] = {
     title: "Corpus in Ihrer Sprache lesen",
     intro: "Corpus ist in {count} Sprachen verfügbar. Im Bereich Entdecken sind Organnamen, Beschreibungen, Strukturbeschriftungen und Bedienelemente in jede davon übersetzt.",
     switchBody:
-      "Wählen Sie eine Sprache am Fuß jeder Seite oder über das Sprachmenü oben im Bereich Entdecken. Sie bleiben auf der Seite, die Sie gerade lesen.",
-    rtl: "Arabisch liest sich von rechts nach links, und das gesamte Layout spiegelt sich entsprechend. Noch nicht übersetzte Seiten erscheinen auf Englisch.",
+      "Wählen Sie eine Sprache am Fuß dieser und der anderen Hauptseiten der Website oder über das Sprachmenü oben im Bereich Entdecken. Sie bleiben auf der Seite, die Sie gerade lesen.",
+    rtl: "Arabisch liest sich von rechts nach links, und das gesamte Layout spiegelt sich entsprechend.",
     listLabel: "Verfügbare Sprachen",
     current: "Aktuelle Sprache",
   },

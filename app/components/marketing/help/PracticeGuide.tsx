@@ -27,7 +27,7 @@ export function PracticeGuide({ ctx }: { ctx: HelpContext }) {
                 <span className="help-sequence__number" aria-hidden>
                   {ctx.num(index + 1)}
                 </span>
-                <p className="ui-body">{format(step, { quiz: ctx.ui.info.quiz })}</p>
+                <p className="ui-body">{format(step, { quiz: quiz.start })}</p>
               </li>
             ))}
           </ol>

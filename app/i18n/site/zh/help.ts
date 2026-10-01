@@ -43,7 +43,7 @@ export const help: SiteDictionary["help"] = {
       exploring: { label: "探索", line: "查找器官与结构。" },
       practice: { label: "练习", line: "了解标注与回忆练习。" },
       languages: { label: "语言", line: "切换 Corpus 的语言。" },
-      account: { label: "账户", line: "管理你的账户。" },
+      account: { label: "账户", line: "账户即将推出。" },
     },
   },
 
@@ -57,7 +57,7 @@ export const help: SiteDictionary["help"] = {
       },
       choose: {
         title: "选择一个器官",
-        body: "从模型旁的器官库中挑选一个器官。在手机上，请从屏幕顶部打开器官库。",
+        body: "从模型旁的器官库中挑选一个器官。在手机上，请左右滑动屏幕顶部的器官栏，然后轻点其中一个。",
       },
       look: {
         title: "仔细观察",
@@ -161,8 +161,8 @@ export const help: SiteDictionary["help"] = {
     title: "用你的语言阅读 Corpus",
     intro: "Corpus 提供 {count} 种语言。在“探索”中，器官名称、描述、结构标签与控件都已译成每一种语言。",
     switchBody:
-      "你可以在任意页面底部，或在“探索”顶部的语言菜单中选择语言。切换后仍停留在当前阅读的页面。",
-    rtl: "阿拉伯语从右向左阅读，整个版式也随之镜像翻转。尚未翻译的页面会以英文显示。",
+      "你可以在本页及网站其他主要页面的底部，或在“探索”顶部的语言菜单中选择语言。切换后仍停留在当前阅读的页面。",
+    rtl: "阿拉伯语从右向左阅读，整个版式也随之镜像翻转。",
     listLabel: "可用语言",
     current: "当前语言",
   },
