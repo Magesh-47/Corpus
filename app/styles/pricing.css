@@ -405,6 +405,11 @@
   align-items: start;
 }
 .pricing-faq__header { margin-block-end: 0; }
+/* Beside the answers (above 1080px) the heading has 4/12 of the page: sized
+   so it breaks once, evenly ("Asked plainly, / answered plainly."). */
+@media (min-width: 1081px) {
+  .pricing-faq__header .ui-h2 { font-size: min(var(--display-md), 3.8vw); }
+}
 .pricing-faq__list { border-bottom: 1px solid var(--rule); }
 /* Question and answer side by side on one rule, like entries in an index. */
 .pricing-faq__item {

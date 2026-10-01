@@ -142,16 +142,6 @@ export const pricing: SiteDictionary["pricing"] = {
     },
   },
 
-  collection: {
-    eyebrow: "Termasuk dalam Gratis",
-    title: "Koleksi gratis, terbuka untuk semua.",
-    lede: "Setiap organ memiliki model 3D, lembar ilustrasi, dan struktur berlabel. Pilih salah satu untuk membukanya di Jelajahi.",
-    plateLabel: "Lembar {number}",
-    structures: "Struktur berlabel: {count}",
-    openOrgan: "{organ}: buka di Jelajahi",
-    footnote: "Model dan ilustrasi adalah representasi edukatif yang disederhanakan, bukan rujukan klinis, dan tidak ada apa pun di Corpus yang merupakan saran medis.",
-  },
-
   faq: {
     eyebrow: "Pertanyaan",
     title: "Ditanya lugas, dijawab lugas.",

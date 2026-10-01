@@ -142,16 +142,6 @@ export const pricing: SiteDictionary["pricing"] = {
     },
   },
 
-  collection: {
-    eyebrow: "Incluido en Gratis",
-    title: "La colección gratuita, abierta a todos.",
-    lede: "Cada órgano tiene un modelo 3D, una lámina ilustrada y estructuras rotuladas. Elige uno para abrirlo en Explorar.",
-    plateLabel: "Lámina {number}",
-    structures: "Estructuras rotuladas: {count}",
-    openOrgan: "{organ}: abrir en Explorar",
-    footnote: "Los modelos y las ilustraciones son representaciones educativas simplificadas, no referencias clínicas, y nada de lo que hay en Corpus es consejo médico.",
-  },
-
   faq: {
     eyebrow: "Preguntas",
     title: "Preguntas claras, respuestas claras.",

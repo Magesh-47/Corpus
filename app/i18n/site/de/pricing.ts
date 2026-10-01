@@ -142,16 +142,6 @@ export const pricing: SiteDictionary["pricing"] = {
     },
   },
 
-  collection: {
-    eyebrow: "Im kostenlosen Tarif",
-    title: "Die kostenlose Sammlung, offen für alle.",
-    lede: "Jedes Organ hat ein 3D-Modell, eine illustrierte Tafel und beschriftete Strukturen. Wählen Sie eines, um es im Bereich Entdecken zu öffnen.",
-    plateLabel: "Tafel {number}",
-    structures: "Beschriftete Strukturen: {count}",
-    openOrgan: "{organ}: im Bereich Entdecken öffnen",
-    footnote: "Die Modelle und Illustrationen sind vereinfachte Darstellungen für Lernzwecke, keine klinischen Referenzen, und nichts in Corpus ist medizinische Beratung.",
-  },
-
   faq: {
     eyebrow: "Fragen",
     title: "Klar gefragt, klar beantwortet.",

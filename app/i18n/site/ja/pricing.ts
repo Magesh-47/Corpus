@@ -143,17 +143,6 @@ export const pricing: SiteDictionary["pricing"] = {
     },
   },
 
-  collection: {
-    eyebrow: "無料プランに含まれるもの",
-    title: "誰にでも開かれた、無料のコレクション。",
-    lede: "各臓器に、3D モデル、図版イラスト、ラベル付きの構造があります。選ぶと「探索」で開きます。",
-    plateLabel: "図版 {number}",
-    structures: "ラベル付きの構造：{count}",
-    openOrgan: "{organ}：「探索」で開く",
-    footnote:
-      "モデルとイラストは学習用に簡略化した表現であり、臨床的な参考資料ではありません。Corpus のいかなる内容も医学的な助言ではありません。",
-  },
-
   faq: {
     eyebrow: "よくある質問",
     title: "率直な問いに、率直な答えを。",
