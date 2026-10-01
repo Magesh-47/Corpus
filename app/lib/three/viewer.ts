@@ -446,6 +446,13 @@ export class AnatomyViewer {
 
   private onControlStart = () => {
     this.interactionUntil = performance.now() + 3000;
+    // A wheel, middle-button or pinch zoom supersedes any distance tween still
+    // running — an organ's intro settling to the home distance would undo it,
+    // as it would the Zoom button. An orbit only turns the camera, so the tween
+    // may finish. `state` is public on OrbitControls but missing from its types:
+    // 0 is a mouse orbit, 3 a one-finger orbit; a wheel starts from -1.
+    const { state } = this.controls as OrbitControls & { state: number };
+    if (state !== 0 && state !== 3) gsap.killTweensOf(this, "viewDistance");
     this.dirty = true;
   };
 
