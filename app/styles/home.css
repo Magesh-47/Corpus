@@ -1062,6 +1062,9 @@
 }
 
 @media (max-width: 640px) {
+  /* Just under the display floor on small phones, so a long second line
+     ("in zwei Dimensionen.") holds instead of leaving one word behind. */
+  .home-philosophy__title { font-size: min(var(--display-lg), 10.8vw); }
   /* Leader-line labels have no room beside the organ at phone width: keep the
      dots (the caption and legend name the structures) and drop the labels. */
   .home-promo__notes .ui-note__label,
