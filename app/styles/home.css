@@ -1137,7 +1137,8 @@
 }
 
 @media (max-width: 360px) {
-  .home-hero__title { font-size: max(2.25rem, min(2.6rem, var(--hero-fit))); }
+  /* A 2rem floor lets the longest lines (Hindi, Russian) still fit at 320px. */
+  .home-hero__title { font-size: max(2rem, min(2.6rem, var(--hero-fit))); }
   .home-hero__actions .ui-button { width: 100%; }
 }
 
