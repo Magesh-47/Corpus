@@ -83,7 +83,7 @@ export function GuideSection({
             </span>
             <span>{ctx.help.categories.items[guide].label}</span>
           </p>
-          <h2 id={`${id}-title`} className="ui-h2 help-guide__title">
+          <h2 id={`${id}-title`} className="ui-h2 help-guide__title" tabIndex={-1}>
             {title}
           </h2>
         </header>
