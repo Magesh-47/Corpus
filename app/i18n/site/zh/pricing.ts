@@ -24,7 +24,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "方案",
     summary: "目前提供一个方案，另有两个正在开发中。",
     numberLabel: "方案 {number}",
-    learnMore: "了解更多：{plan}",
     items: {
       free: {
         name: "免费版",

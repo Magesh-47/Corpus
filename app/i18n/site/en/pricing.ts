@@ -23,7 +23,6 @@ export const pricing = {
     title: "The plans",
     summary: "One plan is available today. Two are in development.",
     numberLabel: "Plan {number}",
-    learnMore: "Learn more about {plan}",
     items: {
       free: {
         name: "Free",

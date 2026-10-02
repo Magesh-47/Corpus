@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "प्लान",
     summary: "आज एक प्लान उपलब्ध है। दो विकासाधीन हैं।",
     numberLabel: "प्लान {number}",
-    learnMore: "{plan} के बारे में और जानें",
     items: {
       free: {
         name: "निःशुल्क",

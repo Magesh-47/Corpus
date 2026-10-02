@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "플랜",
     summary: "지금 이용할 수 있는 플랜은 하나입니다. 두 플랜은 개발 중입니다.",
     numberLabel: "플랜 {number}",
-    learnMore: "{plan} 자세히 알아보기",
     items: {
       free: {
         name: "무료",

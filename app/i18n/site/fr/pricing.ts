@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "Les formules",
     summary: "Une formule est disponible aujourd’hui. Deux sont en développement.",
     numberLabel: "Formule {number}",
-    learnMore: "En savoir plus sur {plan}",
     items: {
       free: {
         name: "Gratuit",

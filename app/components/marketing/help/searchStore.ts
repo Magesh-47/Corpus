@@ -29,7 +29,7 @@ export const searchStore = {
 };
 
 /** Stands in for Russian й while accents are folded, so it is not read as и. */
-const SHORT_I = "";
+const SHORT_I = "\uE000";
 
 /**
  * Case- and accent-insensitive comparison in the page's language: "Córnea",
@@ -47,8 +47,8 @@ export function normalise(text: string, locale: string) {
     .toLocaleLowerCase(locale)
     .replace(/й/g, SHORT_I)
     .normalize("NFKD")
-    .replace(/[̀-ًͯ-ٰٟ]/g, "")
-    .replace(//g, "й")
+    .replace(/[\u0300-\u036F\u064B-\u065F\u0670]/g, "")
+    .replace(/\uE000/g, "й")
     .normalize("NFC")
     .replace(/[\p{P}\p{S}]/gu, " ")
     .replace(/\s+/g, " ")

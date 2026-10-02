@@ -43,9 +43,11 @@
    longer ("Apprendre l'anatomie"): besides the viewport scale, the size is
    capped so the widest line (--hero-measure, its estimated width in em, set
    by HomeHero) fits the column with a little to spare, instead of breaking a
-   word a line. English keeps its size at desktop widths. */
+   word a line. English keeps its size at desktop widths. The estimate runs
+   ~1% narrow for some Latin lines (es, pt), so it is sized against 96% of the
+   column to leave real slack for a slightly wider rendering of the face. */
 .home-hero__title {
-  --hero-fit: calc(98cqi / var(--hero-measure, 6));
+  --hero-fit: calc(96cqi / var(--hero-measure, 6));
   /* Never under 2.25rem: on the narrowest phones a long first line may break
      once rather than shrink the headline to caption size. */
   font-size: max(2.25rem, min(clamp(3rem, 1.2rem + 5.6vw, 7.25rem), var(--hero-fit)));
@@ -90,11 +92,6 @@
   display: grid;
   justify-items: center;
   gap: 24px;
-  padding: 20px 18px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 26px;
-  background: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 22px 48px rgba(14, 18, 22, 0.08);
 }
 .home-hero__plate-head {
   display: flex;
@@ -1061,6 +1058,7 @@
   [dir="rtl"] .home-story__composition { width: min(100% - 88px, 620px); margin-inline: 0 auto; }
   /* Beside a narrower still, long names ("Правое предсердие") break onto two
      lines rather than run into the headline or past the panel's edge. */
+  .home-promo__notes .ui-note { width: max-content; }
   .home-promo__notes .ui-note__label { max-width: 9em; white-space: normal; text-wrap: balance; text-align: left; }
   .home-promo__notes .ui-note--left .ui-note__label { text-align: right; }
 }

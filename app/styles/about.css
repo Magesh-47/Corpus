@@ -676,17 +676,21 @@
 
   /* The plate narrows so its leader-line labels stay on the page. */
   .about-hero__stage { width: 76%; }
-  .about-hero .ui-note__line,
-  .about-studio .ui-note__line { width: 16px; }
-  .about-hero .ui-note__label,
-  .about-studio .ui-note__label { padding-inline: 6px; }
+  .about-hero .ui-note__line { width: 16px; }
+  .about-hero .ui-note__label { padding-inline: 6px; }
+}
 
-  /* The table turns portrait: the pinned sheet and the tissue field above,
-     the specimen below. */
+/* On phones, and beside the text where the table's column is under ~560px
+   (861-1399px), the table turns portrait: the pinned sheet and the tissue
+   field above, the specimen below and stepped in, so the cortex label drawn
+   to its left stays inside the table instead of being cut at its edge. */
+@media (max-width: 640px), (min-width: 861px) and (max-width: 1399px) {
+  .about-studio .ui-note__line { width: 16px; }
+  .about-studio .ui-note__label { padding-inline: 6px; }
   .about-studio { aspect-ratio: 8 / 11; background-size: 24px 24px; }
   .about-studio__sheet { top: 8%; right: auto; left: 7%; width: 40%; rotate: -3deg; }
   .about-studio__slide { top: 14%; right: 9%; width: 24%; padding: 3px; }
-  .about-studio__specimen { top: 40%; left: 22%; width: 62%; }
+  .about-studio__specimen { top: 40%; left: 23%; width: 62%; }
   .about-studio__tag { left: 7%; bottom: 4%; }
   .about-studio__slider { bottom: 5%; width: 30%; }
 }
