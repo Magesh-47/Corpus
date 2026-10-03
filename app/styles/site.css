@@ -611,7 +611,8 @@ html:has(.site-menu[open]) { overflow: hidden; }
 @media (max-width: 900px) {
   .site-nav,
   .site-actions { display: none; }
-  .site-menu-button { display: inline-flex; }
+  .site-menu-button { display: inline-flex; min-height: 48px; }
+  .site-menu-button:focus-visible { outline-width: 3px; outline-offset: 4px; }
 }
 
 /* ----------------------------------------------------------------- footer */
