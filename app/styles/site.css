@@ -258,6 +258,10 @@
 .ui-button { transition-property: background-color, border-color, color, transform; }
 .ui-button--primary:hover,
 .ui-button--secondary:hover { transform: translateY(-1px); }
+.ui-button--primary:active,
+.ui-button--secondary:active { transform: translateY(0); }
+.ui-button--primary:active { filter: brightness(0.92); }
+.ui-button--secondary:active { background-color: color-mix(in srgb, currentColor 8%, transparent); }
 /* Inline text link, for links inside running copy. */
 .ui-link {
   color: inherit;
