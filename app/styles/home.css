@@ -1056,6 +1056,7 @@
 
 @media (max-width: 640px) {
   .home-hero__title { font-size: min(clamp(2.5rem, 9vw, 3.25rem), var(--hero-fit)); }
+  .home-hero__facts { font-size: 12px; }
 
   /* Leader-line labels have no room beside the organ at phone width: keep the
      dots (the caption and legend name the structures) and drop the labels. */
