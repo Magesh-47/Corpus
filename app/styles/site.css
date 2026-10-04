@@ -494,6 +494,8 @@
 .site-header[data-scrolled] {
   border-bottom-color: var(--rule);
   background: color-mix(in srgb, var(--site-bg) 96%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 .site-header__inner {
   display: flex;
