@@ -1076,7 +1076,7 @@
   .home-promo__notes .ui-note__line,
   .home-story__notes .ui-note__line { width: min(var(--len), 14px); }
   /* The plate keeps its numbered dots; the names move into the legend below it. */
-  .home-hero__specimen { height: auto; width: min(78%, 330px); }
+  .home-hero__specimen { height: auto; width: min(86%, 330px); }
   .home-hero__notes .ui-note__line,
   .home-hero__notes .ui-note__label { display: none; }
   .home-hero__legend {
