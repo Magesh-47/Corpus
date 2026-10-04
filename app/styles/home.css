@@ -99,6 +99,13 @@
   border-radius: 26px;
   background: rgba(255, 255, 255, 0.02);
   box-shadow: 0 22px 48px rgba(14, 18, 22, 0.08);
+  transition: transform 0.5s var(--ease-editorial), box-shadow 0.5s var(--ease-editorial);
+}
+@media (hover: hover) {
+  .home-hero__plate:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 56px rgba(14, 18, 22, 0.12);
+  }
 }
 .home-hero__plate-head {
   display: flex;
@@ -1141,6 +1148,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .home-hero__reveal { animation: none; }
+  .home-hero__plate { transition: none; }
+  .home-hero__plate:hover { transform: none; }
   .home-see__crop img,
   .home-organ__art img,
   .home-organ__name,
