@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "الخطط",
     summary: "خطة واحدة متاحة اليوم، واثنتان قيد التطوير.",
     numberLabel: "الخطة {number}",
-    learnMore: "اعرف المزيد عن {plan}",
     items: {
       free: {
         name: "مجاني",
@@ -140,16 +139,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "دعم لإعداد الدروس وتقديمها",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "ضمن الخطة المجانية",
-    title: "المجموعة المجانية، مفتوحة للجميع.",
-    lede: "لكل عضو نموذج ثلاثي الأبعاد ولوحة مصوّرة وبنى موسومة. اختر أحدها لتفتحه في «استكشاف».",
-    plateLabel: "اللوحة {number}",
-    structures: "البنى الموسومة: {count}",
-    openOrgan: "{organ}: افتح في «استكشاف»",
-    footnote: "النماذج والرسوم تمثيلات تعليمية مبسّطة، لا مراجع سريرية، ولا شيء في Corpus يُعدّ نصيحة طبية.",
   },
 
   faq: {

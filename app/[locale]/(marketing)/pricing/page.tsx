@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { FreeCollection } from "../../../components/marketing/pricing/FreeCollection";
 import { PlanComparison } from "../../../components/marketing/pricing/PlanComparison";
 import { PlanLedger } from "../../../components/marketing/pricing/PlanLedger";
 import { PricingClosing } from "../../../components/marketing/pricing/PricingClosing";
@@ -49,7 +48,6 @@ export default async function PricingPage({ params }: Props) {
       <PricingHero locale={code} site={site} skin={byId.skin} />
       <PlanLedger locale={code} site={site} counts={counts} />
       <PlanComparison site={site} counts={counts} />
-      <FreeCollection locale={code} site={site} organs={organs} />
       <PricingFaq site={site} />
       <PricingClosing locale={code} site={site} organ={byId.skin} />
     </>

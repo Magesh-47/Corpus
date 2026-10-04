@@ -152,7 +152,7 @@ export const marketing: SiteDictionary["marketing"] = {
     cta: "Testez-vous",
     identify: "Identifier",
     alt: "Le cerveau 3D, dans Explorer, avec quatre structures repérées par les numéros 1 à 4.",
-    caption: "Arrêt sur image du quiz d’identification dans Explorer, où l’on répond en sélectionnant la structure sur le modèle.",
+    caption: "Illustration du quiz d’identification dans Explorer, où l’on répond en sélectionnant la structure sur le modèle.",
   },
 
   ai: {

@@ -48,7 +48,7 @@ export const help = {
       exploring: { label: "Exploring", line: "Find organs and structures." },
       practice: { label: "Practice", line: "Understand labeling and recall." },
       languages: { label: "Languages", line: "Change your Corpus language." },
-      account: { label: "Account", line: "Manage your account." },
+      account: { label: "Account", line: "Accounts are coming soon." },
     },
   },
 
@@ -62,7 +62,7 @@ export const help = {
       },
       choose: {
         title: "Choose an organ",
-        body: "Pick an organ from the library beside the model. On a phone, open the library from the top of the screen.",
+        body: "Pick an organ from the library beside the model. On a phone, swipe through the row of organs at the top of the screen and tap one.",
       },
       look: {
         title: "Look closely",
@@ -153,7 +153,7 @@ export const help = {
     title: "Test yourself on the model",
     intro: "Practice happens on the model itself. The labelling quiz asks you to find each named structure of the organ you are viewing.",
     steps: {
-      start: "Open an organ and select {quiz}. The model stops turning, so the dots stay still.",
+      start: "Open an organ and select “{quiz}”. The model stops turning, so the dots stay still.",
       find: "Corpus names one structure at a time. Click or tap the dot you think matches it.",
       feedback: "A correct answer moves you on. If you miss, Corpus shows which structure you chose and marks the right one.",
       finish: "Every structure is asked once, in a new order each round. At the end you see your score.",
@@ -166,8 +166,8 @@ export const help = {
     title: "Reading Corpus in your language",
     intro: "Corpus is available in {count} languages. In Explore, organ names, descriptions, structure labels and controls are translated into each of them.",
     switchBody:
-      "Choose a language at the foot of any page, or from the language menu at the top of Explore. You stay on the page you were reading.",
-    rtl: "Arabic reads from right to left, and the whole layout mirrors to match. Pages not yet translated appear in English.",
+      "Choose a language at the foot of this page and the site’s other main pages, or from the language menu at the top of Explore. You stay on the page you were reading.",
+    rtl: "Arabic reads from right to left, and the whole layout mirrors to match.",
     listLabel: "Available languages",
     current: "Current language",
   },

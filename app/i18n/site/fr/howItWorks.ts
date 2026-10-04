@@ -26,9 +26,9 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Commencer par l’ensemble.",
       line: "Choisissez un organe et observez sa forme avant de vous soucier de ses légendes.",
       body:
-        "Explorer s’ouvre sur une bibliothèque de neuf organes, du cœur et du cerveau jusqu’au pancréas et à la peau. Choisissez-en un : il apparaît entier. Ses structures sont signalées par de petits points, et leurs noms attendent que vous les demandiez.",
+        "Explorer s’ouvre sur une bibliothèque de {count} organes, du cœur et du cerveau jusqu’au pancréas et à la peau. Choisissez-en un : il apparaît entier. Ses structures sont signalées par de petits points, et leurs noms attendent que vous les demandiez.",
       plateLabel: "Planche I",
-      caption: "{organ}, vue d’ensemble. Un des neuf organes de la bibliothèque d’Explorer.",
+      caption: "{organ}, vue d’ensemble. Un des {count} organes de la bibliothèque d’Explorer.",
       alt: "Étude à l’aquarelle du cœur humain vu de face, avec l’aorte qui s’arque au-dessus",
     },
     explore: {

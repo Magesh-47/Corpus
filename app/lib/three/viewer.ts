@@ -62,6 +62,8 @@ export class AnatomyViewer {
   private basePixelRatio: number;
 
   private autoRotateWanted = true;
+  /** The organ switch (load request) during which the learner last zoomed. */
+  private zoomedDuring = -1;
   private interactionUntil = 0;
   private selectedId: string | null = null;
   private hoveredId: string | null = null;
@@ -271,7 +273,11 @@ export class AnatomyViewer {
       this.dirty = true;
     }
 
-    this.tween(this, { viewDistance: HOME_DISTANCE + 1, duration: 0.42, ease: "power2.inOut" });
+    // A zoom made since this switch began — while the outgoing organ shrank or
+    // the new one loaded — is the learner's to keep: the intro then leaves the
+    // camera distance alone instead of pulling it back to home.
+    const keepDistance = () => this.zoomedDuring === request;
+    if (!keepDistance()) this.tween(this, { viewDistance: HOME_DISTANCE + 1, duration: 0.42, ease: "power2.inOut" });
 
     let organ: LoadedOrgan;
     try {
@@ -306,10 +312,10 @@ export class AnatomyViewer {
     // is concerned — the intro animation should play in the open, not behind a
     // loading panel.
     this.callbacks.onLoading(false, 1);
-    gsap.timeline({ onUpdate: () => (this.dirty = true) })
+    const intro = gsap.timeline({ onUpdate: () => (this.dirty = true) })
       .to(organ.pivot.scale, { x: 1, y: 1, z: 1, duration: 0.9, ease: "back.out(1.25)" }, 0)
-      .to(organ.pivot.position, { z: 0, duration: 0.85, ease: "power3.out" }, 0)
-      .to(this, { viewDistance: HOME_DISTANCE, duration: 0.9, ease: "power2.out" }, 0.08);
+      .to(organ.pivot.position, { z: 0, duration: 0.85, ease: "power3.out" }, 0);
+    if (!keepDistance()) intro.to(this, { viewDistance: HOME_DISTANCE, duration: 0.9, ease: "power2.out" }, 0.08);
   }
 
   private materials(organ: LoadedOrgan) {
@@ -446,8 +452,23 @@ export class AnatomyViewer {
 
   private onControlStart = () => {
     this.interactionUntil = performance.now() + 3000;
+    // A wheel, middle-button or pinch zoom supersedes any distance tween still
+    // running — an organ's intro settling to the home distance would undo it,
+    // as it would the Zoom button. An orbit only turns the camera, so the tween
+    // may finish. `state` is public on OrbitControls but missing from its types:
+    // 0 is a mouse orbit, 3 a one-finger orbit; a wheel starts from -1.
+    const { state } = this.controls as OrbitControls & { state: number };
+    if (state !== 0 && state !== 3) this.takeOverZoom();
     this.dirty = true;
   };
+
+  /** The learner is zooming: stop any distance tween (an organ's intro
+   *  settling to the home distance would undo it) and keep the intro of an
+   *  organ switch still in progress from pulling the camera back. */
+  private takeOverZoom() {
+    gsap.killTweensOf(this, "viewDistance");
+    this.zoomedDuring = this.loadRequest;
+  }
 
   private onPointerDown = (event: PointerEvent) => {
     this.pointerId = event.pointerId;
@@ -589,7 +610,7 @@ export class AnatomyViewer {
     const zoomIn = event.key === "+" || event.key === "=";
     if (zoomIn || event.key === "-") {
       // A running zoom or intro tween would otherwise overwrite the step.
-      gsap.killTweensOf(this, "viewDistance");
+      this.takeOverZoom();
       this.viewDistance = this.clampDistance(this.viewDistance + (zoomIn ? -0.35 : 0.35));
     }
     if (event.key === "Escape") this.select(null);
@@ -621,7 +642,7 @@ export class AnatomyViewer {
   zoom(direction: 1 | -1) {
     // Supersedes any distance tween still running — including an organ's intro
     // settling back to the home distance, which would undo this press.
-    gsap.killTweensOf(this, "viewDistance");
+    this.takeOverZoom();
     this.tween(this, {
       viewDistance: this.clampDistance(this.viewDistance + direction * 1.2),
       duration: 0.5,

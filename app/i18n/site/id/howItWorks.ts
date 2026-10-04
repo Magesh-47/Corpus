@@ -26,9 +26,9 @@ export const howItWorks: SiteDictionary["howItWorks"] = {
       title: "Mulailah dari keseluruhan.",
       line: "Pilih organ dan lihat bentuknya sebelum memikirkan labelnya.",
       body:
-        "Jelajahi dibuka dengan pustaka sembilan organ, dari jantung dan otak hingga pankreas dan kulit. Pilih satu, dan organ itu tampil utuh. Struktur-strukturnya ditandai dengan titik-titik kecil, dan namanya menunggu sampai Anda memintanya.",
+        "Jelajahi dibuka dengan pustaka {count} organ, dari jantung dan otak hingga pankreas dan kulit. Pilih satu, dan organ itu tampil utuh. Struktur-strukturnya ditandai dengan titik-titik kecil, dan namanya menunggu sampai Anda memintanya.",
       plateLabel: "Lembar I",
-      caption: "{organ}, dilihat utuh. Salah satu dari sembilan organ di pustaka Jelajahi.",
+      caption: "{organ}, dilihat utuh. Salah satu dari {count} organ di pustaka Jelajahi.",
       alt: "Studi cat air jantung manusia dilihat dari depan, dengan aorta melengkung di atasnya",
     },
     explore: {

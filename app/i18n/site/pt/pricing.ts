@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "Os planos",
     summary: "Um plano está disponível hoje. Dois estão em desenvolvimento.",
     numberLabel: "Plano {number}",
-    learnMore: "Saiba mais sobre {plan}",
     items: {
       free: {
         name: "Gratuito",
@@ -140,16 +139,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "Apoio para preparar e conduzir aulas",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "Incluído no Gratuito",
-    title: "A coleção gratuita, aberta a todos.",
-    lede: "Cada órgão tem um modelo 3D, uma prancha ilustrada e estruturas rotuladas. Escolha um para abri-lo no Explorar.",
-    plateLabel: "Prancha {number}",
-    structures: "Estruturas rotuladas: {count}",
-    openOrgan: "{organ}: abrir no Explorar",
-    footnote: "Os modelos e as ilustrações são representações educacionais simplificadas, não referências clínicas, e nada no Corpus é aconselhamento médico.",
   },
 
   faq: {

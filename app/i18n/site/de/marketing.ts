@@ -152,7 +152,7 @@ export const marketing: SiteDictionary["marketing"] = {
     cta: "Testen Sie sich selbst",
     identify: "Erkennen",
     alt: "Das 3D-Gehirn aus dem Bereich Entdecken, vier Strukturen mit den Zahlen 1 bis 4 markiert.",
-    caption: "Standbild des Beschriftungsquiz im Bereich Entdecken, in dem Sie antworten, indem Sie die Struktur am Modell auswählen.",
+    caption: "Eine Illustration des Beschriftungsquiz im Bereich Entdecken, in dem Sie antworten, indem Sie die Struktur am Modell auswählen.",
   },
 
   ai: {

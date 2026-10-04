@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "Die Tarife",
     summary: "Ein Tarif ist heute verfügbar. Zwei sind in Entwicklung.",
     numberLabel: "Tarif {number}",
-    learnMore: "Mehr über {plan}",
     items: {
       free: {
         name: "Kostenlos",
@@ -140,16 +139,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "Unterstützung beim Vorbereiten und Leiten von Stunden",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "Im kostenlosen Tarif",
-    title: "Die kostenlose Sammlung, offen für alle.",
-    lede: "Jedes Organ hat ein 3D-Modell, eine illustrierte Tafel und beschriftete Strukturen. Wählen Sie eines, um es im Bereich Entdecken zu öffnen.",
-    plateLabel: "Tafel {number}",
-    structures: "Beschriftete Strukturen: {count}",
-    openOrgan: "{organ}: im Bereich Entdecken öffnen",
-    footnote: "Die Modelle und Illustrationen sind vereinfachte Darstellungen für Lernzwecke, keine klinischen Referenzen, und nichts in Corpus ist medizinische Beratung.",
   },
 
   faq: {

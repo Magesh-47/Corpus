@@ -101,9 +101,14 @@ export function HelpSearch({
     return () => window.clearTimeout(timer);
   }, [summary]);
 
+  // The link still updates the address and scrolls; focus then follows it to
+  // the question (its summary) or the guide's heading, so the next Tab
+  // continues from there rather than from wherever the browser left it.
   const openTarget = (id: string) => {
     const target = document.getElementById(id);
     if (target instanceof HTMLDetailsElement) target.open = true;
+    const focusable = target instanceof HTMLDetailsElement ? target.querySelector("summary") : document.getElementById(`${id}-title`);
+    if (focusable instanceof HTMLElement) window.requestAnimationFrame(() => focusable.focus());
   };
 
   return (

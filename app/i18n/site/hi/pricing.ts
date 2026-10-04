@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "प्लान",
     summary: "आज एक प्लान उपलब्ध है। दो विकासाधीन हैं।",
     numberLabel: "प्लान {number}",
-    learnMore: "{plan} के बारे में और जानें",
     items: {
       free: {
         name: "निःशुल्क",
@@ -140,16 +139,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "पाठ तैयार करने और पढ़ाने में सहायता",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "निःशुल्क में शामिल",
-    title: "मुफ़्त संग्रह, सबके लिए खुला।",
-    lede: "हर अंग के साथ एक 3D मॉडल, एक चित्रित फलक और लेबल की गई संरचनाएँ हैं। किसी एक को चुनकर उसे ‘अन्वेषण’ में खोलें।",
-    plateLabel: "फलक {number}",
-    structures: "लेबल की गई संरचनाएँ: {count}",
-    openOrgan: "{organ}: ‘अन्वेषण’ में खोलें",
-    footnote: "मॉडल और चित्र सरलीकृत शैक्षिक निरूपण हैं, नैदानिक संदर्भ-स्रोत नहीं, और Corpus में कुछ भी चिकित्सा सलाह नहीं है।",
   },
 
   faq: {

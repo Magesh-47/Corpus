@@ -43,7 +43,7 @@ export const help: SiteDictionary["help"] = {
       exploring: { label: "Menjelajah", line: "Temukan organ dan struktur." },
       practice: { label: "Latihan", line: "Pahami penamaan dan mengingat kembali." },
       languages: { label: "Bahasa", line: "Ganti bahasa Corpus Anda." },
-      account: { label: "Akun", line: "Kelola akun Anda." },
+      account: { label: "Akun", line: "Akun segera hadir." },
     },
   },
 
@@ -57,7 +57,7 @@ export const help: SiteDictionary["help"] = {
       },
       choose: {
         title: "Pilih organ",
-        body: "Pilih organ dari pustaka di samping model. Di ponsel, buka pustaka dari bagian atas layar.",
+        body: "Pilih organ dari pustaka di samping model. Di ponsel, geser deretan organ di bagian atas layar, lalu ketuk salah satunya.",
       },
       look: {
         title: "Amati dari dekat",
@@ -161,8 +161,8 @@ export const help: SiteDictionary["help"] = {
     title: "Membaca Corpus dalam bahasa Anda",
     intro: "Corpus tersedia dalam {count} bahasa. Di Jelajahi, nama organ, deskripsi, label struktur, dan kontrol diterjemahkan ke dalam setiap bahasa tersebut.",
     switchBody:
-      "Pilih bahasa di bagian bawah halaman mana pun, atau dari menu bahasa di bagian atas Jelajahi. Anda tetap berada di halaman yang sedang dibaca.",
-    rtl: "Bahasa Arab dibaca dari kanan ke kiri, dan seluruh tata letak ikut dicerminkan. Halaman yang belum diterjemahkan ditampilkan dalam bahasa Inggris.",
+      "Pilih bahasa di bagian bawah halaman ini dan halaman utama lainnya, atau dari menu bahasa di bagian atas Jelajahi. Anda tetap berada di halaman yang sedang dibaca.",
+    rtl: "Bahasa Arab dibaca dari kanan ke kiri, dan seluruh tata letak ikut dicerminkan.",
     listLabel: "Bahasa yang tersedia",
     current: "Bahasa saat ini",
   },

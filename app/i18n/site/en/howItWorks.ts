@@ -32,9 +32,9 @@ export const howItWorks = {
       title: "Start with the whole.",
       line: "Choose an organ and see its form before worrying about its labels.",
       body:
-        "Explore opens on a library of nine organs, from the heart and brain to the pancreas and skin. Choose one and it arrives whole. Its structures are marked with small dots, and their names wait until you ask for them.",
+        "Explore opens on a library of {count} organs, from the heart and brain to the pancreas and skin. Choose one and it arrives whole. Its structures are marked with small dots, and their names wait until you ask for them.",
       plateLabel: "Plate I",
-      caption: "{organ}, seen whole. One of nine organs in the Explore library.",
+      caption: "{organ}, seen whole. One of {count} organs in the Explore library.",
       alt: "Watercolour study of the human heart seen from the front, with the aorta arching above it",
     },
     explore: {

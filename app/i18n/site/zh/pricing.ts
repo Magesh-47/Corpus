@@ -24,7 +24,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "方案",
     summary: "目前提供一个方案，另有两个正在开发中。",
     numberLabel: "方案 {number}",
-    learnMore: "了解更多：{plan}",
     items: {
       free: {
         name: "免费版",
@@ -139,16 +138,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "为备课与授课提供支持",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "免费版包含",
-    title: "免费馆藏，向所有人开放。",
-    lede: "每个器官都有一个 3D 模型、一幅插画图版和已标注的结构。选择其一，即可在“探索”中打开。",
-    plateLabel: "图版 {number}",
-    structures: "已标注结构：{count}",
-    openOrgan: "{organ}：在“探索”中打开",
-    footnote: "模型与插图均为简化的教学示意，并非临床参考资料；Corpus 中的任何内容都不构成医疗建议。",
   },
 
   faq: {

@@ -23,7 +23,6 @@ export const pricing = {
     title: "The plans",
     summary: "One plan is available today. Two are in development.",
     numberLabel: "Plan {number}",
-    learnMore: "Learn more about {plan}",
     items: {
       free: {
         name: "Free",
@@ -138,16 +137,6 @@ export const pricing = {
         education: "Support for preparing and leading lessons",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "Included in Free",
-    title: "The free collection, open to everyone.",
-    lede: "Each organ has a 3D model, an illustrated plate and labelled structures. Choose one to open it in Explore.",
-    plateLabel: "Plate {number}",
-    structures: "Labelled structures: {count}",
-    openOrgan: "{organ}: open in Explore",
-    footnote: "The models and illustrations are simplified educational representations, not clinical references, and nothing in Corpus is medical advice.",
   },
 
   faq: {

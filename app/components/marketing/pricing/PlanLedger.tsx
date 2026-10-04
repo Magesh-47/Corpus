@@ -78,7 +78,10 @@ export function PlanLedger({ locale, site, counts }: { locale: string; site: Sit
                     <a
                       className="ui-button ui-button--text pricing-plan__more"
                       href={`#${learnMoreAnchor[key]}`}
-                      aria-label={format(plans.learnMore, { plan: plan.name })}
+                      id={`${anchor}-more`}
+                      // Named by its own text, then the plan: the visible words
+                      // stay first in the name in every language (speech input).
+                      aria-labelledby={`${anchor}-more ${anchor}-name`}
                     >
                       {plan.cta}
                     </a>

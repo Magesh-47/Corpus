@@ -151,7 +151,7 @@ export const marketing: SiteDictionary["marketing"] = {
     cta: "自我测试",
     identify: "辨认",
     alt: "“探索”中的 3D 大脑，四个结构以数字 1 至 4 标记。",
-    caption: "“探索”中标注测验的静帧：你需要在模型上选中相应的结构来作答。",
+    caption: "“探索”中标注测验的示意图：你需要在模型上选中相应的结构来作答。",
   },
 
   ai: {

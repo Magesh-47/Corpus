@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "Les formules",
     summary: "Une formule est disponible aujourd’hui. Deux sont en développement.",
     numberLabel: "Formule {number}",
-    learnMore: "En savoir plus sur {plan}",
     items: {
       free: {
         name: "Gratuit",
@@ -140,16 +139,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "Un soutien pour préparer et animer des cours",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "Inclus dans Gratuit",
-    title: "La collection gratuite, ouverte à tous.",
-    lede: "Chaque organe a un modèle 3D, une planche illustrée et des structures légendées. Choisissez-en un pour l’ouvrir dans Explorer.",
-    plateLabel: "Planche {number}",
-    structures: "Structures légendées : {count}",
-    openOrgan: "{organ} : ouvrir dans Explorer",
-    footnote: "Les modèles et les illustrations sont des représentations pédagogiques simplifiées, et non des références cliniques ; rien dans Corpus ne constitue un avis médical.",
   },
 
   faq: {

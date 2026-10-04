@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "플랜",
     summary: "지금 이용할 수 있는 플랜은 하나입니다. 두 플랜은 개발 중입니다.",
     numberLabel: "플랜 {number}",
-    learnMore: "{plan} 자세히 알아보기",
     items: {
       free: {
         name: "무료",
@@ -140,16 +139,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "수업 준비와 진행 지원",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "무료에 포함",
-    title: "모두에게 열린 무료 컬렉션.",
-    lede: "각 장기에는 3D 모델, 그림 도판, 이름 붙은 구조가 있습니다. 하나를 골라 ‘탐색’에서 열어 보세요.",
-    plateLabel: "도판 {number}",
-    structures: "이름 붙은 구조: {count}개",
-    openOrgan: "{organ}: ‘탐색’에서 열기",
-    footnote: "모델과 일러스트는 임상 참고 자료가 아니라 교육용으로 단순화한 표현이며, Corpus의 어떤 내용도 의학적 조언이 아닙니다.",
   },
 
   faq: {

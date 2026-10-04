@@ -55,6 +55,7 @@ export function AnatomyApp({
   const searchToggle = useRef<HTMLButtonElement>(null);
   const organList = useRef<HTMLUListElement>(null);
   const activeItem = useRef<HTMLButtonElement>(null);
+  const compareStrip = useRef<HTMLElement>(null);
   const organ = organById[organId];
   // The partner its own comparison card names, so the card and the strip agree.
   const reference = organById[organ.compareWith];
@@ -82,6 +83,14 @@ export function AnatomyApp({
   useEffect(() => {
     if (searchOpen) searchInput.current?.focus();
   }, [searchOpen]);
+
+  // In the phone layout the comparison opens in the page flow, possibly out of
+  // view (it can be opened from the learning cards far below): reveal it.
+  useEffect(() => {
+    const strip = compareStrip.current;
+    if (!compare || !strip || getComputedStyle(strip).position === "fixed") return;
+    strip.scrollIntoView({ block: "nearest", behavior: prefersReducedMotion() ? "auto" : "smooth" });
+  }, [compare]);
 
   const selectOrgan = (id: OrganId) => {
     if (organById[id].illustrated) {
@@ -272,6 +281,34 @@ export function AnatomyApp({
             onSelectionChange={setSelected}
           />
 
+          {/* Floats over the page on wider screens; on a phone it sits in the
+              flow right under the model, so it never covers the tool row. */}
+          {compare && (
+            <section className="compare-strip" ref={compareStrip} aria-label={t.compare.title}>
+              {[
+                { item: organ, role: t.compare.comparing },
+                { item: reference, role: t.compare.reference },
+              ].map(({ item, role }, index) => (
+                <Fragment key={item.id}>
+                  {index > 0 && <b>{t.compare.vs}</b>}
+                  <div className="compare-organ">
+                    <div className="compare-id">
+                      <OrganArt organ={item} asset="thumb" alt="" />
+                      <span>{role}</span>
+                      <strong>{item.name}</strong>
+                      <small>{item.system}</small>
+                    </div>
+                    <dl>
+                      <div><dt>{t.compare.primaryRole}</dt><dd><Measure>{item.function}</Measure></dd></div>
+                      <div><dt>{t.compare.scale}</dt><dd><Measure>{item.size}</Measure></dd></div>
+                    </dl>
+                  </div>
+                </Fragment>
+              ))}
+              <button type="button" onClick={() => setCompare(false)} aria-label={t.compare.close}><X size={18} aria-hidden /></button>
+            </section>
+          )}
+
           <section className="info-panel" aria-labelledby="organ-title">
             <div className="info-scroll">
             <div className="info-body" key={organId}>
@@ -376,32 +413,6 @@ export function AnatomyApp({
           </ol>
         </section>
       </main>
-
-      {compare && (
-        <section className="compare-strip" aria-label={t.compare.title}>
-          {[
-            { item: organ, role: t.compare.comparing },
-            { item: reference, role: t.compare.reference },
-          ].map(({ item, role }, index) => (
-            <Fragment key={item.id}>
-              {index > 0 && <b>{t.compare.vs}</b>}
-              <div className="compare-organ">
-                <div className="compare-id">
-                  <OrganArt organ={item} asset="thumb" alt="" />
-                  <span>{role}</span>
-                  <strong>{item.name}</strong>
-                  <small>{item.system}</small>
-                </div>
-                <dl>
-                  <div><dt>{t.compare.primaryRole}</dt><dd><Measure>{item.function}</Measure></dd></div>
-                  <div><dt>{t.compare.scale}</dt><dd><Measure>{item.size}</Measure></dd></div>
-                </dl>
-              </div>
-            </Fragment>
-          ))}
-          <button type="button" onClick={() => setCompare(false)} aria-label={t.compare.close}><X size={18} aria-hidden /></button>
-        </section>
-      )}
 
       {modal && (
         <LearningModal

@@ -25,6 +25,47 @@ export function Lines({ text }: { text: string }) {
   );
 }
 
+/**
+ * The approximate width of one line of display type, in em — Cormorant for
+ * Latin and Cyrillic, the native faces for the other scripts. An estimate
+ * from character classes (calibrated against the hero headline in all twelve
+ * languages), used only to cap a headline's size so its longest line fits.
+ */
+export function displayMeasure(line: string) {
+  let em = 0;
+  for (const char of line) {
+    const code = char.codePointAt(0)!;
+    if (char === " ") em += 0.25;
+    else if ("ijlıíìîï.,:;!'’‘|()-–".includes(char)) em += 0.26;
+    else if ("frt".includes(char)) em += 0.33;
+    else if ("mw".includes(char)) em += 0.66;
+    else if ("MW".includes(char)) em += 0.85;
+    else if (/[A-ZÀ-Þ]/.test(char)) em += 0.62;
+    else if (code >= 0x410 && code <= 0x42f) em += 0.65;
+    else if ("жшщыюмф".includes(char)) em += 0.62;
+    else if (code >= 0x400 && code <= 0x4ff) em += 0.45;
+    // Arabic: short vowels take no width of their own.
+    else if ((code >= 0x64b && code <= 0x65f) || code === 0x670) em += 0;
+    else if (code >= 0x600 && code <= 0x6ff) em += 0.36;
+    // Devanagari: combining signs sit on their letter; spacing signs and the danda are narrow.
+    else if (/[ऀ-ंऺ़ु-ै्॑-ॗॢॣ]/.test(char)) em += 0;
+    else if (/[ऻा-ीॉ-ौॎॏ।॥]/.test(char)) em += 0.3;
+    else if (code >= 0x900 && code <= 0x97f) em += 0.6;
+    // Han, kana, Hangul and full-width punctuation: one em each.
+    else if (
+      (code >= 0x1100 && code <= 0x11ff) ||
+      (code >= 0x3000 && code <= 0x30ff) ||
+      (code >= 0x3400 && code <= 0x9fff) ||
+      (code >= 0xac00 && code <= 0xd7af) ||
+      (code >= 0xf900 && code <= 0xfaff) ||
+      (code >= 0xff00 && code <= 0xffef)
+    )
+      em += 1;
+    else em += 0.45;
+  }
+  return Math.round(em * 100) / 100;
+}
+
 export type Still = { src: string; width: number; height: number };
 
 /**

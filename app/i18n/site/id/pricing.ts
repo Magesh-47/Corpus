@@ -25,7 +25,6 @@ export const pricing: SiteDictionary["pricing"] = {
     title: "Paket",
     summary: "Satu paket tersedia hari ini. Dua lainnya sedang dikembangkan.",
     numberLabel: "Paket {number}",
-    learnMore: "Selengkapnya tentang {plan}",
     items: {
       free: {
         name: "Gratis",
@@ -140,16 +139,6 @@ export const pricing: SiteDictionary["pricing"] = {
         education: "Dukungan untuk menyiapkan dan memimpin pelajaran",
       },
     },
-  },
-
-  collection: {
-    eyebrow: "Termasuk dalam Gratis",
-    title: "Koleksi gratis, terbuka untuk semua.",
-    lede: "Setiap organ memiliki model 3D, lembar ilustrasi, dan struktur berlabel. Pilih salah satu untuk membukanya di Jelajahi.",
-    plateLabel: "Lembar {number}",
-    structures: "Struktur berlabel: {count}",
-    openOrgan: "{organ}: buka di Jelajahi",
-    footnote: "Model dan ilustrasi adalah representasi edukatif yang disederhanakan, bukan rujukan klinis, dan tidak ada apa pun di Corpus yang merupakan saran medis.",
   },
 
   faq: {

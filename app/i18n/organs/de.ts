@@ -6,7 +6,7 @@ export const organs: OrganContentDictionary = {
     system: "Herz-Kreislauf-System",
     description: "Ein muskulöses Organ, das Blut durch den ganzen Körper pumpt und jede Zelle mit Sauerstoff und Nährstoffen versorgt.",
     poetic: "Die unermüdliche Pumpe",
-    size: "Etwa so groß wie deine Faust",
+    size: "Etwa so groß wie Ihre Faust",
     weight: "250–350 g",
     location: "Hinter dem Brustbein, leicht nach links versetzt",
     function: "Lässt sauerstoffreiches Blut zirkulieren",

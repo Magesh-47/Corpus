@@ -43,7 +43,7 @@ export const help: SiteDictionary["help"] = {
       exploring: { label: "Exploração", line: "Encontre órgãos e estruturas." },
       practice: { label: "Prática", line: "Entenda a identificação e a recordação." },
       languages: { label: "Idiomas", line: "Mude o idioma do Corpus." },
-      account: { label: "Conta", line: "Gerencie sua conta." },
+      account: { label: "Conta", line: "As contas chegam em breve." },
     },
   },
 
@@ -57,7 +57,7 @@ export const help: SiteDictionary["help"] = {
       },
       choose: {
         title: "Escolha um órgão",
-        body: "Escolha um órgão na biblioteca ao lado do modelo. No celular, abra a biblioteca pela parte de cima da tela.",
+        body: "Escolha um órgão na biblioteca ao lado do modelo. No celular, deslize a fileira de órgãos no topo da tela e toque em um deles.",
       },
       look: {
         title: "Olhe de perto",
@@ -161,8 +161,8 @@ export const help: SiteDictionary["help"] = {
     title: "O Corpus no seu idioma",
     intro: "O Corpus está disponível em {count} idiomas. No Explorar, nomes de órgãos, descrições, rótulos de estruturas e controles estão traduzidos para todos eles.",
     switchBody:
-      "Escolha um idioma no rodapé de qualquer página ou no menu de idiomas no topo do Explorar. Você continua na página que estava lendo.",
-    rtl: "O árabe é lido da direita para a esquerda, e todo o layout se espelha para acompanhar. As páginas ainda não traduzidas aparecem em inglês.",
+      "Escolha um idioma no rodapé desta página e das outras páginas principais do site, ou no menu de idiomas no topo do Explorar. Você continua na página que estava lendo.",
+    rtl: "O árabe é lido da direita para a esquerda, e todo o layout se espelha para acompanhar.",
     listLabel: "Idiomas disponíveis",
     current: "Idioma atual",
   },

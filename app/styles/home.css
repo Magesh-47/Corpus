@@ -41,21 +41,19 @@
 .home-hero__text { display: grid; justify-items: start; gap: 30px; padding-block: 24px; container-type: inline-size; }
 /* The headline's two lines are fixed by the copy, and some languages run
    longer ("Apprendre l'anatomie"): besides the viewport scale, the size is
-   capped so the longest line (--hero-measure characters, set by HomeHero, at
-   about --glyph em each) fits the column, instead of breaking a word a line. */
+   capped so the widest line (--hero-measure, its estimated width in em, set
+   by HomeHero) fits the column with a little to spare, instead of breaking a
+   word a line. English keeps its size at desktop widths. The estimate runs
+   ~1% narrow for some Latin lines (es, pt), so it is sized against 96% of the
+   column to leave real slack for a slightly wider rendering of the face. */
 .home-hero__title {
-  --glyph: 0.45;
-  --hero-fit: calc(100cqi / (var(--hero-measure, 13) * var(--glyph)));
-  font-size: min(clamp(3rem, 1.2rem + 5.6vw, 7.25rem), var(--hero-fit));
+  --hero-fit: calc(96cqi / var(--hero-measure, 6));
+  /* Never under 2.25rem: on the narrowest phones a long first line may break
+     once rather than shrink the headline to caption size. */
+  font-size: max(2.25rem, min(clamp(3rem, 1.2rem + 5.6vw, 7.25rem), var(--hero-fit)));
   line-height: var(--leading-display);
   text-wrap: initial;
 }
-.home-hero__title:lang(ru) { --glyph: 0.47; }
-.home-hero__title:lang(hi) { --glyph: 0.48; }
-.home-hero__title:lang(ar) { --glyph: 0.37; }
-.home-hero__title:lang(ko) { --glyph: 0.86; }
-.home-hero__title:lang(zh),
-.home-hero__title:lang(ja) { --glyph: 1.02; }
 .home-hero__lede { max-width: 31em; }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 4px; }
 .home-hero__facts {
@@ -94,18 +92,6 @@
   display: grid;
   justify-items: center;
   gap: 24px;
-  padding: 20px 18px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 26px;
-  background: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 22px 48px rgba(14, 18, 22, 0.08);
-  transition: transform 0.5s var(--ease-editorial), box-shadow 0.5s var(--ease-editorial);
-}
-@media (hover: hover) {
-  .home-hero__plate:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 28px 56px rgba(14, 18, 22, 0.12);
-  }
 }
 .home-hero__plate-head {
   display: flex;
@@ -523,6 +509,14 @@
 }
 .home-promo__model img { display: block; width: 100%; height: auto; }
 .home-promo__notes .ui-note__label { font-size: 13px; }
+/* Leader lines are set for the still at its largest (440px) and scale with it
+   (tan(atan2()) turns the still's width into a plain ratio), so each label
+   keeps its place beside the heart instead of running onto it or into the
+   text column as the still narrows. */
+.home-promo__model { container-type: inline-size; }
+@supports (width: calc(1px * tan(atan2(1px, 1px)))) {
+  .home-promo__notes .ui-note__line { width: calc(var(--len) * tan(atan2(100cqi, 440px))); }
+}
 .home-promo__caption {
   display: flex;
   flex-wrap: wrap;
@@ -895,7 +889,9 @@
 }
 .home-audience__group:first-child { padding-inline-start: 0; border-inline-start: 0; }
 .home-audience__number { color: var(--accent-ink); font: 500 var(--text-sm)/1 var(--font-sans), sans-serif; letter-spacing: 0.08em; }
-.home-audience__title { margin: 0; font: 500 var(--display-md)/1.05 var(--font-serif), serif; letter-spacing: var(--track-display); }
+/* In three columns the size is capped so a two-word name ("Curious minds")
+   keeps one line; stacked (under 900px) it takes the full display size. */
+.home-audience__title { margin: 0; font: 500 min(var(--display-md), 4vw, 3.6rem)/1.05 var(--font-serif), serif; letter-spacing: var(--track-display); }
 .home-audience__group .ui-body { margin: 0; max-width: 24em; }
 .home-audience__cta { margin-block-start: 8px; }
 
@@ -1020,6 +1016,7 @@
   .home-record { max-width: 560px; }
 
   .home-audience__groups { grid-template-columns: minmax(0, 1fr); }
+  .home-audience__title { font-size: var(--display-md); }
   .home-audience__group,
   .home-audience__group:first-child {
     padding-inline: 0;
@@ -1059,6 +1056,11 @@
    wide enough: step it in toward the text to give them room. */
 @media (min-width: 901px) and (max-width: 1279px) {
   [dir="rtl"] .home-story__composition { width: min(100% - 88px, 620px); margin-inline: 0 auto; }
+  /* Beside a narrower still, long names ("Правое предсердие") break onto two
+     lines rather than run into the headline or past the panel's edge. */
+  .home-promo__notes .ui-note { width: max-content; }
+  .home-promo__notes .ui-note__label { max-width: 9em; white-space: normal; text-wrap: balance; text-align: left; }
+  .home-promo__notes .ui-note--left .ui-note__label { text-align: right; }
 }
 
 @media (max-width: 640px) {
@@ -1067,6 +1069,9 @@
   .home-hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; justify-items: start; }
   .home-hero__actions .ui-button:first-child { width: 100%; }
 
+  /* Just under the display floor on small phones, so a long second line
+     ("in zwei Dimensionen.") holds instead of leaving one word behind. */
+  .home-philosophy__title { font-size: min(var(--display-lg), 10.8vw); }
   /* Leader-line labels have no room beside the organ at phone width: keep the
      dots (the caption and legend name the structures) and drop the labels. */
   .home-promo__notes .ui-note__label,
@@ -1142,7 +1147,8 @@
 }
 
 @media (max-width: 360px) {
-  .home-hero__title { font-size: min(2.6rem, var(--hero-fit)); }
+  /* A 2rem floor lets the longest lines (Hindi, Russian) still fit at 320px. */
+  .home-hero__title { font-size: max(2rem, min(2.6rem, var(--hero-fit))); }
   .home-hero__actions .ui-button { width: 100%; }
 }
 

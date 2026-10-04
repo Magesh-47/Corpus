@@ -454,6 +454,14 @@
   .auth-plate__marked { color: var(--ink-2); }
 }
 
+/* At the narrowest split the panel is half of 1024px: a structure name with
+   its Latin beside it (Arabic, German …) would run off the screen, so the two
+   stack and the leader line shortens. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .auth-plate .ui-note__label { flex-direction: column; gap: 1px; }
+  .auth-plate .ui-note__line { width: min(var(--len), 32px); }
+}
+
 @media (min-width: 1280px) {
   .auth-frame { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
 }
