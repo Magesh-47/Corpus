@@ -457,13 +457,14 @@
   }
   .pricing-table th,
   .pricing-table td { padding: 0; border: 0; }
-  .pricing-table__feature { margin-block-end: 12px; }
+  .pricing-table__feature { margin-block-end: 16px; }
   .pricing-table .pricing-cell {
     display: grid;
     grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
     grid-template-areas: "plan status" "plan detail";
     column-gap: 16px;
-    padding-block: 10px !important;
+    row-gap: 4px;
+    padding-block: 12px !important;
     border-top: 1px solid var(--rule) !important;
   }
   .pricing-cell--plan-free {
