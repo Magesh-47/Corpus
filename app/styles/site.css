@@ -471,6 +471,8 @@
   .ui-note__label,
   .site-menu[open],
   .site-menu[open] .site-menu__links li { animation: none; }
+  .site-menu-button,
+  .site-menu-close { transition: none; }
   .ui-button:hover,
   .ui-button:hover .ui-arrow { transform: none; }
   [dir="rtl"] .ui-button:hover .ui-arrow { transform: scaleX(-1); }
@@ -548,8 +550,21 @@
   color: var(--ink);
   font: 500 var(--text-sm)/1 var(--font-sans), sans-serif;
   cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 .site-menu-button { display: none; margin-inline-start: auto; }
+.site-menu-button:active,
+.site-menu-close:active {
+  border-color: var(--accent-ink);
+  background-color: color-mix(in srgb, var(--accent-ink) 12%, transparent);
+}
+@media (hover: hover) {
+  .site-menu-button:hover,
+  .site-menu-close:hover {
+    border-color: var(--accent-ink);
+    background-color: color-mix(in srgb, var(--accent-ink) 8%, transparent);
+  }
+}
 
 /* The mobile menu: a native modal dialog — focus containment, Escape and an
    inert page behind it come from the platform. */
