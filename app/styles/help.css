@@ -147,8 +147,10 @@
   align-items: baseline;
   padding-block: 12px;
   border-bottom: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
   color: var(--ink);
   text-decoration: none;
+  transition: background-color 0.2s ease;
 }
 .help-search__kind {
   grid-area: kind;
@@ -173,7 +175,10 @@
   line-height: 1.5;
 }
 .help-search__arrow { grid-area: arrow; align-self: center; color: var(--ink-3); }
-.help-search__result:hover .help-search__title { color: var(--accent-ink); }
+.help-search__result:hover,
+.help-search__result:focus-visible { background-color: color-mix(in srgb, var(--accent-ink) 5%, transparent); }
+.help-search__result:hover .help-search__title,
+.help-search__result:focus-visible .help-search__title { color: var(--accent-ink); }
 .help-search__more {
   margin: 10px 0 0;
   color: var(--ink-3);
