@@ -967,11 +967,12 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
     background: var(--app-panel);
     box-shadow: none;
     overflow-x: auto;
+    scroll-snap-type: x proximity;
     scrollbar-width: none;
   }
   /* Equal cells of at least 44px, but a cell never splits a word: a long
      label (Zurücksetzen, Réinitialiser) widens its own cell instead. */
-  .tool-button { flex: 1 0 44px; min-height: 0; padding-inline: 2px; font-size: 9px; gap: 4px; overflow-wrap: normal; }
+  .tool-button { flex: 1 0 44px; min-height: 0; padding-inline: 2px; font-size: 9px; gap: 4px; overflow-wrap: normal; scroll-snap-align: start; }
   .tool-button[aria-pressed="true"]::before { inset-block: auto 0; inset-inline: 10px; width: auto; height: 2px; }
   .tool-reset { margin: 0 0 0 0; margin-inline-start: 2px; }
   .tool-reset::after { inset-inline: auto; inset-inline-start: -3px; top: 10px; bottom: 10px; border-top: 0; border-inline-start: 1px solid var(--rule); }
