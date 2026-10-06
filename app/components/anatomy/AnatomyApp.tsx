@@ -202,11 +202,15 @@ export function AnatomyApp({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Escape" && !query && searchOpen) {
-                // The field is about to be hidden; focus must not fall to <body>.
-                searchToggle.current?.focus();
-                setSearchOpen(false);
+              if (event.key !== "Escape" || !searchOpen) return;
+              event.preventDefault();
+              if (query) {
+                setQuery("");
+                return;
               }
+              // The field is about to be hidden; focus must not fall to <body>.
+              searchToggle.current?.focus();
+              setSearchOpen(false);
             }}
             placeholder={t.search.placeholder}
             autoComplete="off"
