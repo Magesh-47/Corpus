@@ -96,6 +96,9 @@ export function SiteHeader({
         ref={menuRef}
         className="site-menu"
         aria-label={nav.menu.label}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) close();
+        }}
         onClose={() => triggerRef.current?.focus()}
       >
         <div className="site-menu__inner">
