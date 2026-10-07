@@ -612,6 +612,10 @@ html:has(.site-menu[open]) { overflow: hidden; }
   text-decoration: none;
   transition: color 0.2s ease, background-color 0.2s ease;
 }
+.site-menu__links a:hover,
+.site-menu__links a:focus-visible {
+  background-color: color-mix(in srgb, var(--accent-ink) 5%, transparent);
+}
 .site-menu__links a[aria-current="page"] {
   color: var(--accent-ink);
   background-color: color-mix(in srgb, var(--accent-ink) 9%, transparent);
