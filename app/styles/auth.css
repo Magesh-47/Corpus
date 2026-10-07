@@ -215,7 +215,10 @@
   cursor: pointer;
   transition: color 0.2s ease;
 }
-.auth-field__toggle:hover { color: var(--ink); }
+.auth-field__toggle:hover {
+  background: color-mix(in srgb, var(--accent-ink) 8%, transparent);
+  color: var(--ink);
+}
 .auth-field__toggle:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .auth-field__hint,
