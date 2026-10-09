@@ -93,6 +93,10 @@
   justify-items: center;
   gap: 24px;
 }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .home-hero__plate { transition: transform 500ms var(--ease-editorial); }
+  .home-hero__plate:hover { transform: translateY(-4px); }
+}
 .home-hero__plate-head {
   display: flex;
   justify-content: space-between;
