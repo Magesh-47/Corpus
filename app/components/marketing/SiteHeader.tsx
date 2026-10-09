@@ -28,6 +28,7 @@ export function SiteHeader({
   const menuRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 8);
@@ -85,7 +86,11 @@ export function SiteHeader({
           type="button"
           className="site-menu-button"
           aria-haspopup="dialog"
-          onClick={() => menuRef.current?.showModal()}
+          aria-expanded={menuOpen}
+          onClick={() => {
+            menuRef.current?.showModal();
+            setMenuOpen(true);
+          }}
         >
           <Menu size={18} strokeWidth={1.75} aria-hidden />
           {nav.menu.open}
@@ -96,7 +101,13 @@ export function SiteHeader({
         ref={menuRef}
         className="site-menu"
         aria-label={nav.menu.label}
-        onClose={() => triggerRef.current?.focus()}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) close();
+        }}
+        onClose={() => {
+          setMenuOpen(false);
+          triggerRef.current?.focus();
+        }}
       >
         <div className="site-menu__inner">
           <div className="site-menu__top">

@@ -1066,8 +1066,8 @@
 @media (max-width: 640px) {
   .home-hero__title { font-size: min(clamp(2.5rem, 9vw, 3.25rem), var(--hero-fit)); }
   .home-hero__facts { font-size: 12px; }
-  .home-hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; justify-items: start; }
-  .home-hero__actions .ui-button:first-child { width: 100%; }
+  .home-hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; }
+  .home-hero__actions .ui-button { width: 100%; }
 
   /* Just under the display floor on small phones, so a long second line
      ("in zwei Dimensionen.") holds instead of leaving one word behind. */
