@@ -781,9 +781,10 @@
   transition: transform 0.4s var(--ease-editorial);
 }
 .help-accordion__summary:hover .help-accordion__marker { border-color: currentColor; }
+.help-accordion__item[open] > .help-accordion__summary { color: var(--accent-ink); }
 .help-accordion__item[open] > .help-accordion__summary .help-accordion__marker {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
   color: var(--paper-solid);
 }
 .help-accordion__item[open] > .help-accordion__summary .help-accordion__marker::before {
