@@ -1074,7 +1074,7 @@
 
 @media (max-width: 640px) {
   .home-hero__title { font-size: min(clamp(2.5rem, 9vw, 3.25rem), var(--hero-fit)); }
-  .home-hero__facts { font-size: 12px; }
+  .home-hero__facts { font-size: 13px; row-gap: 10px; }
   .home-hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; }
   .home-hero__actions .ui-button { width: 100%; }
 
