@@ -635,13 +635,25 @@ html:has(.site-menu[open]) { overflow: hidden; }
   margin-block-start: 14px;
 }
 .site-menu__languages a {
-  display: inline-block;
-  padding-block: 4px;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 8px;
+  border-radius: var(--radius-sm);
   color: var(--ink-2);
   font-size: var(--text-sm);
   text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
-.site-menu__languages a[aria-current="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 0.3em; }
+.site-menu__languages a:hover,
+.site-menu__languages a:focus-visible { background-color: color-mix(in srgb, var(--accent-ink) 7%, transparent); }
+.site-menu__languages a[aria-current="true"] {
+  background-color: color-mix(in srgb, var(--accent-ink) 10%, transparent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
 .site-menu__actions { display: grid; gap: 12px; margin-block-start: 36px; }
 .site-menu__actions .ui-button { width: 100%; }
 
