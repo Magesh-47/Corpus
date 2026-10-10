@@ -322,6 +322,12 @@
   line-height: 1.5;
   text-wrap: pretty;
 }
+@media (hover: hover) {
+  .pricing-table tbody tr > * { transition: background-color 0.2s ease; }
+  .pricing-table tbody tr:hover > * {
+    background-color: color-mix(in srgb, var(--accent-ink) 5%, transparent);
+  }
+}
 
 /* ------------------------------------------------------------------- FAQ */
 
