@@ -449,14 +449,22 @@
 /* Hover belongs to devices that hover; on touch everything is simply visible. */
 @media (hover: hover) {
   .home-organ__cta { opacity: 0; translate: 0 4px; }
-  .home-organ__plate:hover .home-organ__art img { transform: scale(1.035) translate3d(0, -1.5%, 0); }
-  .home-organ__plate:hover .home-organ__name { translate: 6px 0; }
-  [dir="rtl"] .home-organ__plate:hover .home-organ__name { translate: -6px 0; }
-  .home-organ__plate:hover .home-organ__note { opacity: 1; }
-  .home-organ__plate:hover .home-organ__note-line { transform: scaleX(1); }
-  .home-organ__plate:hover .home-organ__cta { opacity: 1; translate: 0 0; }
-  .home-organ__plate:hover .ui-arrow { transform: translateX(3px); }
-  [dir="rtl"] .home-organ__plate:hover .ui-arrow { transform: scaleX(-1) translateX(3px); }
+  .home-organ__plate:hover .home-organ__art img,
+  .home-organ__plate:focus-within .home-organ__art img { transform: scale(1.035) translate3d(0, -1.5%, 0); }
+  .home-organ__plate:hover .home-organ__name,
+  .home-organ__plate:focus-within .home-organ__name { translate: 6px 0; }
+  [dir="rtl"] .home-organ__plate:hover .home-organ__name,
+  [dir="rtl"] .home-organ__plate:focus-within .home-organ__name { translate: -6px 0; }
+  .home-organ__plate:hover .home-organ__note,
+  .home-organ__plate:focus-within .home-organ__note { opacity: 1; }
+  .home-organ__plate:hover .home-organ__note-line,
+  .home-organ__plate:focus-within .home-organ__note-line { transform: scaleX(1); }
+  .home-organ__plate:hover .home-organ__cta,
+  .home-organ__plate:focus-within .home-organ__cta { opacity: 1; translate: 0 0; }
+  .home-organ__plate:hover .ui-arrow,
+  .home-organ__plate:focus-within .ui-arrow { transform: translateX(3px); }
+  [dir="rtl"] .home-organ__plate:hover .ui-arrow,
+  [dir="rtl"] .home-organ__plate:focus-within .ui-arrow { transform: scaleX(-1) translateX(3px); }
 }
 .home-organ__plate:focus-within .home-organ__cta { opacity: 1; translate: 0 0; }
 
@@ -1107,7 +1115,15 @@
     border-top: 1px solid var(--rule);
     text-align: start;
   }
-  .home-hero__caption { justify-items: start; text-align: start; width: 100%; }
+  .home-hero__caption {
+    justify-items: start;
+    text-align: start;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--paper-solid) 78%, transparent);
+  }
   .home-hero__plate-head { width: 100%; }
 
   .home-understand { grid-template-columns: minmax(0, 1fr); row-gap: 8px; }
