@@ -117,7 +117,7 @@
 }
 /* The one plan that exists sits on a sheet of paper, ruled in ink. */
 .pricing-plan--available {
-  border-top: 2px solid var(--ink);
+  border-top: 2px solid var(--accent-ink);
   background: var(--paper-solid);
 }
 /* Plans still to come are drawn with a dashed rule, like a figure in draft. */
