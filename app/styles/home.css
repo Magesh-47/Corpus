@@ -56,6 +56,8 @@
 }
 .home-hero__lede { max-width: 31em; }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 4px; }
+.home-hero__actions .ui-button--primary { background: var(--accent-ink); }
+.home-hero__actions .ui-button--primary:hover { background: color-mix(in srgb, var(--accent-ink) 86%, black); }
 .home-hero__facts {
   display: flex;
   flex-wrap: wrap;
