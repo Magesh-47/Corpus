@@ -228,6 +228,11 @@
   padding-block-start: 18px;
 }
 
+.pricing-plan--available .pricing-plan__foot .ui-button--primary { background: var(--accent-ink); }
+.pricing-plan--available .pricing-plan__foot .ui-button--primary:hover {
+  background: color-mix(in srgb, var(--accent-ink) 86%, black);
+}
+
 /* ------------------------------------------------------------ comparison */
 
 .pricing-compare { border-top: 1px solid var(--rule); scroll-margin-block-start: 40px; }
