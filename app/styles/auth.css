@@ -187,7 +187,9 @@
   transition: border-color 0.2s ease, background-color 0.2s ease;
   appearance: none;
 }
-.auth-field__input:hover { border-color: color-mix(in srgb, var(--ink) 55%, transparent); }
+@media (hover: hover) {
+  .auth-field__input:hover { border-color: color-mix(in srgb, var(--ink) 55%, transparent); }
+}
 .auth-field__input:focus { border-color: var(--ink); background: #fff; }
 .auth-field__input:disabled { opacity: 0.6; cursor: not-allowed; }
 .auth-field__input--password { padding-inline-end: 84px; }
@@ -215,9 +217,11 @@
   cursor: pointer;
   transition: color 0.2s ease;
 }
-.auth-field__toggle:hover {
-  background: color-mix(in srgb, var(--accent-ink) 8%, transparent);
-  color: var(--ink);
+@media (hover: hover) {
+  .auth-field__toggle:hover {
+    background: color-mix(in srgb, var(--accent-ink) 8%, transparent);
+    color: var(--ink);
+  }
 }
 .auth-field__toggle:disabled { opacity: 0.5; cursor: not-allowed; }
 
