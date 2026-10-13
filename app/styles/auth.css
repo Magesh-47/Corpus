@@ -254,7 +254,9 @@
   font-size: var(--text-base);
 }
 .auth-submit.ui-button--primary { background: var(--accent-ink); }
-.auth-submit.ui-button--primary:hover { background: color-mix(in srgb, var(--accent-ink) 86%, black); }
+@media (hover: hover) {
+  .auth-submit.ui-button--primary:hover { background: color-mix(in srgb, var(--accent-ink) 86%, black); }
+}
 .auth-submit:disabled { cursor: progress; }
 .auth-submit__spinner {
   width: 14px;

@@ -229,8 +229,10 @@
 }
 
 .pricing-plan--available .pricing-plan__foot .ui-button--primary { background: var(--accent-ink); }
-.pricing-plan--available .pricing-plan__foot .ui-button--primary:hover {
-  background: color-mix(in srgb, var(--accent-ink) 86%, black);
+@media (hover: hover) {
+  .pricing-plan--available .pricing-plan__foot .ui-button--primary:hover {
+    background: color-mix(in srgb, var(--accent-ink) 86%, black);
+  }
 }
 
 /* ------------------------------------------------------------ comparison */
