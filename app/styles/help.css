@@ -762,7 +762,6 @@
   transition: color 0.25s var(--ease-editorial);
 }
 .help-accordion__summary::-webkit-details-marker { display: none; }
-.help-accordion__summary:hover { color: var(--accent-ink); }
 .help-accordion__label { min-width: 0; text-wrap: pretty; }
 .help-accordion__marker {
   position: relative;
@@ -785,7 +784,10 @@
   transform: translate(-50%, -70%) rotate(45deg);
   transition: transform 0.4s var(--ease-editorial);
 }
-.help-accordion__summary:hover .help-accordion__marker { border-color: currentColor; }
+@media (hover: hover) {
+  .help-accordion__summary:hover { color: var(--accent-ink); }
+  .help-accordion__summary:hover .help-accordion__marker { border-color: currentColor; }
+}
 .help-accordion__item[open] > .help-accordion__summary { color: var(--accent-ink); }
 .help-accordion__item[open] > .help-accordion__summary .help-accordion__marker {
   background: var(--accent-ink);
