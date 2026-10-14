@@ -90,7 +90,7 @@
   border-bottom: 1px solid var(--ink);
   transition: border-color 0.25s var(--ease-editorial);
 }
-.help-search__field:focus-within { box-shadow: 0 1px 0 0 var(--ink); }
+.help-search__field:focus-within { box-shadow: 0 1px 0 0 var(--accent-ink); }
 .help-search__icon {
   flex: none;
   color: var(--ink-3);
