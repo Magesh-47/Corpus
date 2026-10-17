@@ -57,6 +57,10 @@
 .home-hero__lede { max-width: 31em; }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 4px; }
 .home-hero__actions .ui-button--primary { background: var(--accent-ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero__actions .ui-button:focus-visible .ui-arrow { transform: translateX(3px); }
+  [dir="rtl"] .home-hero__actions .ui-button:focus-visible .ui-arrow { transform: scaleX(-1) translateX(3px); }
+}
 @media (hover: hover) {
   .home-hero__actions .ui-button--primary:hover { background: color-mix(in srgb, var(--accent-ink) 86%, black); }
 }
