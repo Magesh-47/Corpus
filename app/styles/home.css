@@ -399,6 +399,10 @@
   padding-block-start: 14px;
   border-top: 1px solid var(--rule-strong);
 }
+@media (prefers-reduced-motion: no-preference) {
+  .home-organ__plate { transition: border-color 0.35s var(--ease-editorial); }
+}
+.home-organ__plate:focus-within { border-top-color: var(--accent-ink); }
 .home-organ__meta { display: flex; justify-content: space-between; gap: 12px; margin: 0; }
 .home-organ__number { color: var(--accent-ink); font-variant-numeric: tabular-nums; }
 .home-organ__art { position: relative; overflow: hidden; }
@@ -457,6 +461,7 @@
 /* Hover belongs to devices that hover; on touch everything is simply visible. */
 @media (hover: hover) {
   .home-organ__cta { opacity: 0; translate: 0 4px; }
+  .home-organ__plate:hover { border-top-color: var(--accent-ink); }
   .home-organ__plate:hover .home-organ__art img,
   .home-organ__plate:focus-within .home-organ__art img { transform: scale(1.035) translate3d(0, -1.5%, 0); }
   .home-organ__plate:hover .home-organ__name,
