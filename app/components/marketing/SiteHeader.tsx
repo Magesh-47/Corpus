@@ -41,7 +41,9 @@ export function SiteHeader({
         if (!isHome) return;
 
         const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-        setScrollProgress(scrollableHeight > 0 ? Math.min(window.scrollY / scrollableHeight, 1) : 0);
+        setScrollProgress(
+          scrollableHeight > 0 ? Math.min(Math.max(window.scrollY / scrollableHeight, 0), 1) : 0,
+        );
       });
     };
 

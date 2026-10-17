@@ -817,7 +817,7 @@
   letter-spacing: 0.12em;
   white-space: nowrap;
 }
-.home-wall__item a:hover .home-wall__name { color: var(--accent-ink); }
+.home-wall__item a:is(:hover, :focus-visible) .home-wall__name { color: var(--accent-ink); }
 @media (pointer: coarse) {
   .home-wall__item a { min-height: 44px; }
 }
