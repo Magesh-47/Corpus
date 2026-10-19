@@ -460,7 +460,7 @@
 
 /* Hover belongs to devices that hover; on touch everything is simply visible. */
 @media (hover: hover) {
-  .home-organ__cta { opacity: 0; translate: 0 4px; }
+  .home-organ__cta { opacity: 0.72; }
   .home-organ__plate:hover { border-top-color: var(--accent-ink); }
   .home-organ__plate:hover .home-organ__art img,
   .home-organ__plate:focus-within .home-organ__art img { transform: scale(1.035) translate3d(0, -1.5%, 0); }
@@ -1095,10 +1095,12 @@
 
 @media (max-width: 640px) {
   .home-hero__grid { gap: clamp(24px, 6vw, 32px); }
+  .home-hero__text { gap: 24px; }
   .home-hero__title { font-size: min(clamp(2.5rem, 9vw, 3.25rem), var(--hero-fit)); }
   .home-hero__facts { font-size: 13px; row-gap: 10px; }
   .home-hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; }
   .home-hero__actions .ui-button { width: 100%; }
+  .home-wall__name { font-size: clamp(1.5rem, 7vw, 2.25rem); }
 
   /* Just under the display floor on small phones, so a long second line
      ("in zwei Dimensionen.") holds instead of leaving one word behind. */
