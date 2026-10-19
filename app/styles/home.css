@@ -924,6 +924,10 @@
 /* -------------------------------------------------------------- closing */
 
 .home-closing { position: relative; overflow: hidden; border-top: 1px solid var(--rule); }
+.home-closing .ui-button--primary { background: var(--accent-ink); }
+@media (hover: hover) {
+  .home-closing .ui-button--primary:hover { background: color-mix(in srgb, var(--accent-ink) 86%, black); }
+}
 .home-closing__inner {
   position: relative;
   display: grid;
