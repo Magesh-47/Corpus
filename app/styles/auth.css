@@ -172,6 +172,7 @@
   color: var(--ink);
   font: 500 var(--text-sm)/1.3 var(--font-sans), sans-serif;
 }
+.auth-field:focus-within .auth-field__label { color: var(--accent-ink); }
 .auth-field__control { position: relative; }
 .auth-field__input {
   width: 100%;
