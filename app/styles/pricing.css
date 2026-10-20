@@ -465,8 +465,11 @@
   }
   .pricing-table caption { padding-block-end: 20px; border-bottom: 1px solid var(--rule-strong); }
   .pricing-table tbody tr {
-    padding-block: 20px 22px;
-    border-bottom: 1px solid var(--rule);
+    margin-block: 16px;
+    padding: 16px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    background: var(--paper-solid);
   }
   .pricing-table th,
   .pricing-table td { padding: 0; border: 0; }
