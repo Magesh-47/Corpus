@@ -90,7 +90,7 @@
   border-bottom: 1px solid var(--ink);
   transition: border-color 0.25s var(--ease-editorial);
 }
-.help-search__field:focus-within { box-shadow: 0 1px 0 0 var(--ink); }
+.help-search__field:focus-within { box-shadow: 0 1px 0 0 var(--accent-ink); }
 .help-search__icon {
   flex: none;
   color: var(--ink-3);
@@ -125,8 +125,13 @@
   color: var(--ink-2);
   cursor: pointer;
   border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
-.help-search__clear:hover { color: var(--ink); }
+.help-search__clear:hover {
+  color: var(--ink);
+  background-color: color-mix(in srgb, var(--accent-ink) 8%, transparent);
+}
+.help-search__clear:active { background-color: color-mix(in srgb, var(--accent-ink) 12%, transparent); }
 
 .help-search__results[hidden] { display: none; }
 .help-search__results { padding-block-start: 6px; }
@@ -754,10 +759,9 @@
   font: 500 clamp(1.1875rem, 1.1rem + 0.4vw, 1.4375rem)/1.3 var(--font-serif), serif;
   cursor: pointer;
   list-style: none;
-  transition: color 0.25s var(--ease-editorial);
+  transition: color 0.25s var(--ease-editorial), background-color 0.25s var(--ease-editorial);
 }
 .help-accordion__summary::-webkit-details-marker { display: none; }
-.help-accordion__summary:hover { color: var(--accent-ink); }
 .help-accordion__label { min-width: 0; text-wrap: pretty; }
 .help-accordion__marker {
   position: relative;
@@ -780,10 +784,21 @@
   transform: translate(-50%, -70%) rotate(45deg);
   transition: transform 0.4s var(--ease-editorial);
 }
-.help-accordion__summary:hover .help-accordion__marker { border-color: currentColor; }
+@media (hover: hover) {
+  .help-accordion__summary:hover {
+    color: var(--accent-ink);
+    background-color: color-mix(in srgb, var(--accent-ink) 5%, transparent);
+  }
+  .help-accordion__summary:hover .help-accordion__marker { border-color: currentColor; }
+}
+.help-accordion__summary:focus-visible {
+  color: var(--accent-ink);
+  background-color: color-mix(in srgb, var(--accent-ink) 5%, transparent);
+}
+.help-accordion__item[open] > .help-accordion__summary { color: var(--accent-ink); }
 .help-accordion__item[open] > .help-accordion__summary .help-accordion__marker {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
   color: var(--paper-solid);
 }
 .help-accordion__item[open] > .help-accordion__summary .help-accordion__marker::before {

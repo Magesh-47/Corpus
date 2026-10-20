@@ -29,13 +29,33 @@ export function SiteHeader({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const isHome = pathname === localeHref(locale, "home");
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 8);
+    let frame = 0;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 8);
+        if (!isHome) return;
+
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        setScrollProgress(
+          scrollableHeight > 0 ? Math.min(Math.max(window.scrollY / scrollableHeight, 0), 1) : 0,
+        );
+      });
+    };
+
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
+    window.addEventListener("resize", update);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [isHome]);
 
   // Following a link inside the menu changes the route; the menu should not
   // still be covering the new page.
@@ -96,6 +116,15 @@ export function SiteHeader({
           {nav.menu.open}
         </button>
       </div>
+
+      {isHome && (
+        <div className="site-header__progress" aria-hidden="true">
+          <div
+            className="site-header__progress-fill"
+            style={{ "--scroll-progress": scrollProgress } as CSSProperties}
+          />
+        </div>
+      )}
 
       <dialog
         ref={menuRef}

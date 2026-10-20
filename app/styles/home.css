@@ -56,6 +56,14 @@
 }
 .home-hero__lede { max-width: 31em; }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 4px; }
+.home-hero__actions .ui-button--primary { background: var(--accent-ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero__actions .ui-button:focus-visible .ui-arrow { transform: translateX(3px); }
+  [dir="rtl"] .home-hero__actions .ui-button:focus-visible .ui-arrow { transform: scaleX(-1) translateX(3px); }
+}
+@media (hover: hover) {
+  .home-hero__actions .ui-button--primary:hover { background: color-mix(in srgb, var(--accent-ink) 86%, black); }
+}
 .home-hero__facts {
   display: flex;
   flex-wrap: wrap;
@@ -93,6 +101,10 @@
   justify-items: center;
   gap: 24px;
 }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .home-hero__plate { transition: transform 500ms var(--ease-editorial); }
+  .home-hero__plate:hover { transform: translateY(-4px); }
+}
 .home-hero__plate-head {
   display: flex;
   justify-content: space-between;
@@ -105,6 +117,7 @@
   position: relative;
   height: min(66svh, 700px);
   aspect-ratio: 614 / 970;
+  background: radial-gradient(ellipse at 50% 44%, rgba(163, 74, 57, 0.08), transparent 68%);
 }
 .home-hero__specimen img {
   display: block;
@@ -386,6 +399,10 @@
   padding-block-start: 14px;
   border-top: 1px solid var(--rule-strong);
 }
+@media (prefers-reduced-motion: no-preference) {
+  .home-organ__plate { transition: border-color 0.35s var(--ease-editorial); }
+}
+.home-organ__plate:focus-within { border-top-color: var(--accent-ink); }
 .home-organ__meta { display: flex; justify-content: space-between; gap: 12px; margin: 0; }
 .home-organ__number { color: var(--accent-ink); font-variant-numeric: tabular-nums; }
 .home-organ__art { position: relative; overflow: hidden; }
@@ -443,15 +460,24 @@
 
 /* Hover belongs to devices that hover; on touch everything is simply visible. */
 @media (hover: hover) {
-  .home-organ__cta { opacity: 0; translate: 0 4px; }
-  .home-organ__plate:hover .home-organ__art img { transform: scale(1.035) translate3d(0, -1.5%, 0); }
-  .home-organ__plate:hover .home-organ__name { translate: 6px 0; }
-  [dir="rtl"] .home-organ__plate:hover .home-organ__name { translate: -6px 0; }
-  .home-organ__plate:hover .home-organ__note { opacity: 1; }
-  .home-organ__plate:hover .home-organ__note-line { transform: scaleX(1); }
-  .home-organ__plate:hover .home-organ__cta { opacity: 1; translate: 0 0; }
-  .home-organ__plate:hover .ui-arrow { transform: translateX(3px); }
-  [dir="rtl"] .home-organ__plate:hover .ui-arrow { transform: scaleX(-1) translateX(3px); }
+  .home-organ__cta { opacity: 0.72; }
+  .home-organ__plate:hover { border-top-color: var(--accent-ink); }
+  .home-organ__plate:hover .home-organ__art img,
+  .home-organ__plate:focus-within .home-organ__art img { transform: scale(1.035) translate3d(0, -1.5%, 0); }
+  .home-organ__plate:hover .home-organ__name,
+  .home-organ__plate:focus-within .home-organ__name { translate: 6px 0; }
+  [dir="rtl"] .home-organ__plate:hover .home-organ__name,
+  [dir="rtl"] .home-organ__plate:focus-within .home-organ__name { translate: -6px 0; }
+  .home-organ__plate:hover .home-organ__note,
+  .home-organ__plate:focus-within .home-organ__note { opacity: 1; }
+  .home-organ__plate:hover .home-organ__note-line,
+  .home-organ__plate:focus-within .home-organ__note-line { transform: scaleX(1); }
+  .home-organ__plate:hover .home-organ__cta,
+  .home-organ__plate:focus-within .home-organ__cta { opacity: 1; translate: 0 0; }
+  .home-organ__plate:hover .ui-arrow,
+  .home-organ__plate:focus-within .ui-arrow { transform: translateX(3px); }
+  [dir="rtl"] .home-organ__plate:hover .ui-arrow,
+  [dir="rtl"] .home-organ__plate:focus-within .ui-arrow { transform: scaleX(-1) translateX(3px); }
 }
 .home-organ__plate:focus-within .home-organ__cta { opacity: 1; translate: 0 0; }
 
@@ -577,6 +603,7 @@
   grid-template: 100% / 100%;
   place-items: center;
   min-height: 0;
+  box-shadow: inset 0 0 0 1px var(--rule);
 }
 .home-feature__visual img { display: block; width: auto; max-width: 100%; height: 100%; max-height: 100%; object-fit: contain; }
 .home-feature__text { display: grid; gap: 10px; align-content: start; }
@@ -796,7 +823,7 @@
   letter-spacing: 0.12em;
   white-space: nowrap;
 }
-.home-wall__item a:hover .home-wall__name { color: var(--accent-ink); }
+.home-wall__item a:is(:hover, :focus-visible) .home-wall__name { color: var(--accent-ink); }
 @media (pointer: coarse) {
   .home-wall__item a { min-height: 44px; }
 }
@@ -898,6 +925,10 @@
 /* -------------------------------------------------------------- closing */
 
 .home-closing { position: relative; overflow: hidden; border-top: 1px solid var(--rule); }
+.home-closing .ui-button--primary { background: var(--accent-ink); }
+@media (hover: hover) {
+  .home-closing .ui-button--primary:hover { background: color-mix(in srgb, var(--accent-ink) 86%, black); }
+}
 .home-closing__inner {
   position: relative;
   display: grid;
@@ -1026,6 +1057,10 @@
   }
 }
 
+@media (min-width: 641px) and (max-width: 900px) {
+  .home-catalogue { column-gap: clamp(24px, 3.2vw, 32px); row-gap: clamp(48px, 6vw, 64px); }
+}
+
 /* Arabic mirrors the spread: the plate moves to the page's left edge, where
    the long leader lines that run left from the neck and chest would leave the
    page, and the ones that run right would cross into the text. Until the
@@ -1064,10 +1099,13 @@
 }
 
 @media (max-width: 640px) {
+  .home-hero__grid { gap: clamp(24px, 6vw, 32px); }
+  .home-hero__text { gap: 24px; }
   .home-hero__title { font-size: min(clamp(2.5rem, 9vw, 3.25rem), var(--hero-fit)); }
-  .home-hero__facts { font-size: 12px; }
+  .home-hero__facts { font-size: 13px; row-gap: 10px; }
   .home-hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; }
   .home-hero__actions .ui-button { width: 100%; }
+  .home-wall__name { font-size: clamp(1.5rem, 7vw, 2.25rem); }
 
   /* Just under the display floor on small phones, so a long second line
      ("in zwei Dimensionen.") holds instead of leaving one word behind. */
@@ -1098,7 +1136,15 @@
     border-top: 1px solid var(--rule);
     text-align: start;
   }
-  .home-hero__caption { justify-items: start; text-align: start; width: 100%; }
+  .home-hero__caption {
+    justify-items: start;
+    text-align: start;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--paper-solid) 78%, transparent);
+  }
   .home-hero__plate-head { width: 100%; }
 
   .home-understand { grid-template-columns: minmax(0, 1fr); row-gap: 8px; }

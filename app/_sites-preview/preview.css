@@ -1,0 +1,40 @@
+.sites-skeleton-shell {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #f7f4f2;
+  opacity: 0.52;
+  z-index: 1;
+}
+
+.sites-skeleton-search {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sites-skeleton-search-placeholder {
+  width: min(20rem, 100%);
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.sites-skeleton-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.sites-skeleton-status {
+  margin-top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sites-skeleton-shell,
+  .sites-skeleton-search-placeholder,
+  .sites-skeleton-status {
+    animation: none;
+  }
+}

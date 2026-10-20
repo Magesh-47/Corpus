@@ -117,7 +117,7 @@
 }
 /* The one plan that exists sits on a sheet of paper, ruled in ink. */
 .pricing-plan--available {
-  border-top: 2px solid var(--ink);
+  border-top: 2px solid var(--accent-ink);
   background: var(--paper-solid);
 }
 /* Plans still to come are drawn with a dashed rule, like a figure in draft. */
@@ -228,6 +228,13 @@
   padding-block-start: 18px;
 }
 
+.pricing-plan--available .pricing-plan__foot .ui-button--primary { background: var(--accent-ink); }
+@media (hover: hover) {
+  .pricing-plan--available .pricing-plan__foot .ui-button--primary:hover {
+    background: color-mix(in srgb, var(--accent-ink) 86%, black);
+  }
+}
+
 /* ------------------------------------------------------------ comparison */
 
 .pricing-compare { border-top: 1px solid var(--rule); scroll-margin-block-start: 40px; }
@@ -321,6 +328,12 @@
   font-size: var(--text-sm);
   line-height: 1.5;
   text-wrap: pretty;
+}
+@media (hover: hover) {
+  .pricing-table tbody tr > * { transition: background-color 0.2s ease; }
+  .pricing-table tbody tr:hover > * {
+    background-color: color-mix(in srgb, var(--accent-ink) 5%, transparent);
+  }
 }
 
 /* ------------------------------------------------------------------- FAQ */

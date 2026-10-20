@@ -9,11 +9,13 @@ const nextConfig: NextConfig = {
   // negotiation would need middleware, which the Cloudflare/vinext target does
   // not run — the language links cover it.)
   async redirects() {
-    return Object.values(routes).map((path) => ({
-      source: path || "/",
-      destination: `/${defaultLocale}${path}`,
-      permanent: false,
-    }));
+    return Object.entries(routes)
+      .filter(([key]) => key !== "home")
+      .map(([, path]) => ({
+        source: path || "/",
+        destination: `/${defaultLocale}${path}`,
+        permanent: false,
+      }));
   },
 };
 
