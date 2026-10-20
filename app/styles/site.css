@@ -563,9 +563,17 @@
 }
 [dir="rtl"] .site-nav a,
 [dir="rtl"] .site-actions__link { background-position: 100% 100%; }
-.site-nav a:focus-visible { color: var(--accent-ink); background-size: 100% 1px; }
+.site-nav a:focus-visible {
+  color: var(--accent-ink);
+  background-color: color-mix(in srgb, var(--accent-ink) 7%, transparent);
+  background-size: 100% 1px;
+}
 @media (hover: hover) {
-  .site-nav a:hover { color: var(--accent-ink); background-size: 100% 1px; }
+  .site-nav a:hover {
+    color: var(--accent-ink);
+    background-color: color-mix(in srgb, var(--accent-ink) 7%, transparent);
+    background-size: 100% 1px;
+  }
   .site-actions__link:hover { color: var(--ink); background-size: 100% 1px; }
 }
 .site-nav a[aria-current="page"] { color: var(--accent-ink); background-size: 100% 1px; }
@@ -731,13 +739,21 @@ html:has(.site-menu[open]) { overflow: hidden; }
   transition: background-size 0.4s var(--ease-editorial), color 0.2s ease;
 }
 [dir="rtl"] .site-footer a { background-position: 100% 100%; }
-.site-footer a:focus-visible,
+.site-footer a:focus-visible {
+  background-color: color-mix(in srgb, var(--accent-ink) 7%, transparent);
+  color: var(--accent-ink);
+  background-size: 100% 1px;
+}
 .site-footer a[aria-current="true"] {
   color: var(--accent-ink);
   background-size: 100% 1px;
 }
 @media (hover: hover) {
-  .site-footer a:hover { color: var(--accent-ink); background-size: 100% 1px; }
+  .site-footer a:hover {
+    background-color: color-mix(in srgb, var(--accent-ink) 7%, transparent);
+    color: var(--accent-ink);
+    background-size: 100% 1px;
+  }
 }
 .site-footer__nav { padding-block-start: 34px; }
 .site-footer__languages { grid-template-columns: repeat(2, minmax(0, max-content)); column-gap: 28px; }
