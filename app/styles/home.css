@@ -260,7 +260,7 @@
   width: 78%;
   height: auto;
   translate: -50% 0;
-  transition: scale 1.6s var(--ease-editorial);
+  transition: scale 1.2s var(--ease-editorial);
 }
 @media (hover: hover) {
   .home-chapter--see .home-chapter__figure:hover .home-see__crop img { scale: 1.03; }
