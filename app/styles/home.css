@@ -1103,6 +1103,7 @@
 }
 
 @media (max-width: 640px) {
+  .home-chapters { gap: 64px; }
   .home-hero__grid { gap: clamp(24px, 6vw, 32px); }
   .home-hero__text { gap: 24px; }
   .home-hero__title { font-size: min(clamp(2.5rem, 9vw, 3.25rem), var(--hero-fit)); }
