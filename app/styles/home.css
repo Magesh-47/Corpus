@@ -455,7 +455,7 @@
 
 /* Hover belongs to devices that hover; on touch everything is simply visible. */
 @media (hover: hover) {
-  .home-organ__cta { opacity: 0.72; }
+  .home-organ__cta { opacity: 0.85; }
   .home-organ__plate:hover { border-top-color: var(--accent-ink); }
   .home-organ__plate:hover .home-organ__note,
   .home-organ__plate:focus-within .home-organ__note { opacity: 1; }
